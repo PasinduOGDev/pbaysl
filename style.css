@@ -1,0 +1,11 @@
+@font-face {
+    font-family: "Oswald";
+    src: url("font/Oswald-Regular.ttf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Oswald";
+}
