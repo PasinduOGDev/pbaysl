@@ -16,14 +16,17 @@
     <!-- icons -->
 </head>
 
-<body data-bs-theme="light">
+<body>
 
     <div class="row">
-        <?php include "main-header.php"; ?>
-    </div>
-
-    <div class="container-fluid">
-
+        <div class="col-12">
+            <div class="col-12 d-flex justify-content-end">
+                <div class="form-check form-switch mx-4 mt-3">
+                    <input type="checkbox" class="form-check-input p-2" role="switch" onclick="themeChange();">
+                    <label class="form-check-label" id="icon"><i class="bi bi-brightness-high text-dark"></i></label>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- js -->

@@ -6,7 +6,7 @@ include "connection.php";
 
 $email = $_POST["e"];
 $password = $_POST["p"];
-$rememberme = $_POST["r"];
+$rememberme = $_POST["rm"];
 
 if (empty($email)) {
     echo "Enter your Email!";

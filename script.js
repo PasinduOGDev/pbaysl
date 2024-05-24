@@ -48,6 +48,27 @@ function setMode() {
 
 // Mode Changer End
 
+// Theme Changer Start
+
+function themeChange() {
+
+    var icon = document.getElementById("icon");
+
+    var body = document.body;
+    body.dataset.bsTheme = body.dataset.bsTheme == "light" ? "dark" : "light";
+
+    if (body.dataset.bsTheme == "dark") {
+        icon.innerHTML = '<i class="bi bi-moon text-white"></i>';
+        body.classList.add("bg-dark");
+    } else {
+        icon.innerHTML = '<i class="bi bi-brightness-high text-dark"></i>';
+        body.classList.remove("bg-dark");
+    }
+
+}
+
+// Theme Changer End
+
 function changeView() {
 
     var loginbox = document.getElementById("loginbox");
@@ -57,58 +78,6 @@ function changeView() {
     registerbox.classList.toggle("d-none");
 
 }
-
-// Login function
-
-function login() {
-
-    var email = document.getElementById("email");
-    var password = document.getElementById("password");
-    var rememberme = document.getElementById("rememberme");
-
-    var form = new FormData();
-
-    form.append("e", email.value);
-    form.append("p", password.value);
-    form.append("r", rememberme.checked);
-
-    var request = new XMLHttpRequest();
-
-    request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
-            var response = request.responseText;
-
-            if (response == "Success") {
-
-                Swal.fire({
-                    title: "Success!",
-                    text: "Log in Successfully!",
-                    icon: "success",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location = "index.php";
-                    }
-                });
-
-            } else {
-
-                Swal.fire({
-                    title: "Error!",
-                    text: response,
-                    icon: "error",
-                });
-
-            }
-        }
-
-        request.open("POST", "loginProcess.php", true);
-        request.send(form)
-
-    }
-
-}
-
-// Login function
 
 // Register function
 
@@ -138,15 +107,64 @@ function register() {
         if (r.readyState == 4 && r.status == 200) {
             var response = r.responseText;
 
+            Swal.fire({
+                title: "Success!",
+                text: "Registration Successfully!",
+                icon: "success",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.reload();
+                    changeView();
+                }
+            });
+
+        } else {
+
+            Swal.fire({
+                title: "Error!",
+                text: response,
+                icon: "error",
+            });
+
+        }
+    }
+
+    r.open("POST", "registerProcess.php", true);
+    r.send(f);
+
+}
+
+// Register function
+
+// Login function
+
+function login() {
+
+    var email = document.getElementById("email");
+    var password = document.getElementById("password");
+    var rememberme = document.getElementById("rememberme");
+
+    var form = new FormData();
+
+    form.append("e", email.value);
+    form.append("p", password.value);
+    form.append("rm", rememberme.checked);
+
+    var request = new XMLHttpRequest();
+
+    request.onreadystatechange = function () {
+        if (request.readyState == 4 && request.status == 200) {
+            var response = request.responseText;
+
             if (response == "Success") {
 
                 Swal.fire({
-                    title: "Success!",
-                    text: "Registration Successfully!",
+                    title: "Logged in!",
+                    text: "Log in Success!",
                     icon: "success",
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        changeView();
+                        window.location = "index.php";
                     }
                 });
 
@@ -159,12 +177,13 @@ function register() {
                 });
 
             }
+
         }
     }
 
-    r.open("POST", "registerProcess.php", true);
-    r.send(f);
+    request.open("POST", "loginProcess.php", true);
+    request.send(form);
 
 }
 
-// Register function
+// Login function

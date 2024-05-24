@@ -52,8 +52,10 @@ if (empty($fname)) {
         echo ("This Email or Mobile is Already Exists");
     } else {
 
-        Database::iud("INSERT INTO `user`(`fname`,`lname`,`email`,`password`,`mobile`,`status_status_id`) VALUES
-        ('".$fname."','".$lname."','".$email."','".$password."','".$mobile."','1')");
+        $vcode = rand(100000,999999);
+
+        Database::iud("INSERT INTO `user`(`fname`,`lname`,`email`,`password`,`mobile`,`verification_code`) VALUES
+        ('".$fname."','".$lname."','".$email."','".$password."','".$mobile."','".$vcode."')");
 
         echo "Success";
 

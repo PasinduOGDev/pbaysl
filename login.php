@@ -230,6 +230,30 @@
 
                 <!-- Registration box end -->
 
+                <!-- modal start -->
+
+        <div class="modal" tabindex="-1" id="otpBox">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <h4 class="form-label text-danger"><img src="img/logo/logo.png" width="80px" height="80px"></h4>
+                        <h4 class="form-label text-danger"><i class="bi bi-shield-lock-fill"></i></h4>
+                        <p id="textmodal">Enter OTP to verify it's you</p>
+                        <div class="col-12 input-group">
+                            <input type="text" class="form-control" id="otpcode"
+                                placeholder="Enter OTP Passcode">
+                        </div>
+                    </div>
+                    <div class="col-12 d-flex justify-content-center modal-footer">
+                        <button type="button" class="col-8 btn btn-primary" data-bs-dismiss="modal"
+                            onclick="otpVerify();">Verify</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- modal end -->
+
             </div>
         </div>
 
