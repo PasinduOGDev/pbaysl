@@ -213,3 +213,83 @@ function signOut() {
 }
 
 // signout end
+
+// cart
+
+function addtoCart(id) {
+    
+    var r = new XMLHttpRequest();
+
+    r.onreadystatechange = function() {
+        if (r.readyState == 4 && r.status == 200) {
+            var response = r.responseText;
+            
+            if (response == "added") {
+                
+                Swal.fire({
+                    title: "Done!",
+                    text: "Product is added to Cart",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                });
+
+            } if (response == "updated") {
+                
+                Swal.fire({
+                    title: "Done!",
+                    text: "Product is updated",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                });
+
+            } 
+            
+            if (response == "invalid") {
+
+                Swal.fire({
+                    title: "Error!",
+                    text: "Invalid Amount",
+                    icon: "error",
+                });
+
+            }
+
+            if (response == "Someting went wrong!") {
+                
+                Swal.fire({
+                    title: "Error!",
+                    text: "Someting went wrong! Please try again",
+                    icon: "error",
+                });
+
+            }
+
+            if (response == "Please Login First") {
+                
+                Swal.fire({
+                    title: "Attention!",
+                    text: "Please Login First!",
+                    icon: "warning",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location = "login.php";
+                    }
+                });
+
+            }
+
+        }
+    }
+
+    r.open("GET", "cartProcess.php?id=" + id, true);
+    r.send();
+
+}
+
+// cart

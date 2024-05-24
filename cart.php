@@ -138,50 +138,98 @@
 
                                     <div class="col-12 col-lg-9">
 
-                                        <hr />
+                                        <?php
 
-                                        <!-- single product div -->
+                                        for ($x = 0; $x < $cart_num; $x++) {
+                                            $cart_data = $cart_rs->fetch_assoc();
 
-                                        <div class="row">
+                                            $product_rs = Database::search("SELECT * FROM `product` INNER JOIN `product_img` ON 
+                                            product.id=product_img.product_id WHERE `id`='" . $cart_data["product_id"] . "'");
+                                            $product_data = $product_rs->fetch_assoc();
 
-                                            <div class="col-12 col-md-3">
-                                                <img src="img/laptop/msi-gf66.png" width="100%">
+                                            $total = $total + ($product_data["price"] * $cart_data["qty"]);
+
+                                            $address_rs = Database::search("SELECT `district_id` AS did FROM `user_has_address` INNER JOIN `city` ON
+                                            user_has_address.city_city_id=city.city_id INNER JOIN `district` ON city.district_district_id=district.district_id
+                                             WHERE `user_email`='" . $user . "'");
+                                            $address_data = $address_rs->fetch_assoc();
+
+                                            $ship = 0;
+
+                                            if ($address_data["did"] == 2) {
+                                                $ship = $product_data["delivery_fee_colombo"];
+                                                $shipping = $shipping + $ship;
+                                            } else {
+                                                $ship = $product_data["delivery_fee_other"];
+                                                $shipping = $shipping + $ship;
+                                            }
+
+                                            $seller_rs = Database::search("SELECT * FROM `user` WHERE `email`='" . $product_data["user_email"] . "'");
+                                            $seller_data = $seller_rs->fetch_assoc();
+                                            $seller = $seller_data["fname"] . " " . $seller_data["lname"];
+
+                                            ?>
+
+                                            <hr />
+
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <h3>Seller: <?php echo $seller; ?></h3>
+                                                </div>
                                             </div>
 
-                                            <div class="col-12 col-md-5">
-                                                <h4 class="fw-bold">MSI Katana GF66</h4>
-                                                <p>Color: Black</p>
-                                                <h5>Price: <span class="fs-4 fw-bold">LKR 440000</span></h5>
-                                                <div class="row mt-4 mb-2">
-                                                    <div
-                                                        class="col-12 col-lg-3 mt-2 mb-2 d-flex justify-content-start align-items-center">
-                                                        <span>Quantity:</span>
+                                            <hr />
+
+                                            <!-- single product div -->
+
+                                            <div class="row">
+
+                                                <div class="col-12 col-md-3">
+                                                    <img src="<?php echo $product_data["img_path"]; ?>" width="100%">
+                                                </div>
+
+                                                <div class="col-12 col-md-5">
+                                                    <h4 class="fw-bold"><?php echo $product_data["title"]; ?></h4>
+                                                    <p>Color: Black</p>
+                                                    <h5>Price: <span class="fs-4 fw-bold">LKR
+                                                            <?php echo $product_data["price"]; ?></span></h5>
+                                                    <div class="row mt-4 mb-2">
+                                                        <div
+                                                            class="col-12 col-lg-3 mt-2 mb-2 d-flex justify-content-start align-items-center">
+                                                            <span>Quantity:</span>
+                                                        </div>
+                                                        <div class="col-3 d-flex justify-content-start">
+                                                            <input type="number" class="form-control"
+                                                                value="<?php echo $cart_data["qty"]; ?>" min="1" max="50" />
+                                                        </div>
                                                     </div>
-                                                    <div class="col-3 d-flex justify-content-start">
-                                                        <input type="number" class="form-control" value="1" min="1" max="50" />
+                                                    <hr />
+                                                    <p>Delivery Fee: LKR <?php echo $ship; ?></p>
+                                                    <hr />
+                                                </div>
+
+                                                <div class="col-12 col-md-4 text-end">
+
+                                                    <div class="col-12 mt-2 mb-2">
+                                                        <button class="col-12 col-lg-9 btn btn-success">Buy Now</button>
                                                     </div>
-                                                </div>
-                                                <hr />
-                                                <p>Delivery Fee: LKR 450</p>
-                                                <hr />
-                                            </div>
 
-                                            <div class="col-12 col-md-4 text-end">
+                                                    <div class="col-12 mt-2 mb-2">
+                                                        <button class="col-12 col-lg-9 btn btn-dark"><i
+                                                                class="bi bi-cart-dash"></i></button>
+                                                    </div>
 
-                                                <div class="col-12 mt-2 mb-2">
-                                                    <button class="col-12 col-lg-9 btn btn-success">Buy Now</button>
-                                                </div>
-
-                                                <div class="col-12 mt-2 mb-2">
-                                                    <button class="col-12 col-lg-9 btn btn-dark"><i
-                                                            class="bi bi-cart-dash"></i></button>
                                                 </div>
 
                                             </div>
 
-                                        </div>
+                                            <!-- single product div -->
 
-                                        <!-- single product div -->
+                                            <?php
+
+                                        }
+
+                                        ?>
 
                                         <hr />
 
@@ -355,6 +403,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+
+    <!-- js sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- js sweetalert -->
 </body>
 
 </html>

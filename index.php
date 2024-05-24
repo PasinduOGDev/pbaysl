@@ -141,7 +141,15 @@
 
                         <div class="col">
                             <div class="card bg-body-secondary h-100">
-                                <img src="img/mobile/apple1.png" class="card-img-top">
+
+                                <?php
+
+                                $image_rs = Database::search("SELECT * FROM `product_img` WHERE `product_id`='" . $product_data["id"] . "'");
+                                $image_data = $image_rs->fetch_assoc();
+
+                                ?>
+
+                                <img src="<?php echo $image_data["img_path"]; ?>" class="card-img-top">
                                 <hr />
                                 <div class="card-body text-center">
                                     <p class="card-text"><?php echo $product_data["title"]; ?></p>
@@ -162,7 +170,8 @@
                                             <button class="col-12 btn btn-warning">Buy</button>
                                         </div>
                                         <div class="col-12 col-lg-6">
-                                            <button class="col-12 btn btn-success" onclick="addtoCart();">Add to Cart</button>
+                                            <button class="col-12 btn btn-success"
+                                                onclick="addtoCart(<?php echo $product_data['id']; ?>);">Add to Cart</button>
                                         </div>
                                     </div>
 
@@ -189,16 +198,16 @@
 
                                     ?>
 
+                        </div>
                     </div>
-                </div>
 
-                <?php
+                    <?php
 
                     }
 
                     ?>
 
-        </div>
+            </div>
 
         </div>
 
@@ -216,6 +225,10 @@
     <script src="script.js"></script>
     <script src="bootstrap.bundle.js"></script>
     <!-- js -->
+
+    <!-- js sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- js sweetalert -->
 </body>
 
 </html>
