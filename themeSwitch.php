@@ -9,6 +9,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="anim.css">
     <!-- CSS -->
 
     <!-- icons -->
@@ -19,12 +20,15 @@
 <body>
 
     <div class="row">
-        <div class="col-12">
-            <div class="col-12 d-flex justify-content-end">
-                <div class="form-check form-switch mx-4 mt-3">
-                    <input type="checkbox" class="form-check-input p-2" role="switch" onclick="themeChange();">
-                    <label class="form-check-label" id="icon"><i class="bi bi-brightness-high text-dark"></i></label>
-                </div>
+        <div class="col-6 d-flex justify-content-start">
+            <div class="row mx-4 mt-1 py-1">
+                <span><i class="bi bi-funnel"></i> Advanced</span>
+            </div>
+        </div>
+        <div class="col-6 d-flex justify-content-end">
+            <div class="form-check form-switch mx-4 mt-1 py-1">
+                <input type="checkbox" class="form-check-input p-2" role="switch" onclick="themeChange();">
+                <label class="form-check-label" id="icon"><i class="bi bi-brightness-high text-dark"></i></label>
             </div>
         </div>
     </div>

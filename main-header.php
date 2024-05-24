@@ -9,6 +9,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="anim.css">
     <!-- CSS -->
 
     <!-- icons -->
@@ -34,58 +35,95 @@
             ?>
 
             <div class="row">
-                <div class="col-12 bg-body-tertiary">
+                <div class="col-12 bg-body-secondary">
                     <div class="row">
                         <div class="col-6 d-flex justify-content-center">
                             <div class="col-11 mt-1 mb-1 d-flex justify-content-start">
-                                <span class="fw-bold"><b class="text-success">Welcome </b>
-                                    <?php echo $data["fname"]; ?>
-                                </span> 
+                                <span class="fw-bold"><i class="bi bi-person-circle"></i>
+                                    <?php echo $data["fname"]; ?> </span>
                             </div>
                         </div>
                         <div class="col-6 d-flex justify-content-center">
                             <div class="col-11 mt-1 mb-1 d-flex justify-content-end">
-                                <a class="fw-bold link-danger text-decoration-none" onclick="signOut();"
-                                    href="#">Sign Out</a>
+                                <a class="fw-bold link-danger text-decoration-none" onclick="signOut();" href="#"><i
+                                        class="bi bi-power"></i> Sign
+                                    Out</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <?php
+                <?php
 
         } else {
 
             ?>
 
-            <a class="nav-link link-body-tertiary fw-bold btn btn-outline-warning" aria-current="page"
-                href="index.php">Login or Register</a>
+                <div class="row">
+                    <div class="col-12 bg-body-secondary">
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-center">
+                                <div class="col-12 mt-1 mb-1 d-flex justify-content-start">
 
-            <?php
+                                    <a class="nav-link link-body-tertiary fw-bold" aria-current="page" href="login.php">
+                                        <span class="fw-bold"><i class="bi bi-person-circle"></i> </span>Login |
+                                        Register</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <?php
 
         }
 
         ?>
 
 
-        </li>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                </li>
+                <nav class="col-12 navbar navbar-expand-lg bg-body-tertiary">
+                    <div class="container-fluid">
+                        <div class="col-3 col-lg-1 logo" style="height: 60px;"></div>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link link-body-tertiary fw-bold dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                My pBay
-                            </a>
-                            <ul class="dropdown-menu">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link link-body-tertiary fw-bold dropdown-toggle" href="#"
+                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        My pBay
+                                    </a>
+                                    <ul class="dropdown-menu">
+
+                                        <?php
+
+                                        if (isset($_SESSION["u"])) {
+
+                                            ?>
+
+                                            <li><a class="dropdown-item" href="#" onclick="userConfirm();">My Profile</a>
+                                            </li>
+                                            <li><a class="dropdown-item" href="#">My Sellings</a></li>
+                                            <li><a class="dropdown-item" href="#">My Products</a></li>
+                                            <li><a class="dropdown-item" href="#">Watchlist</a></li>
+                                            <li><a class="dropdown-item" href="#">Purchased History</a></li>
+                                            <li><a class="dropdown-item" href="#">Messages</a></li>
+
+                                            <?php
+
+                                        }
+
+                                        ?>
+
+                                        <li><a class="dropdown-item" href="#">Contact Admin</a></li>
+                                        <li><a class="dropdown-item fw-bold" href="#">Help and Contact</a></li>
+                                    </ul>
+                                </li>
 
                                 <?php
 
@@ -93,12 +131,9 @@
 
                                     ?>
 
-                                    <li><a class="dropdown-item" href="#" onclick="userConfirm();">My Profile</a></li>
-                                    <li><a class="dropdown-item" href="#">My Sellings</a></li>
-                                    <li><a class="dropdown-item" href="#">My Products</a></li>
-                                    <li><a class="dropdown-item" href="#">Watchlist</a></li>
-                                    <li><a class="dropdown-item" href="#">Purchased History</a></li>
-                                    <li><a class="dropdown-item" href="#">Messages</a></li>
+                                    <li class="nav-item">
+                                        <a class="nav-link link-body-tertiary fw-bold" aria-current="page" href="#">Sell</a>
+                                    </li>
 
                                     <?php
 
@@ -106,47 +141,32 @@
 
                                 ?>
 
-                                <li><a class="dropdown-item" href="#">Contact Admin</a></li>
-                                <li><a class="dropdown-item fw-bold" href="#">Help and Contact</a></li>
                             </ul>
-                        </li>
+                            <div class="d-flex">
+                                <a class="nav-link link-body-tertiary mt-sm-1 me-3" href="cart.php"><i
+                                        class='cart-icon bx bxs-cart-alt fs-1'></i></a>
 
-                        <?php
-
-                        if (isset($_SESSION["u"])) {
-
-                            ?>
-
-                            <li class="nav-item">
-                                <a class="nav-link link-body-tertiary fw-bold" aria-current="page" href="#">Sell</a>
-                            </li>
-
-                            <?php
-
-                        }
-
-                        ?>
-
-                    </ul>
-                    <div class="d-flex">
-                        <a class="nav-link link-body-tertiary mt-sm-1" href="cart.php"><i
-                                class='cart-icon bx bxs-cart-alt fs-1'></i></a>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search..."
+                                        aria-describedby="basic-addon2">
+                                    <span class="input-group-text" id="basic-addon2"><i class="bi bi-search"></i></span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </nav>
             </div>
-        </nav>
 
-        <?php include "themeSwitch.php"; ?>
+            <div class="row bg-body-secondary">
+                <?php include "themeSwitch.php"; ?>
+            </div>
 
+        </div>
 
-    </div>
-
-    <!-- js -->
-    <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <!-- js -->
+        <!-- js -->
+        <script src="script.js"></script>
+        <script src="bootstrap.bundle.js"></script>
+        <!-- js -->
 </body>
 
 </html>

@@ -9,6 +9,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="anim.css">
     <!-- CSS -->
 
     <!-- icons -->
@@ -18,19 +19,202 @@
 
 <body data-bs-theme="light">
 
-    <div class="row">
+    <div class="fixed-top">
         <?php include "main-header.php"; ?>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid mt-5 mb-3" style="padding-top: 120px;" id="anim-carousal">
+
+        <div id="carouselExampleIndicators" class="carousel slide">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="img/banner/banner1.jpg" class="d-block w-100" style="border-radius: 10px;">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/banner/banner2.jpg" class="d-block w-100" style="border-radius: 10px;">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/banner/banner3.jpg" class="d-block w-100" style="border-radius: 10px;">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
 
     </div>
 
+    <div class="container-fluid mb-5">
+
+        <!-- brands -->
+
+        <div class="row mb-5 d-flex justify-content-center">
+
+            <div class="col-12 mt-4">
+                <h2 class="text-center">Our Authorized Resellers</h2>
+            </div>
+
+            <div class="row row-cols-2 row-cols-md-4 g-3 mb-4">
+
+                <div class="col">
+                    <div class="col-12 card h-100 h-100 border-0 bg-body-secondary">
+                        <div class="card-body justify-content-center align-items-center d-flex">
+                            <img src="img/logo/mobile/apple.svg" class="col-5">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="col-12 card h-100 border-0 bg-body-secondary">
+                        <div class="card-body justify-content-center align-items-center d-flex">
+                            <img src="img/logo/mobile/samsung.svg" class="col-5">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="col-12 card h-100 border-0 bg-body-secondary">
+                        <div class="card-body  justify-content-center align-items-center d-flex">
+                            <img src="img/logo/mobile/huawei.svg" class="col-5">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="col-12 card h-100 border-0 bg-body-secondary">
+                        <div class="card-body justify-content-center align-items-center d-flex">
+                            <img src="img/logo/mobile/asus.svg" class="col-5">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <?php
+
+        $category1_rs = Database::search("SELECT * FROM `category`");
+        $category1_num = $category1_rs->num_rows;
+
+        for ($y = 0; $y < $category1_num; $y++) {
+            $category1_data = $category1_rs->fetch_assoc();
+
+            ?>
+
+            <!-- brands -->
+
+            <div class="row py-2 bg-body-secondary text-center">
+                <div class="col-12"><span class="fs-1"><?php echo $category1_data["category_name"]; ?></span></div>
+            </div>
+
+            <div class="row d-flex justify-content-center">
+
+                <div class="row row-cols-2 row-cols-md-4 g-4">
+
+                    <?php
+
+                    $product_rs = Database::search("SELECT * FROM `product` WHERE 
+                            `category_cat_id`='" . $category1_data["cat_id"] . "' AND 
+                            `status_status_id`='1' ORDER BY `datetime_added` DESC LIMIT 6 OFFSET 0");
+                    $product_num = $product_rs->num_rows;
+
+                    for ($z = 0; $z < $product_num; $z++) {
+                        $product_data = $product_rs->fetch_assoc();
+
+                        ?>
+
+                        <div class="col">
+                            <div class="card bg-body-secondary h-100">
+                                <img src="img/mobile/apple1.png" class="card-img-top">
+                                <hr />
+                                <div class="card-body text-center">
+                                    <p class="card-text"><?php echo $product_data["title"]; ?></p>
+                                    <span class="card-text text-primary fs-4 fw-bold">Rs.
+                                        <?php echo $product_data["price"]; ?></span><br />
+
+                                    <?php
+
+                                    if ($product_data["qty"] > 0) {
+
+                                        ?>
+
+                                        <span class="card-text text-success fw-bold">In Stock</span><br />
+                                        <span class="card-text"><?php echo $product_data["qty"]; ?> Stock Available</span><br />
+                                    </div>
+                                    <div class="row g-2 p-2 d-flex align-items-end">
+                                        <div class="col-12 col-lg-6">
+                                            <button class="col-12 btn btn-warning">Buy</button>
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                            <button class="col-12 btn btn-success" onclick="addtoCart();">Add to Cart</button>
+                                        </div>
+                                    </div>
+
+                                    <?php
+
+                                    } else {
+
+                                        ?>
+
+                                    <span class="card-text text-success fw-bold">Out of Stock</span><br />
+                                </div>
+                                <div class="row g-2 p-2 d-flex align-items-end">
+                                    <div class="col-12 col-lg-6">
+                                        <button class="col-12 btn btn-warning disabled">Buy</button>
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        <button class="col-12 btn btn-success disabled">Add to Cart</button>
+                                    </div>
+                                </div>
+
+                                <?php
+
+                                    }
+
+                                    ?>
+
+                    </div>
+                </div>
+
+                <?php
+
+                    }
+
+                    ?>
+
+        </div>
+
+        </div>
+
+        <?php
+
+        }
+
+        ?>
+
+    </div>
+
+    <?php include "footer.php"; ?>
+
     <!-- js -->
     <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+    <script src="bootstrap.bundle.js"></script>
     <!-- js -->
 </body>
 

@@ -107,6 +107,8 @@ function register() {
         if (r.readyState == 4 && r.status == 200) {
             var response = r.responseText;
 
+            if (response == "Success") {
+
             Swal.fire({
                 title: "Success!",
                 text: "Registration Successfully!",
@@ -128,6 +130,8 @@ function register() {
 
         }
     }
+
+}
 
     r.open("POST", "registerProcess.php", true);
     r.send(f);
@@ -187,3 +191,25 @@ function login() {
 }
 
 // Login function
+
+// signout start
+
+function signOut() {
+
+    var r = new XMLHttpRequest();
+
+    r.onreadystatechange = function () {
+        if (r.readyState == 4) {
+            var t = r.responseText;
+            if (t == "success") {
+                window.location = "index.php";
+            }
+        }
+    };
+
+    r.open("GET", "logoutProcess.php", true);
+    r.send();
+
+}
+
+// signout end

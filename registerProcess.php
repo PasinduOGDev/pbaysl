@@ -8,6 +8,7 @@ $email = $_POST["e"];
 $mobile = $_POST["m"];
 $password = $_POST["p"];
 $cpassword = $_POST["cp"];
+$agreebox = $_POST["a"];
 
 if (empty($fname)) {
     echo  "Please enter your First Name";
