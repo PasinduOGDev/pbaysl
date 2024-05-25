@@ -181,7 +181,7 @@
 
                                         ?>
 
-                                    <span class="card-text text-success fw-bold">Out of Stock</span><br />
+                                    <span class="card-text text-danger fw-bold">Out of Stock</span><br />
                                 </div>
                                 <div class="row g-2 p-2 d-flex align-items-end">
                                     <div class="col-12 col-lg-6">

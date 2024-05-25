@@ -1,3 +1,9 @@
+// redirect
+
+function redirect() {
+    window.location = "index.php";
+}
+
 // Mode Changer Start
 
 function setMode() {
@@ -184,6 +190,87 @@ function login() {
     request.send(form);
 
 }
+
+// Forgot password
+var otpModal;
+function forgotPassword() {
+
+    var otpbox = document.getElementById("otpBox");
+
+    otpModal = new bootstrap.Modal(otpbox);
+    otpModal.show();
+
+}
+
+function sendCode() {
+
+    var email = document.getElementById("email3");
+
+    var r = new XMLHttpRequest();
+
+    r.onreadystatechange = function() {
+        if (r.readyState == 4 && r.status == 200) {
+            var response = r.responseText;
+            
+            if (response == "Success") {
+
+                Swal.fire({
+                    title: "Sent!",
+                    text: "OTP Sent Successfully! Please check your inbox",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        resetPasswordBox();
+                    }
+                });
+
+            } else {
+
+                Swal.fire({
+                    title: "Failed!",
+                    text: response,
+                    icon: "error",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        forgotPassword();
+                    }
+                });
+
+            }
+
+            if (response == "Please enter your Email in the Email field") {
+                
+                Swal.fire({
+                    title: "Error!",
+                    text: response,
+                    icon: "error",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        forgotPassword();
+                    }
+                });
+
+            }
+            
+        }
+    }
+
+    r.open("GET", "forgotPasswordProcess.php?e=" + email.value, true);
+    r.send();
+
+}
+
+var resetPwModal;
+
+function resetPasswordBox() {
+
+    var modal = document.getElementById("resetPwBox");
+    resetPwModal = new bootstrap.Modal(modal);
+    resetPwModal.show();
+
+}
+
+// Forgot password
 
 // Login function
 

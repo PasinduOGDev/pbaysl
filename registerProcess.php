@@ -11,7 +11,7 @@ $fname = $_POST["f"];
 $lname = $_POST["l"];
 $email = $_POST["e"];
 $mobile = $_POST["m"];
-$password = rand(100000, 999999);
+$password = rand(10000000, 99999999);
 $agreebox = $_POST["a"];
 
 if (empty($fname)) {
@@ -59,28 +59,28 @@ if (empty($fname)) {
         $mail->Password = 'kfsjiraxzliobkao';
         $mail->SMTPSecure = 'ssl';
         $mail->Port = 465;
-        $mail->setFrom('pasinduogdev@gmail.com', 'Reset Password');
-        $mail->addReplyTo('pasinduogdev@gmail.com', 'Reset Password');
+        $mail->setFrom('pasinduogdev@gmail.com', 'Login Password');
+        $mail->addReplyTo('pasinduogdev@gmail.com', 'Login Password');
         $mail->addAddress($email);
         $mail->isHTML(true);
         $mail->Subject = 'Pbay User Registration Verification';
         $bodyContent = '<div style="text-align: start;">
     
-        <img src="https://drive.google.com/file/d/1WQSdqc6tYinFY_Nm4YIq3eXYNcUspZ87/view?usp=sharing" width="50px" style="text-align: center;">
+        <img src="https://i.postimg.cc/gk8bBgJw/shadow-logo.png" width="60px" style="text-align: center;">
 
         <div style="margin-top: 25px;">
             <span style="font-family: sans-serif;">Hi ' . $fname . " " . $lname . ',</span>
-            <h5 style="font-family: sans-serif;">Thank you for using Pbay&trade; Shopping Application</h5>
+            <h4 style="font-family: sans-serif;">Thank you for using Pbay&trade; Shopping Application</h4>
         </div>
 
         <div style="border: 1px solid black; padding: 10px;">
-            <h5 style="font-family: sans-serif;">Password: ' . $password . ' </h5>
+            <h4 style="font-family: sans-serif;">Your Login Password: ' . $password . ' </h4>
             <h5 style="font-family: sans-serif; color: gray;">(Attention: Please do not share with anyone and you can change password anytime from your User Settings!)</h5>
         </div>
 
         <div style="margin-top: 25px;">
             <h6 style="font-family: sans-serif;">Thank your for using Pbay...</h6>
-            <h6 style="font-family: sans-serif;">Copyright &copy; 2023 Pbay&trade; All Rights Reserved.</h6>
+            <h6 style="font-family: sans-serif;">Copyright &copy; 2024 Pbay&trade; All Rights Reserved.</h6>
         </div>
 
     </div>';

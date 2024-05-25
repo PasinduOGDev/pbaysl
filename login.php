@@ -38,7 +38,7 @@
             <div class="col-12 d-lg-none">
                 <div class="col-12 d-flex justify-content-center">
 
-                    <img src="img/logo/logo.png" class="col-3">
+                    <img src="img/logo/shadow-logo.png" class="col-3">
 
                 </div>
             </div>
@@ -94,8 +94,8 @@
                                         <div class="col-12">
                                             <label for="password" class="form-label">Password</label>
                                             <div class="input-group">
-                                            <input type="password" class="form-control" placeholder="Enter Password"
-                                                id="password" value="<?php echo $password; ?>">
+                                                <input type="password" class="form-control" placeholder="Enter Password"
+                                                    id="password" value="<?php echo $password; ?>">
                                                 <span class="btn btn-warning"><i class="bi bi-eye"></i></span>
                                             </div>
                                         </div>
@@ -125,6 +125,7 @@
                                             <button class="col-12 btn btn-success" onclick="changeView();"
                                                 id="change2">New to Pbay? Register</button>
                                         </div>
+
                                     </div>
 
                                 </div>
@@ -193,7 +194,9 @@
                                     <div class="row g-2 p-2">
                                         <div class="col-12 form-check">
                                             <input type="checkbox" class="form form-check-input" id="agreeBox">
-                                            <label class="form-check-label">I agree to all <a href="#" class="link-primary text-decoration-none">terms and conditions</a></label>
+                                            <label class="form-check-label">I agree to all <a href="#"
+                                                    class="link-primary text-decoration-none">terms and
+                                                    conditions</a></label>
                                         </div>
                                     </div>
 
@@ -225,27 +228,71 @@
 
                 <!-- modal start -->
 
-        <div class="modal" tabindex="-1" id="otpBox">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-body text-center">
-                        <h4 class="form-label text-danger"><img src="img/logo/logo.png" width="80px" height="80px"></h4>
-                        <h4 class="form-label text-danger"><i class="bi bi-shield-lock-fill"></i></h4>
-                        <p id="textmodal">Enter OTP to verify it's you</p>
-                        <div class="col-12 input-group">
-                            <input type="text" class="form-control" id="otpcode"
-                                placeholder="Enter OTP Passcode">
+                <div class="modal fade" tabindex="-1" id="otpBox">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body text-center">
+                                <h4 class="form-label text-danger"><img src="img/logo/logo.png" width="80px"
+                                        height="80px"></h4>
+                                <h4 class="form-label text-danger"><i class="bi bi-envelope"></i></h4>
+                                <p>Enter your Email</p>
+                                <div class="col-12 input-group">
+                                    <input type="email" class="form-control" id="email3" placeholder="Enter Email">
+                                </div>
+                            </div>
+                            <div class="col-12 d-flex justify-content-center modal-footer">
+                                <button type="button" class="col-8 btn btn-warning" data-bs-dismiss="modal"
+                                    onclick="sendCode();">Send Code</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-12 d-flex justify-content-center modal-footer">
-                        <button type="button" class="col-8 btn btn-primary" data-bs-dismiss="modal"
-                            onclick="otpVerify();">Verify</button>
+                </div>
+
+                <!-- modal end -->
+
+                <!-- modal start -->
+
+                <div class="modal fade" tabindex="-1" id="resetPwBox">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body text-center">
+                                <h4 class="form-label text-danger"><img src="img/logo/logo.png" width="80px"
+                                        height="80px"></h4>
+                                <h4 class="form-label text-body-tertiary"><i class="bi bi-person-check"></i></h4>
+                                <p>Enter OTP Passcode</p>
+                                <div class="col-12 mb-3">
+                                    <input type="text" class="form-control" id="otp" placeholder="Enter OTP">
+                                </div>
+                                <hr />
+                                <div class="row mt-3 g-4">
+                                    <div class="col-6">
+                                        <label class="form-label"><i class="bi bi-key"></i></label>
+                                        <label class="form-label">Enter New Password</label>
+                                        <div class="col-12 input-group">
+                                        <input type="password" class="form-control" placeholder="Enter New Password">
+                                        <span class="btn btn-warning"><i class="bi bi-eye"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label"><i class="bi bi-key"></i></label>
+                                        <label class="form-label">Confirm New Password</label>
+                                        <div class="col-12 input-group">
+                                            <input type="password" class="form-control"
+                                                placeholder="Confirm New Password">
+                                                <span class="btn btn-warning"><i class="bi bi-eye"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 d-flex justify-content-center modal-footer">
+                                <button type="button" class="col-8 btn btn-danger" data-bs-dismiss="modal"
+                                    onclick="resetPassword();">Reset</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- modal end -->
+                <!-- modal end -->
 
             </div>
         </div>
