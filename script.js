@@ -87,8 +87,6 @@ function register() {
     var lname = document.getElementById("lname");
     var email = document.getElementById("email2");
     var mobile = document.getElementById("mobile");
-    var password = document.getElementById("password2");
-    var cpassword = document.getElementById("cpassword");
     var agreebox = document.getElementById("agreeBox");
 
     var f = new FormData();
@@ -97,8 +95,6 @@ function register() {
     f.append("l", lname.value);
     f.append("e", email.value);
     f.append("m", mobile.value);
-    f.append("p", password.value);
-    f.append("cp", cpassword.value);
     f.append("a", agreebox.checked);
 
     var r = new XMLHttpRequest();
@@ -109,29 +105,28 @@ function register() {
 
             if (response == "Success") {
 
-            Swal.fire({
-                title: "Success!",
-                text: "Registration Successfully!",
-                icon: "success",
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.reload();
-                    changeView();
-                }
-            });
+                Swal.fire({
+                    title: "Registration Successfully!",
+                    text: "Please check your Email before Login!",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        changeView();
+                    }
+                });
 
-        } else {
+            } else {
 
-            Swal.fire({
-                title: "Error!",
-                text: response,
-                icon: "error",
-            });
+                Swal.fire({
+                    title: "Failed!",
+                    text: response,
+                    icon: "error",
+                });
 
+            }
         }
-    }
 
-}
+    }
 
     r.open("POST", "registerProcess.php", true);
     r.send(f);
@@ -217,15 +212,15 @@ function signOut() {
 // cart
 
 function addtoCart(id) {
-    
+
     var r = new XMLHttpRequest();
 
-    r.onreadystatechange = function() {
+    r.onreadystatechange = function () {
         if (r.readyState == 4 && r.status == 200) {
             var response = r.responseText;
-            
+
             if (response == "added") {
-                
+
                 Swal.fire({
                     title: "Done!",
                     text: "Product is added to Cart",
@@ -237,7 +232,7 @@ function addtoCart(id) {
                 });
 
             } if (response == "updated") {
-                
+
                 Swal.fire({
                     title: "Done!",
                     text: "Product is updated",
@@ -248,8 +243,8 @@ function addtoCart(id) {
                     }
                 });
 
-            } 
-            
+            }
+
             if (response == "invalid") {
 
                 Swal.fire({
@@ -261,7 +256,7 @@ function addtoCart(id) {
             }
 
             if (response == "Someting went wrong!") {
-                
+
                 Swal.fire({
                     title: "Error!",
                     text: "Someting went wrong! Please try again",
@@ -271,7 +266,7 @@ function addtoCart(id) {
             }
 
             if (response == "Please Login First") {
-                
+
                 Swal.fire({
                     title: "Attention!",
                     text: "Please Login First!",

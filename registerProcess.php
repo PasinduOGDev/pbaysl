@@ -1,17 +1,21 @@
 <?php
 
 include "connection.php";
+include "email_resources/SMTP.php";
+include "email_resources/Exception.php";
+include "email_resources/PHPMailer.php";
+
+use PHPMailer\PHPMailer\PHPMailer;
 
 $fname = $_POST["f"];
 $lname = $_POST["l"];
 $email = $_POST["e"];
 $mobile = $_POST["m"];
-$password = $_POST["p"];
-$cpassword = $_POST["cp"];
+$password = rand(100000, 999999);
 $agreebox = $_POST["a"];
 
 if (empty($fname)) {
-    echo  "Please enter your First Name";
+    echo "Please enter your First Name";
 } else if (strlen($fname) > 50) {
     echo ("First Name must contain LOWER THAN 100 characters");
 } else if (empty($lname)) {
@@ -26,39 +30,72 @@ if (empty($fname)) {
     echo ("Email must contain LOWER THAN 100 characters");
 } else if (!preg_match("/07[0,1,2,4,5,6,7,8][0-9]/", $mobile)) {
     echo "Please enter a valid Mobile Number";
-} else if (empty($password)) {
-    echo "Please enter a Password";
-} else if (strlen($password) < 5 || strlen($password) > 20) {
-    echo ("Password must contain 5 to 20 characters");
-} else if (empty($cpassword)) {
-    echo "Please confirm your Password";
-} else if ($password != $cpassword) {
-    echo "Password did not match";
-} else if (!preg_match("/[0-9]/", $password)) {
-    echo "Password must contain a Number";
-} else if (!preg_match("/[a-z]/", $password)) {
-    echo "Password must contain a Letter";
-} else if (!preg_match("/[!,@,#,$,%,&,*]/", $password)) {
-    echo "Password must contain a Special character";
 } else if (empty($mobile)) {
     echo "Please enter a Mobile Number";
 } else if (strlen($mobile) != 10) {
     echo "Mobile Number must contain 10 characters";
+} else if ($agreebox != "true") {
+    echo "Please accept our terms and conditions";
 } else {
 
-    $rs = Database::search("SELECT * FROM `user` WHERE `email`='".$email."' OR `mobile`='".$mobile."'");
+    $d = new DateTime();
+    $tz = new DateTimeZone("Asia/Colombo");
+    $d->setTimezone($tz);
+    $date = $d->format("Y-m-d H:i:s");
+
+
+    $rs = Database::search("SELECT * FROM `user` WHERE `email`='" . $email . "' OR `mobile`='" . $mobile . "'");
     $num = $rs->num_rows;
 
     if ($num > 0) {
         echo ("This Email or Mobile is Already Exists");
     } else {
 
-        $vcode = rand(100000,999999);
+        $mail = new PHPMailer;
+        $mail->IsSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'pasinduogdev@gmail.com';
+        $mail->Password = 'kfsjiraxzliobkao';
+        $mail->SMTPSecure = 'ssl';
+        $mail->Port = 465;
+        $mail->setFrom('pasinduogdev@gmail.com', 'Reset Password');
+        $mail->addReplyTo('pasinduogdev@gmail.com', 'Reset Password');
+        $mail->addAddress($email);
+        $mail->isHTML(true);
+        $mail->Subject = 'Pbay User Registration Verification';
+        $bodyContent = '<div style="text-align: start;">
+    
+        <img src="https://drive.google.com/file/d/1WQSdqc6tYinFY_Nm4YIq3eXYNcUspZ87/view?usp=sharing" width="50px" style="text-align: center;">
 
-        Database::iud("INSERT INTO `user`(`fname`,`lname`,`email`,`password`,`mobile`,`verification_code`) VALUES
-        ('".$fname."','".$lname."','".$email."','".$password."','".$mobile."','".$vcode."')");
+        <div style="margin-top: 25px;">
+            <span style="font-family: sans-serif;">Hi ' . $fname . " " . $lname . ',</span>
+            <h5 style="font-family: sans-serif;">Thank you for using Pbay&trade; Shopping Application</h5>
+        </div>
 
-        echo "Success";
+        <div style="border: 1px solid black; padding: 10px;">
+            <h5 style="font-family: sans-serif;">Password: ' . $password . ' </h5>
+            <h5 style="font-family: sans-serif; color: gray;">(Attention: Please do not share with anyone and you can change password anytime from your User Settings!)</h5>
+        </div>
+
+        <div style="margin-top: 25px;">
+            <h6 style="font-family: sans-serif;">Thank your for using Pbay...</h6>
+            <h6 style="font-family: sans-serif;">Copyright &copy; 2023 Pbay&trade; All Rights Reserved.</h6>
+        </div>
+
+    </div>';
+        $mail->Body = $bodyContent;
+
+        if (!$mail->send()) {
+            echo "OTP sending failed";
+        } else {
+
+            Database::iud("INSERT INTO `user`(`fname`,`lname`,`email`,`password`,`mobile`,`joined_date`) VALUES
+        ('" . $fname . "','" . $lname . "','" . $email . "','" . $password . "','" . $mobile . "','" . $date . "')");
+
+            echo "Success";
+
+        }
 
     }
 

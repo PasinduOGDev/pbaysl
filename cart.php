@@ -149,14 +149,14 @@
 
                                             $total = $total + ($product_data["price"] * $cart_data["qty"]);
 
-                                            $address_rs = Database::search("SELECT `district_id` AS did FROM `user_has_address` INNER JOIN `city` ON
+                                            $address_rs = Database::search("SELECT `city_city_id` AS c_id FROM `user_has_address` INNER JOIN `city` ON
                                             user_has_address.city_city_id=city.city_id INNER JOIN `district` ON city.district_district_id=district.district_id
                                              WHERE `user_email`='" . $user . "'");
                                             $address_data = $address_rs->fetch_assoc();
 
                                             $ship = 0;
 
-                                            if ($address_data["did"] == 2) {
+                                            if ($address_data["c_id"] == 1) {
                                                 $ship = $product_data["delivery_fee_colombo"];
                                                 $shipping = $shipping + $ship;
                                             } else {
@@ -215,7 +215,7 @@
                                                     </div>
 
                                                     <div class="col-12 mt-2 mb-2">
-                                                        <button class="col-12 col-lg-9 btn btn-dark"><i
+                                                        <button class="col-12 col-lg-9 btn btn-secondary"><i
                                                                 class="bi bi-cart-dash"></i></button>
                                                     </div>
 
@@ -292,7 +292,7 @@
                                                     <div class="input-group mb-3">
                                                         <input type="text" class="form-control" placeholder="Promo Code"
                                                             aria-label="Promo Code" aria-describedby="button-addon2">
-                                                        <button class="btn btn-dark" type="button"
+                                                        <button class="btn btn-secondary" type="button"
                                                             id="button-addon2">Submit</button>
                                                     </div>
                                                 </div>

@@ -106,7 +106,7 @@
 
                                             ?>
 
-                                            <li><a class="dropdown-item" href="#" onclick="userConfirm();">My Profile</a>
+                                            <li><a class="dropdown-item" href="profile.php">My Profile</a>
                                             </li>
                                             <li><a class="dropdown-item" href="#">My Sellings</a></li>
                                             <li><a class="dropdown-item" href="#">My Products</a></li>
@@ -143,14 +143,14 @@
 
                             </ul>
                             <div class="d-flex">
-                                <a class="nav-link link-body-tertiary mt-sm-1 me-3" href="cart.php"><i
-                                        class='cart-icon bx bxs-cart-alt fs-1'></i></a>
-
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Search..."
                                         aria-describedby="basic-addon2">
                                     <span class="input-group-text" id="basic-addon2"><i class="bi bi-search"></i></span>
                                 </div>
+
+                                <a class="nav-link link-body-tertiary mt-2 mt-md-0 ms-3" href="cart.php"><i
+                                        class='cart-icon bx bxs-cart-alt fs-1'></i></a>
                             </div>
                         </div>
                     </div>

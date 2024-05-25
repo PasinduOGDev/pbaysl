@@ -93,8 +93,11 @@
 
                                         <div class="col-12">
                                             <label for="password" class="form-label">Password</label>
+                                            <div class="input-group">
                                             <input type="password" class="form-control" placeholder="Enter Password"
                                                 id="password" value="<?php echo $password; ?>">
+                                                <span class="btn btn-warning"><i class="bi bi-eye"></i></span>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -183,17 +186,6 @@
                                                 id="mobile">
                                         </div>
 
-                                        <div class="col-6">
-                                            <label for="password" class="form-label">New Password</label>
-                                            <input type="password" class="form-control" placeholder="Ex: ***********"
-                                                id="password2">
-                                        </div>
-
-                                        <div class="col-6">
-                                            <label for="password" class="form-label">Confirm New Password</label>
-                                            <input type="password" class="form-control" placeholder="Ex: ***********"
-                                                id="cpassword">
-                                        </div>
                                     </div>
 
                                     <hr />
@@ -201,7 +193,7 @@
                                     <div class="row g-2 p-2">
                                         <div class="col-12 form-check">
                                             <input type="checkbox" class="form form-check-input" id="agreeBox">
-                                            <label class="form-check-label">I agree to all terms and conditions</label>
+                                            <label class="form-check-label">I agree to all <a href="#" class="link-primary text-decoration-none">terms and conditions</a></label>
                                         </div>
                                     </div>
 
