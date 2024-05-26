@@ -44,9 +44,12 @@ CREATE TABLE IF NOT EXISTS `cart` (
   KEY `fk_cart_product1_idx` (`product_id`),
   CONSTRAINT `fk_cart_product1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
   CONSTRAINT `fk_cart_user1` FOREIGN KEY (`user_email`) REFERENCES `user` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table pbay_db.cart: ~0 rows (approximately)
+-- Dumping data for table pbay_db.cart: ~2 rows (approximately)
+INSERT INTO `cart` (`cart_id`, `qty`, `user_email`, `product_id`) VALUES
+	(1, 1, 'pasinduogdev@gmail.com', 1),
+	(9, 1, 'pasinduogdev@gmail.com', 4);
 
 -- Dumping structure for table pbay_db.category
 CREATE TABLE IF NOT EXISTS `category` (
@@ -84,9 +87,60 @@ CREATE TABLE IF NOT EXISTS `city` (
   PRIMARY KEY (`city_id`),
   KEY `fk_city_district1_idx` (`district_district_id`),
   CONSTRAINT `fk_city_district1` FOREIGN KEY (`district_district_id`) REFERENCES `district` (`district_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table pbay_db.city: ~0 rows (approximately)
+-- Dumping data for table pbay_db.city: ~50 rows (approximately)
+INSERT INTO `city` (`city_id`, `city_name`, `district_district_id`) VALUES
+	(1, 'Colombo', 1),
+	(2, 'Dehiwala', 1),
+	(3, 'Mount Lavinia', 1),
+	(4, 'Negombo', 2),
+	(5, 'Gampaha', 2),
+	(6, 'Kalutara', 3),
+	(7, 'Kandy', 4),
+	(8, 'Peradeniya', 4),
+	(9, 'Matale', 5),
+	(10, 'Nuwara Eliya', 6),
+	(11, 'Galle', 7),
+	(12, 'Matara', 8),
+	(13, 'Hambantota', 9),
+	(14, 'Jaffna', 10),
+	(15, 'Kilinochchi', 11),
+	(16, 'Mannar', 12),
+	(17, 'Mullaitivu', 13),
+	(18, 'Vavuniya', 14),
+	(19, 'Batticaloa', 15),
+	(20, 'Ampara', 16),
+	(21, 'Trincomalee', 17),
+	(22, 'Kurunegala', 18),
+	(23, 'Puttalam', 19),
+	(24, 'Anuradhapura', 20),
+	(25, 'Polonnaruwa', 21),
+	(26, 'Badulla', 22),
+	(27, 'Monaragala', 23),
+	(28, 'Kegalle', 24),
+	(29, 'Ratnapura', 25),
+	(30, 'Moratuwa', 1),
+	(31, 'Panadura', 3),
+	(32, 'Kadawatha', 2),
+	(33, 'Katunayake', 2),
+	(34, 'Gampola', 4),
+	(35, 'Ella', 8),
+	(36, 'Weligama', 7),
+	(37, 'Polonnaruwa', 21),
+	(38, 'Dambulla', 20),
+	(39, 'Kurunegala', 18),
+	(40, 'Balangoda', 25),
+	(41, 'Wattala', 1),
+	(42, 'Maharagama', 1),
+	(43, 'Ragama', 2),
+	(44, 'Kotte', 1),
+	(45, 'Kandy', 4),
+	(46, 'Kalutara', 3),
+	(47, 'Matara', 8),
+	(48, 'Galle', 7),
+	(49, 'Dambulla', 20),
+	(50, 'Tangalle', 8);
 
 -- Dumping structure for table pbay_db.color
 CREATE TABLE IF NOT EXISTS `color` (
@@ -122,18 +176,44 @@ CREATE TABLE IF NOT EXISTS `district` (
   PRIMARY KEY (`district_id`),
   KEY `fk_district_province1_idx` (`province_province_id`),
   CONSTRAINT `fk_district_province1` FOREIGN KEY (`province_province_id`) REFERENCES `province` (`province_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table pbay_db.district: ~0 rows (approximately)
+-- Dumping data for table pbay_db.district: ~25 rows (approximately)
+INSERT INTO `district` (`district_id`, `district_name`, `province_province_id`) VALUES
+	(1, 'Colombo', 1),
+	(2, 'Gampaha', 1),
+	(3, 'Kalutara', 1),
+	(4, 'Kandy', 2),
+	(5, 'Matale', 2),
+	(6, 'Nuwara Eliya', 2),
+	(7, 'Galle', 3),
+	(8, 'Matara', 3),
+	(9, 'Hambantota', 3),
+	(10, 'Jaffna', 4),
+	(11, 'Kilinochchi', 4),
+	(12, 'Mannar', 4),
+	(13, 'Mullaitivu', 4),
+	(14, 'Vavuniya', 4),
+	(15, 'Batticaloa', 5),
+	(16, 'Ampara', 5),
+	(17, 'Trincomalee', 5),
+	(18, 'Kurunegala', 6),
+	(19, 'Puttalam', 6),
+	(20, 'Anuradhapura', 7),
+	(21, 'Polonnaruwa', 7),
+	(22, 'Badulla', 8),
+	(23, 'Monaragala', 8),
+	(24, 'Kegalle', 9),
+	(25, 'Rathnapura', 9);
 
 -- Dumping structure for table pbay_db.model
 CREATE TABLE IF NOT EXISTS `model` (
   `model_id` int NOT NULL AUTO_INCREMENT,
   `model_name` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`model_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table pbay_db.model: ~12 rows (approximately)
+-- Dumping data for table pbay_db.model: ~15 rows (approximately)
 INSERT INTO `model` (`model_id`, `model_name`) VALUES
 	(1, 'iPhone 6'),
 	(2, 'iPhone 6s'),
@@ -146,7 +226,10 @@ INSERT INTO `model` (`model_id`, `model_name`) VALUES
 	(9, 'iPhone 12'),
 	(10, 'iPhone 13'),
 	(11, 'iPhone 14'),
-	(12, 'iPhone 14 Pro');
+	(12, 'iPhone 14 Pro'),
+	(13, 'ROG 7'),
+	(14, 'Galaxy S21 Ultra'),
+	(15, 'Galaxy S22 Ultra');
 
 -- Dumping structure for table pbay_db.model_has_brand
 CREATE TABLE IF NOT EXISTS `model_has_brand` (
@@ -160,9 +243,12 @@ CREATE TABLE IF NOT EXISTS `model_has_brand` (
   CONSTRAINT `fk_model_has_brand_model1` FOREIGN KEY (`model_model_id`) REFERENCES `model` (`model_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table pbay_db.model_has_brand: ~1 rows (approximately)
+-- Dumping data for table pbay_db.model_has_brand: ~4 rows (approximately)
 INSERT INTO `model_has_brand` (`model_model_id`, `brand_brand_id`, `id`) VALUES
-	(12, 1, 1);
+	(12, 1, 1),
+	(13, 4, 2),
+	(14, 3, 3),
+	(15, 3, 4);
 
 -- Dumping structure for table pbay_db.product
 CREATE TABLE IF NOT EXISTS `product` (
@@ -190,11 +276,14 @@ CREATE TABLE IF NOT EXISTS `product` (
   CONSTRAINT `fk_product_model_has_brand1` FOREIGN KEY (`model_has_brand_id`) REFERENCES `model_has_brand` (`id`),
   CONSTRAINT `fk_product_status1` FOREIGN KEY (`status_status_id`) REFERENCES `status` (`status_id`),
   CONSTRAINT `fk_product_user1` FOREIGN KEY (`user_email`) REFERENCES `user` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table pbay_db.product: ~1 rows (approximately)
+-- Dumping data for table pbay_db.product: ~4 rows (approximately)
 INSERT INTO `product` (`id`, `price`, `qty`, `description`, `title`, `datetime_added`, `delivery_fee_colombo`, `delivery_fee_other`, `category_cat_id`, `model_has_brand_id`, `condition_condition_id`, `status_status_id`, `user_email`) VALUES
-	(1, 480000, 10, NULL, 'Apple iPhone 14 Pro', '2024-05-24 09:47:57', 250, 500, 1, 1, 1, 1, 'ogpmadhuwantha678@gmail.com');
+	(1, 480000, 10, NULL, 'Apple iPhone 14 Pro', '2024-05-24 09:47:57', 250, 500, 1, 1, 1, 1, 'ogpmadhuwantha678@gmail.com'),
+	(2, 630000, 5, NULL, 'Asus ROG 7', '2024-05-24 12:47:33', 250, 500, 1, 2, 1, 1, 'ogpmadhuwantha678@gmail.com'),
+	(3, 544000, 50, NULL, 'Samsung Galaxy S21 Ultra', '2024-05-25 11:02:31', 250, 500, 1, 3, 1, 1, 'ogpmadhuwantha678@gmail.com'),
+	(4, 620000, 5, NULL, 'Samsung Galaxy S22', '2024-05-25 11:04:05', 250, 500, 1, 4, 1, 1, 'ogpmadhuwantha678@gmail.com');
 
 -- Dumping structure for table pbay_db.product_has_color
 CREATE TABLE IF NOT EXISTS `product_has_color` (
@@ -206,9 +295,10 @@ CREATE TABLE IF NOT EXISTS `product_has_color` (
   CONSTRAINT `fk_product_has_color_product1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table pbay_db.product_has_color: ~1 rows (approximately)
+-- Dumping data for table pbay_db.product_has_color: ~2 rows (approximately)
 INSERT INTO `product_has_color` (`product_id`, `color_clr_id`) VALUES
-	(1, 2);
+	(1, 2),
+	(2, 1);
 
 -- Dumping structure for table pbay_db.product_img
 CREATE TABLE IF NOT EXISTS `product_img` (
@@ -219,18 +309,31 @@ CREATE TABLE IF NOT EXISTS `product_img` (
   CONSTRAINT `fk_product_img_product1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table pbay_db.product_img: ~1 rows (approximately)
+-- Dumping data for table pbay_db.product_img: ~4 rows (approximately)
 INSERT INTO `product_img` (`img_path`, `product_id`) VALUES
-	('img/mobile/apple1.png', 1);
+	('img/mobile/apple1.png', 1),
+	('img/mobile/asus1.png', 2),
+	('img/mobile/samsung2.png', 3),
+	('img/mobile/samsung1.png', 4);
 
 -- Dumping structure for table pbay_db.province
 CREATE TABLE IF NOT EXISTS `province` (
   `province_id` int NOT NULL AUTO_INCREMENT,
   `province_name` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`province_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table pbay_db.province: ~0 rows (approximately)
+-- Dumping data for table pbay_db.province: ~9 rows (approximately)
+INSERT INTO `province` (`province_id`, `province_name`) VALUES
+	(1, 'Western'),
+	(2, 'Central'),
+	(3, 'Southern'),
+	(4, 'Northern'),
+	(5, 'Eastern'),
+	(6, 'North Western'),
+	(7, 'North Central'),
+	(8, 'Uva'),
+	(9, 'Sambaragamuwa');
 
 -- Dumping structure for table pbay_db.status
 CREATE TABLE IF NOT EXISTS `status` (
@@ -254,15 +357,19 @@ CREATE TABLE IF NOT EXISTS `user` (
   `joined_date` datetime DEFAULT NULL,
   `verification_code` varchar(20) DEFAULT NULL,
   `status_status_id` int NOT NULL DEFAULT '1',
+  `user_type_id` int NOT NULL DEFAULT '2',
   PRIMARY KEY (`email`),
   KEY `fk_user_status1_idx` (`status_status_id`),
-  CONSTRAINT `fk_user_status1` FOREIGN KEY (`status_status_id`) REFERENCES `status` (`status_id`)
+  KEY `fk_user_user_type1_idx` (`user_type_id`),
+  CONSTRAINT `fk_user_status1` FOREIGN KEY (`status_status_id`) REFERENCES `status` (`status_id`),
+  CONSTRAINT `fk_user_user_type1` FOREIGN KEY (`user_type_id`) REFERENCES `user_type` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table pbay_db.user: ~2 rows (approximately)
-INSERT INTO `user` (`fname`, `lname`, `email`, `password`, `mobile`, `joined_date`, `verification_code`, `status_status_id`) VALUES
-	('Heshan', 'Tharusha', 'heshant@gmail.com', '12345h@', '0745163257', NULL, '510717', 1),
-	('Pasindu', 'Madhuwantha', 'ogpmadhuwantha678@gmail.com', '12345p@', '0715518744', NULL, NULL, 1);
+-- Dumping data for table pbay_db.user: ~3 rows (approximately)
+INSERT INTO `user` (`fname`, `lname`, `email`, `password`, `mobile`, `joined_date`, `verification_code`, `status_status_id`, `user_type_id`) VALUES
+	('OG', 'Mobile', 'ogpmadhuwantha678@gmail.com', '12345p@', '0715518744', '2024-05-25 13:37:38', '399534', 1, 3),
+	('Pasindu', 'Owa Gamage', 'pasinduogdev@gmail.com', '12345p@', '0760135744', '2024-05-25 13:35:40', NULL, 1, 1),
+	('Ashan', 'Sanchitha', 'rraskrocky@gmail.com', '68167824', '0751563268', '2024-05-26 00:15:16', '155314', 1, 2);
 
 -- Dumping structure for table pbay_db.user_has_address
 CREATE TABLE IF NOT EXISTS `user_has_address` (
@@ -277,9 +384,12 @@ CREATE TABLE IF NOT EXISTS `user_has_address` (
   KEY `fk_user_has_city_user1_idx` (`user_email`),
   CONSTRAINT `fk_user_has_city_city1` FOREIGN KEY (`city_city_id`) REFERENCES `city` (`city_id`),
   CONSTRAINT `fk_user_has_city_user1` FOREIGN KEY (`user_email`) REFERENCES `user` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table pbay_db.user_has_address: ~0 rows (approximately)
+-- Dumping data for table pbay_db.user_has_address: ~2 rows (approximately)
+INSERT INTO `user_has_address` (`user_email`, `city_city_id`, `address_id`, `line1`, `line2`, `postal_code`) VALUES
+	('pasinduogdev@gmail.com', 1, 1, 'No.68, Andunwenna, Horawala', 'Welipenna, Matugama', '12108'),
+	('ogpmadhuwantha678@gmail.com', 1, 2, 'No.68, Andunwenna, Horawala', 'Welipenna, Matugama', '12108');
 
 -- Dumping structure for table pbay_db.user_img
 CREATE TABLE IF NOT EXISTS `user_img` (
@@ -291,6 +401,19 @@ CREATE TABLE IF NOT EXISTS `user_img` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table pbay_db.user_img: ~0 rows (approximately)
+
+-- Dumping structure for table pbay_db.user_type
+CREATE TABLE IF NOT EXISTS `user_type` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `type` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+
+-- Dumping data for table pbay_db.user_type: ~0 rows (approximately)
+INSERT INTO `user_type` (`id`, `type`) VALUES
+	(1, 'Admin'),
+	(2, 'User'),
+	(3, 'Seller');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
