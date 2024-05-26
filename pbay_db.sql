@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               8.0.37 - MySQL Community Server - GPL
+-- Server version:               8.0.36 - MySQL Community Server - GPL
 -- Server OS:                    Win64
--- HeidiSQL Version:             12.7.0.6850
+-- HeidiSQL Version:             12.6.0.6765
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `brand` (
   PRIMARY KEY (`brand_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table pbay_db.brand: ~4 rows (approximately)
+-- Dumping data for table pbay_db.brand: ~2 rows (approximately)
 INSERT INTO `brand` (`brand_id`, `brand_name`) VALUES
 	(1, 'Apple'),
 	(2, 'Huawei'),
@@ -44,12 +44,16 @@ CREATE TABLE IF NOT EXISTS `cart` (
   KEY `fk_cart_product1_idx` (`product_id`),
   CONSTRAINT `fk_cart_product1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
   CONSTRAINT `fk_cart_user1` FOREIGN KEY (`user_email`) REFERENCES `user` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table pbay_db.cart: ~2 rows (approximately)
 INSERT INTO `cart` (`cart_id`, `qty`, `user_email`, `product_id`) VALUES
 	(1, 1, 'pasinduogdev@gmail.com', 1),
-	(9, 1, 'pasinduogdev@gmail.com', 4);
+	(9, 1, 'pasinduogdev@gmail.com', 4),
+	(11, 1, 'rraskrocky@gmail.com', 1),
+	(12, 1, 'rraskrocky@gmail.com', 2),
+	(13, 1, 'rraskrocky@gmail.com', 3),
+	(14, 1, 'rraskrocky@gmail.com', 4);
 
 -- Dumping structure for table pbay_db.category
 CREATE TABLE IF NOT EXISTS `category` (
@@ -58,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `category` (
   PRIMARY KEY (`cat_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table pbay_db.category: ~1 rows (approximately)
+-- Dumping data for table pbay_db.category: ~0 rows (approximately)
 INSERT INTO `category` (`cat_id`, `category_name`) VALUES
 	(1, 'Mobiles');
 
@@ -352,7 +356,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `fname` varchar(50) NOT NULL,
   `lname` varchar(45) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `password` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
   `mobile` varchar(10) NOT NULL,
   `joined_date` datetime DEFAULT NULL,
   `verification_code` varchar(20) DEFAULT NULL,
@@ -369,7 +373,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 INSERT INTO `user` (`fname`, `lname`, `email`, `password`, `mobile`, `joined_date`, `verification_code`, `status_status_id`, `user_type_id`) VALUES
 	('OG', 'Mobile', 'ogpmadhuwantha678@gmail.com', '12345p@', '0715518744', '2024-05-25 13:37:38', '399534', 1, 3),
 	('Pasindu', 'Owa Gamage', 'pasinduogdev@gmail.com', '12345p@', '0760135744', '2024-05-25 13:35:40', NULL, 1, 1),
-	('Ashan', 'Sanchitha', 'rraskrocky@gmail.com', '68167824', '0751563268', '2024-05-26 00:15:16', '155314', 1, 2);
+	('Ashan', 'Sanchitha', 'rraskrocky@gmail.com', '$2y$10$a.KB2uvMH/ZmLwRv0BdPcOGppoOMd3lGQA5eAk3D4Ebjk3elSKg8G', '0764652465', '2024-05-26 21:44:40', NULL, 1, 2);
 
 -- Dumping structure for table pbay_db.user_has_address
 CREATE TABLE IF NOT EXISTS `user_has_address` (
@@ -409,7 +413,7 @@ CREATE TABLE IF NOT EXISTS `user_type` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table pbay_db.user_type: ~0 rows (approximately)
+-- Dumping data for table pbay_db.user_type: ~3 rows (approximately)
 INSERT INTO `user_type` (`id`, `type`) VALUES
 	(1, 'Admin'),
 	(2, 'User'),

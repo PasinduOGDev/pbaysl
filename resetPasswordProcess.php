@@ -29,18 +29,28 @@ if (empty($new_password)) {
     echo "OTP Passcode must have 6 characters";
 } else {
 
-    $rs = Database::search("SELECT * FROM `user` WHERE `email`='".$email."' AND `verification_code`='".$otp."'");
-    $num = $rs->num_rows;
+    $rs = Database::search("SELECT * FROM `user` WHERE `email`='" . $email . "' AND `verification_code`='" . $otp . "' LIMIT 1");
 
-    if ($num == 1) {
-        
-        Database::iud("UPDATE `user` SET `password`='".$new_password."' WHERE `email`='".$email."'");
+    $row = $rs->fetch_array();
+    $hashed_password = $row["password"];
 
-        echo "Success";
- 
-    } else {
+    if (password_verify($new_password, $hashed_password)) {
 
-        echo "Verification Failed";
+        $num = $rs->num_rows;
+
+        if ($num == 1) {
+
+            
+
+            Database::iud("UPDATE `user` SET `password`='" . $new_password . "' WHERE `email`='" . $email . "'");
+
+            echo "Success";
+
+        } else {
+
+            echo "Verification Failed";
+
+        }
 
     }
 

@@ -90,8 +90,10 @@ if (empty($fname)) {
             echo "OTP sending failed";
         } else {
 
+            $password_hash = password_hash($password, PASSWORD_BCRYPT);
+
             Database::iud("INSERT INTO `user`(`fname`,`lname`,`email`,`password`,`mobile`,`joined_date`) VALUES
-        ('" . $fname . "','" . $lname . "','" . $email . "','" . $password . "','" . $mobile . "','" . $date . "')");
+        ('" . $fname . "','" . $lname . "','" . $email . "','" . $password_hash . "','" . $mobile . "','" . $date . "')");
 
             echo "Success";
 

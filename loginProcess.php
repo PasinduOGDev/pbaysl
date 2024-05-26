@@ -20,30 +20,44 @@ if (empty($email)) {
     echo ("Password must contain 5 to 20 characters");
 } else {
 
-    $rs = Database::search("SELECT * FROM `user` WHERE `email`='" . $email . "' AND `password`='" . $password . "'");
-    $num = $rs->num_rows;
+    $rs = Database::search("SELECT * FROM `user` WHERE `email`='" . $email . "' LIMIT 1");
 
-    if ($num == 1) {
+    $row = $rs->fetch_array();
 
-        echo ("Success");
-        $d = $rs->fetch_assoc();
-        $_SESSION["u"] = $d;
+    $hashed_password = $row["password"];
 
-        if ($rememberme == "true") {
+    if (!password_verify($password, $hashed_password)) {
 
-            setcookie("email", $email, time() + (60 * 60 * 24 * 365));
-            setcookie("password", $password, time() + (60 * 60 * 24 * 365));
-
-        } else {
-
-            setcookie("email", "", -1);
-            setcookie("password", "", -1);
-
-        }
+        echo "Invalid Password! Please try again";
 
     } else {
 
-        echo "Invalid Email or Password! Please try again";
+        $num = $rs->num_rows;
+
+        if ($num == 1) {
+
+            echo ("Success");
+            $rs1 = Database::search("SELECT * FROM `user` WHERE `email`='" . $email . "'");
+            $d = $rs1->fetch_assoc();
+            $_SESSION["u"] = $d;
+
+            if ($rememberme == "true") {
+
+                setcookie("email", $email, time() + (60 * 60 * 24 * 365));
+                setcookie("password", $password, time() + (60 * 60 * 24 * 365));
+
+            } else {
+
+                setcookie("email", "", -1);
+                setcookie("password", "", -1);
+
+            }
+
+        } else {
+
+            echo "User has not registered! Please Register!";
+
+        }
 
     }
 
