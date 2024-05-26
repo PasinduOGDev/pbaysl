@@ -66,7 +66,7 @@
         <div class="row mb-5 d-flex justify-content-center">
 
             <div class="col-12 mt-4">
-                <h2 class="text-center">Our Authorized Resellers</h2>
+                <h2 class="text-center">Our Authorized Partners</h2>
             </div>
 
             <div class="row row-cols-2 row-cols-md-4 g-3 mb-4">
@@ -125,7 +125,7 @@
 
             <div class="row d-flex justify-content-center">
 
-                <div class="row row-cols-2 row-cols-md-4 g-4">
+                <div class="row row-cols-2 row-cols-md-4 row-cols-lg-5 g-4">
 
                     <?php
 
@@ -171,7 +171,7 @@
                                         </div>
                                         <div class="col-12 col-lg-6">
                                             <button class="col-12 btn btn-success"
-                                                onclick="addtoCart(<?php echo $product_data['id']; ?>);">Add to Cart</button>
+                                                onclick="addtoCart(<?php echo $product_data['id']; ?>);"><i class="bi bi-cart3"></i></button>
                                         </div>
                                     </div>
 
@@ -188,7 +188,7 @@
                                         <button class="col-12 btn btn-warning disabled">Buy</button>
                                     </div>
                                     <div class="col-12 col-lg-6">
-                                        <button class="col-12 btn btn-success disabled">Add to Cart</button>
+                                        <button class="col-12 btn btn-success disabled"><i class="bi bi-cart3"></i></button>
                                     </div>
                                 </div>
 

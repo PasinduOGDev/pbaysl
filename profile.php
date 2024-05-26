@@ -148,9 +148,9 @@
                                         <div class="col-6">
                                             <label class="form-label">Your Password</label>
                                             <div class="input-group">
-                                                <input type="password" class="form-control bg-body-secondary"
+                                                <input type="password" id="password" class="form-control bg-body-secondary"
                                                     value="<?php echo $user_data["password"]; ?>" readonly>
-                                                <span class="btn btn-warning"><i class="bi bi-eye"></i></span>
+                                                <span class="btn btn-warning" id="pwBtn" onclick="viewPassword4()"><i class="bi bi-eye-slash"></i></span>
                                             </div>
                                         </div>
 
@@ -160,7 +160,7 @@
                                                 value="<?php echo $user_data["mobile"]; ?>" readonly>
                                         </div>
 
-                                        <div class="col-12">
+                                        <div class="col-6">
                                             <label class="form-label">Registered Date</label>
                                             <input type="text" class="form-control bg-body-secondary"
                                                 value="<?php echo $user_data["joined_date"]; ?>" readonly>
@@ -229,6 +229,39 @@
                                         $city_rs = Database::search("SELECT * FROM `city`");
 
                                         ?>
+
+                                        <div class="col-6">
+                                            <label class="form-label">City</label>
+                                            <select class="form-select">
+                                                <option value="0">Select City</option>
+
+                                                <?php
+
+                                                for ($y = 0; $y < $city_rs->num_rows; $y++) {
+                                                    $city_data = $city_rs->fetch_assoc();
+
+                                                    ?>
+
+                                                    <option value="<?php echo $city_data["city_id"] ?>" <?php
+                                                       if (!empty($address_data["city_id"])) {
+                                                           if ($city_data["city_id"] == $address_data["city_id"]) {
+                                                               ?>selected<?php
+                                                           }
+                                                       }
+                                                       ?>>
+
+                                                        <?php echo $city_data["city_name"]; ?>
+
+                                                    </option>
+
+                                                    <?php
+
+                                                }
+
+                                                ?>
+
+                                            </select>
+                                        </div>
 
                                         <div class="col-6">
                                             <label class="form-label">District</label>

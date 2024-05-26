@@ -17,13 +17,13 @@ function setMode() {
     var change2 = document.getElementById("change2");
 
 
-    var element = document.body;
-    element.dataset.bsTheme = element.dataset.bsTheme == "light" ? "dark" : "light";
+    var body = document.body;
+    body.dataset.bsTheme = body.dataset.bsTheme == "light" ? "dark" : "light";
 
-    if (element.dataset.bsTheme == "dark") {
+    if (body.dataset.bsTheme == "dark") {
         mode.innerHTML = '<i class="bi bi-moon"></i>';
-        element.classList.remove("bg-secondary");
-        element.classList.add("bg-dark");
+        body.classList.remove("bg-secondary");
+        body.classList.add("bg-dark");
         loginbox.classList.add("bg-secondary");
         registerbox.classList.add("bg-secondary");
         forgotpassword.classList.add("link-light");
@@ -36,8 +36,8 @@ function setMode() {
         change2.classList.add("btn-warning");
     } else {
         mode.innerHTML = '<i class="bi bi-brightness-high text-white"></i>';
-        element.classList.remove("bg-dark");
-        element.classList.add("bg-secondary");
+        body.classList.remove("bg-dark");
+        body.classList.add("bg-secondary");
         loginbox.classList.remove("bg-secondary");
         registerbox.classList.remove("bg-secondary");
         forgotpassword.classList.remove("link-light");
@@ -270,7 +270,119 @@ function resetPasswordBox() {
 
 }
 
+function resetPassword() {
+
+    var email = document.getElementById("email3");
+    var otp = document.getElementById("otp");
+    var new_password = document.getElementById("password2");
+    var confirm_password = document.getElementById("password2");
+
+    var f = new FormData();
+
+    f.append("e",email.value);
+    f.append("o",otp.value);
+    f.append("np",new_password.value);
+    f.append("cp",confirm_password.value);
+
+    var r = new XMLHttpRequest();
+
+    r.onreadystatechange = function() {
+        if (r.readyState == 4 && r.status == 200) {
+            var response = r.responseText;
+            
+            if (response == "Success") {
+                
+                Swal.fire({
+                    title: "Done!",
+                    text: "Your Password has been Successfully reset!",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                });
+
+
+            } else {
+                
+                Swal.fire({
+                    title: "Failed!",
+                    text: response,
+                    icon: "error",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        resetPasswordBox();
+                    }
+                });
+
+            }
+
+        }
+    }
+
+    r.open("POST","resetPasswordProcess.php", true);
+    r.send(f);
+
+}
+
 // Forgot password
+
+// View password
+
+function viewPassword() {
+
+    var textfield = document.getElementById("password");
+    var button = document.getElementById("pwBtn");
+
+    if (textfield.type == "password") {
+        textfield.type = "text";
+        button.innerHTML = '<i class="bi bi-eye"></i>';
+    } else {
+        textfield.type = "password";
+        button.innerHTML = '<i class="bi bi-eye-slash"></i>';
+    }
+
+}
+
+// View password
+
+// View password - For forgot password modal
+
+function viewPassword2() {
+
+    var textfield = document.getElementById("password2");
+    var button = document.getElementById("pwBtn2");
+
+    if (textfield.type == "password") {
+        textfield.type = "text";
+        button.innerHTML = '<i class="bi bi-eye"></i>';
+    } else {
+        textfield.type = "password";
+        button.innerHTML = '<i class="bi bi-eye-slash"></i>';
+    }
+
+}
+
+// View password
+
+function viewPassword3() {
+
+    var textfield = document.getElementById("password3");
+    var button = document.getElementById("pwBtn3");
+
+    if (textfield.type == "password") {
+        textfield.type = "text";
+        button.innerHTML = '<i class="bi bi-eye"></i>';
+    } else {
+        textfield.type = "password";
+        button.innerHTML = '<i class="bi bi-eye-slash"></i>';
+    }
+
+}
+
+// View password
+
+// View password - For forgot password modal
 
 // Login function
 
@@ -375,3 +487,26 @@ function addtoCart(id) {
 }
 
 // cart
+
+// User profile update
+
+// View password
+
+function viewPassword4() {
+
+    var textfield = document.getElementById("password");
+    var button = document.getElementById("pwBtn");
+
+    if (textfield.type == "password") {
+        textfield.type = "text";
+        button.innerHTML = '<i class="bi bi-eye"></i>';
+    } else {
+        textfield.type = "password";
+        button.innerHTML = '<i class="bi bi-eye-slash"></i>';
+    }
+
+}
+
+// View password
+
+// User profile update

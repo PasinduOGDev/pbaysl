@@ -96,7 +96,7 @@
                                             <div class="input-group">
                                                 <input type="password" class="form-control" placeholder="Enter Password"
                                                     id="password" value="<?php echo $password; ?>">
-                                                <span class="btn btn-warning"><i class="bi bi-eye"></i></span>
+                                                <span class="btn btn-warning" id="pwBtn" onclick="viewPassword();"><i class="bi bi-eye-slash"></i></span>
                                             </div>
                                         </div>
                                     </div>
@@ -269,8 +269,8 @@
                                         <label class="form-label"><i class="bi bi-key"></i></label>
                                         <label class="form-label">Enter New Password</label>
                                         <div class="col-12 input-group">
-                                        <input type="password" class="form-control" placeholder="Enter New Password">
-                                        <span class="btn btn-warning"><i class="bi bi-eye"></i></span>
+                                        <input type="password" class="form-control" placeholder="Enter New Password" id="password2">
+                                        <span class="btn btn-warning" id="pwBtn2" onclick="viewPassword2();"><i class="bi bi-eye-slash"></i></span>
                                         </div>
                                     </div>
                                     <div class="col-6">
@@ -278,8 +278,8 @@
                                         <label class="form-label">Confirm New Password</label>
                                         <div class="col-12 input-group">
                                             <input type="password" class="form-control"
-                                                placeholder="Confirm New Password">
-                                                <span class="btn btn-warning"><i class="bi bi-eye"></i></span>
+                                                placeholder="Confirm New Password" id="password3">
+                                                <span class="btn btn-warning" id="pwBtn3" onclick="viewPassword3();"><i class="bi bi-eye-slash"></i></span>
                                         </div>
                                     </div>
                                 </div>

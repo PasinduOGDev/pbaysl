@@ -51,8 +51,9 @@
   	 	</div>
 
 		<div class="row mt-5 text-center">
-			<p class="text-light opacity-75">Made in Sri Lanka | 100%ක් ශ්‍රී ලාංකීය අපේම දෙයකි</p>
-			<p class="text-light opacity-50">Copyright &copy; pBay Sri Lanka. All Rights Reserved.</p>
+			<p class="text-light opacity-75">Made in Sri Lanka</p>
+			<p class="text-light opacity-50">Copyright &copy; Pbay Sri Lanka. All Rights Reserved.</p>
+			<p class="text-light opacity-25">Designed by &copy; Pasindu Madhuwantha</p>
 		</div>
 
   	 </div>

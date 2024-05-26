@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 include "connection.php";
 
 include "email_resources/SMTP.php";
@@ -19,6 +21,8 @@ if (empty($email)) {
     if (isset($_GET["e"])) {
 
         $email = $_GET["e"];
+
+        $_SESSION["fu"] = $email;
 
         $rs = Database::search("SELECT * FROM `user` WHERE `email`='" . $email . "'");
         $num = $rs->num_rows;
