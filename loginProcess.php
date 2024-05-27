@@ -22,45 +22,47 @@ if (empty($email)) {
 
     $rs = Database::search("SELECT * FROM `user` WHERE `email`='" . $email . "' LIMIT 1");
 
-    $row = $rs->fetch_array();
+    $row = $rs->fetch_assoc();
 
-    $hashed_password = $row["password"];
-
-    if (!password_verify($password, $hashed_password)) {
-
-        echo "Invalid Password! Please try again";
-
+    if ($row === null) {
+        echo "User not found! Please register.";
     } else {
+        $hashed_password = $row["password"];
 
-        $num = $rs->num_rows;
+        if (!password_verify($password, $hashed_password)) {
 
-        if ($num == 1) {
-
-            echo ("Success");
-            $rs1 = Database::search("SELECT * FROM `user` WHERE `email`='" . $email . "'");
-            $d = $rs1->fetch_assoc();
-            $_SESSION["u"] = $d;
-
-            if ($rememberme == "true") {
-
-                setcookie("email", $email, time() + (60 * 60 * 24 * 365));
-                setcookie("password", $password, time() + (60 * 60 * 24 * 365));
-
-            } else {
-
-                setcookie("email", "", -1);
-                setcookie("password", "", -1);
-
-            }
+            echo "Invalid Password! Please try again";
 
         } else {
 
-            echo "User has not registered! Please Register!";
+            $num = $rs->num_rows;
 
+            if ($num == 1) {
+
+                echo ("Success");
+                $rs1 = Database::search("SELECT * FROM `user` WHERE `email`='" . $email . "'");
+                $d = $rs1->fetch_assoc();
+                $_SESSION["u"] = $d;
+
+                if ($rememberme == "true") {
+
+                    setcookie("email", $email, time() + (60 * 60 * 24 * 365));
+                    setcookie("password", $password, time() + (60 * 60 * 24 * 365));
+
+                } else {
+
+                    setcookie("email", "", -1);
+                    setcookie("password", "", -1);
+
+                }
+
+            } else {
+
+                echo "User has not registered! Please Register!";
+
+            }
         }
-
     }
-
 }
 
 ?>
