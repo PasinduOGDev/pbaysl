@@ -59,7 +59,7 @@ if (empty($fname)) {
         $mail->Password = 'kfsjiraxzliobkao';
         $mail->SMTPSecure = 'ssl';
         $mail->Port = 465;
-        $mail->setFrom('pasinduogdev@gmail.com', 'Login Password');
+        $mail->setFrom('Pbay Sri Lanka', 'Login Password');
         $mail->addReplyTo('pasinduogdev@gmail.com', 'Login Password');
         $mail->addAddress($email);
         $mail->isHTML(true);
@@ -87,7 +87,7 @@ if (empty($fname)) {
         $mail->Body = $bodyContent;
 
         if (!$mail->send()) {
-            echo "OTP sending failed";
+            echo "Registration failed";
         } else {
 
             $password_hash = password_hash($password, PASSWORD_BCRYPT);
@@ -102,6 +102,5 @@ if (empty($fname)) {
     }
 
 }
-
 
 ?>

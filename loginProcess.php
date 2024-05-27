@@ -16,8 +16,6 @@ if (empty($email)) {
     echo ("Invalid Email");
 } else if (empty($password)) {
     echo "Enter your Password";
-} else if (strlen($password) < 5 || strlen($password) > 20) {
-    echo ("Password must contain 5 to 20 characters");
 } else {
 
     $rs = Database::search("SELECT * FROM `user` WHERE `email`='" . $email . "' LIMIT 1");

@@ -30,28 +30,19 @@ if (empty($new_password)) {
 } else {
 
     $rs = Database::search("SELECT * FROM `user` WHERE `email`='" . $email . "' AND `verification_code`='" . $otp . "' LIMIT 1");
+    $num = $rs->num_rows;
 
-    $row = $rs->fetch_array();
-    $hashed_password = $row["password"];
+    if ($num == 1) {
 
-    if (password_verify($new_password, $hashed_password)) {
+        $password_hash = password_hash($new_password, PASSWORD_BCRYPT);
+        
+        Database::iud("UPDATE `user` SET `password`='".$password_hash."' 
+        WHERE `email`='".$email."'");
 
-        $num = $rs->num_rows;
+        echo "Success";
 
-        if ($num == 1) {
-
-            
-
-            Database::iud("UPDATE `user` SET `password`='" . $new_password . "' WHERE `email`='" . $email . "'");
-
-            echo "Success";
-
-        } else {
-
-            echo "Verification Failed";
-
-        }
-
+    } else {
+        echo "Verification Failed!";
     }
 
 }

@@ -8,16 +8,17 @@ function redirect() {
 
 function setMode() {
 
-    var mode = document.getElementById("mode");
-    var loginbox = document.getElementById("loginbox");
-    var registerbox = document.getElementById("registerbox");
-    var forgotpassword = document.getElementById("forgotPassword");
-    var register = document.getElementById("register");
-    var change = document.getElementById("change");
-    var change2 = document.getElementById("change2");
+    let mode = document.getElementById("mode");
+    let loginbox = document.getElementById("loginbox");
+    let registerbox = document.getElementById("registerbox");
+    let adminbox = document.getElementById("adminbox");
+    let forgotpassword = document.getElementById("forgotPassword");
+    let register = document.getElementById("register");
+    let change = document.getElementById("change");
+    let change2 = document.getElementById("change2");
 
 
-    var body = document.body;
+    let body = document.body;
     body.dataset.bsTheme = body.dataset.bsTheme == "light" ? "dark" : "light";
 
     if (body.dataset.bsTheme == "dark") {
@@ -26,6 +27,7 @@ function setMode() {
         body.classList.add("bg-dark");
         loginbox.classList.add("bg-secondary");
         registerbox.classList.add("bg-secondary");
+        adminbox.classList.add("bg-secondary");
         forgotpassword.classList.add("link-light");
         register.classList.remove("btn-success");
         register.classList.add("btn-primary");
@@ -40,6 +42,7 @@ function setMode() {
         body.classList.add("bg-secondary");
         loginbox.classList.remove("bg-secondary");
         registerbox.classList.remove("bg-secondary");
+        adminbox.classList.remove("bg-secondary");
         forgotpassword.classList.remove("link-light");
         register.classList.remove("btn-primary");
         register.classList.add("btn-success");
@@ -58,9 +61,9 @@ function setMode() {
 
 function themeChange() {
 
-    var icon = document.getElementById("icon");
+    let icon = document.getElementById("icon");
 
-    var body = document.body;
+    let body = document.body;
     body.dataset.bsTheme = body.dataset.bsTheme == "light" ? "dark" : "light";
 
     if (body.dataset.bsTheme == "dark") {
