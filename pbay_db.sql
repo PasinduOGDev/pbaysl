@@ -44,16 +44,11 @@ CREATE TABLE IF NOT EXISTS `cart` (
   KEY `fk_cart_product1_idx` (`product_id`),
   CONSTRAINT `fk_cart_product1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
   CONSTRAINT `fk_cart_user1` FOREIGN KEY (`user_email`) REFERENCES `user` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table pbay_db.cart: ~2 rows (approximately)
+-- Dumping data for table pbay_db.cart: ~0 rows (approximately)
 INSERT INTO `cart` (`cart_id`, `qty`, `user_email`, `product_id`) VALUES
-	(1, 1, 'pasinduogdev@gmail.com', 1),
-	(9, 1, 'pasinduogdev@gmail.com', 4),
-	(11, 1, 'rraskrocky@gmail.com', 1),
-	(12, 1, 'rraskrocky@gmail.com', 2),
-	(13, 1, 'rraskrocky@gmail.com', 3),
-	(14, 1, 'rraskrocky@gmail.com', 4);
+	(15, 1, 'pasinduogdev@gmail.com', 4);
 
 -- Dumping structure for table pbay_db.category
 CREATE TABLE IF NOT EXISTS `category` (
@@ -284,10 +279,10 @@ CREATE TABLE IF NOT EXISTS `product` (
 
 -- Dumping data for table pbay_db.product: ~4 rows (approximately)
 INSERT INTO `product` (`id`, `price`, `qty`, `description`, `title`, `datetime_added`, `delivery_fee_colombo`, `delivery_fee_other`, `category_cat_id`, `model_has_brand_id`, `condition_condition_id`, `status_status_id`, `user_email`) VALUES
-	(1, 480000, 10, NULL, 'Apple iPhone 14 Pro', '2024-05-24 09:47:57', 250, 500, 1, 1, 1, 1, 'ogpmadhuwantha678@gmail.com'),
-	(2, 630000, 5, NULL, 'Asus ROG 7', '2024-05-24 12:47:33', 250, 500, 1, 2, 1, 1, 'ogpmadhuwantha678@gmail.com'),
-	(3, 544000, 50, NULL, 'Samsung Galaxy S21 Ultra', '2024-05-25 11:02:31', 250, 500, 1, 3, 1, 1, 'ogpmadhuwantha678@gmail.com'),
-	(4, 620000, 5, NULL, 'Samsung Galaxy S22', '2024-05-25 11:04:05', 250, 500, 1, 4, 1, 1, 'ogpmadhuwantha678@gmail.com');
+	(1, 480000, 10, NULL, 'Apple iPhone 14 Pro', '2024-05-24 09:47:57', 250, 500, 1, 1, 1, 1, 'rraskrocky@gmail.com'),
+	(2, 630000, 5, NULL, 'Asus ROG 7', '2024-05-24 12:47:33', 250, 500, 1, 2, 1, 1, 'rraskrocky@gmail.com'),
+	(3, 544000, 50, NULL, 'Samsung Galaxy S21 Ultra', '2024-05-25 11:02:31', 250, 500, 1, 3, 1, 1, 'rraskrocky@gmail.com'),
+	(4, 620000, 5, NULL, 'Samsung Galaxy S22', '2024-05-25 11:04:05', 250, 500, 1, 4, 1, 1, 'rraskrocky@gmail.com');
 
 -- Dumping structure for table pbay_db.product_has_color
 CREATE TABLE IF NOT EXISTS `product_has_color` (
@@ -369,11 +364,10 @@ CREATE TABLE IF NOT EXISTS `user` (
   CONSTRAINT `fk_user_user_type1` FOREIGN KEY (`user_type_id`) REFERENCES `user_type` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table pbay_db.user: ~3 rows (approximately)
+-- Dumping data for table pbay_db.user: ~2 rows (approximately)
 INSERT INTO `user` (`fname`, `lname`, `email`, `password`, `mobile`, `joined_date`, `verification_code`, `status_status_id`, `user_type_id`) VALUES
-	('OG', 'Mobile', 'ogpmadhuwantha678@gmail.com', '12345p@', '0715518744', '2024-05-25 13:37:38', '399534', 1, 3),
-	('Pasindu', 'Owa Gamage', 'pasinduogdev@gmail.com', '12345p@', '0760135744', '2024-05-25 13:35:40', NULL, 1, 1),
-	('Ashan', 'Sanchitha', 'rraskrocky@gmail.com', '$2y$10$a.KB2uvMH/ZmLwRv0BdPcOGppoOMd3lGQA5eAk3D4Ebjk3elSKg8G', '0764652465', '2024-05-26 21:44:40', NULL, 1, 2);
+	('OG', 'Mobile', 'pasinduogdev@gmail.com', '$2y$10$Ypk6IvgDXT8XiPHds3bRmO9G45tIduzGOvgDeSa3ioRNRFB8b3wQG', '0766035744', '2024-05-27 17:19:07', NULL, 1, 1),
+	('Ashan', 'Mobile', 'rraskrocky@gmail.com', '$2y$10$a.KB2uvMH/ZmLwRv0BdPcOGppoOMd3lGQA5eAk3D4Ebjk3elSKg8G', '0764652465', '2024-05-26 21:44:40', NULL, 1, 3);
 
 -- Dumping structure for table pbay_db.user_has_address
 CREATE TABLE IF NOT EXISTS `user_has_address` (
@@ -390,10 +384,7 @@ CREATE TABLE IF NOT EXISTS `user_has_address` (
   CONSTRAINT `fk_user_has_city_user1` FOREIGN KEY (`user_email`) REFERENCES `user` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table pbay_db.user_has_address: ~2 rows (approximately)
-INSERT INTO `user_has_address` (`user_email`, `city_city_id`, `address_id`, `line1`, `line2`, `postal_code`) VALUES
-	('pasinduogdev@gmail.com', 1, 1, 'No.68, Andunwenna, Horawala', 'Welipenna, Matugama', '12108'),
-	('ogpmadhuwantha678@gmail.com', 1, 2, 'No.68, Andunwenna, Horawala', 'Welipenna, Matugama', '12108');
+-- Dumping data for table pbay_db.user_has_address: ~0 rows (approximately)
 
 -- Dumping structure for table pbay_db.user_img
 CREATE TABLE IF NOT EXISTS `user_img` (
