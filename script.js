@@ -80,8 +80,8 @@ function themeChange() {
 
 function changeView() {
 
-    var loginbox = document.getElementById("loginbox");
-    var registerbox = document.getElementById("registerbox");
+    let loginbox = document.getElementById("loginbox");
+    let registerbox = document.getElementById("registerbox");
 
     loginbox.classList.toggle("d-none");
     registerbox.classList.toggle("d-none");
@@ -92,13 +92,13 @@ function changeView() {
 
 function register() {
 
-    var fname = document.getElementById("fname");
-    var lname = document.getElementById("lname");
-    var email = document.getElementById("email2");
-    var mobile = document.getElementById("mobile");
-    var agreebox = document.getElementById("agreeBox");
+    let fname = document.getElementById("fname");
+    let lname = document.getElementById("lname");
+    let email = document.getElementById("email2");
+    let mobile = document.getElementById("mobile");
+    let agreebox = document.getElementById("agreeBox");
 
-    var f = new FormData();
+    let f = new FormData();
 
     f.append("f", fname.value);
     f.append("l", lname.value);
@@ -106,11 +106,11 @@ function register() {
     f.append("m", mobile.value);
     f.append("a", agreebox.checked);
 
-    var r = new XMLHttpRequest();
+    let r = new XMLHttpRequest();
 
     r.onreadystatechange = function () {
         if (r.readyState == 4 && r.status == 200) {
-            var response = r.responseText;
+            let response = r.responseText;
 
             if (response == "Success") {
 
@@ -148,21 +148,21 @@ function register() {
 
 function login() {
 
-    var email = document.getElementById("email");
-    var password = document.getElementById("password");
-    var rememberme = document.getElementById("rememberme");
+    let email = document.getElementById("email");
+    let password = document.getElementById("password");
+    let rememberme = document.getElementById("rememberme");
 
-    var form = new FormData();
+    let form = new FormData();
 
     form.append("e", email.value);
     form.append("p", password.value);
     form.append("rm", rememberme.checked);
 
-    var request = new XMLHttpRequest();
+    let request = new XMLHttpRequest();
 
     request.onreadystatechange = function () {
         if (request.readyState == 4 && request.status == 200) {
-            var response = request.responseText;
+            let response = request.responseText;
 
             if (response == "Success") {
 
@@ -195,10 +195,10 @@ function login() {
 }
 
 // Forgot password
-var otpModal;
+let otpModal;
 function forgotPassword() {
 
-    var otpbox = document.getElementById("otpBox");
+    let otpbox = document.getElementById("otpBox");
 
     otpModal = new bootstrap.Modal(otpbox);
     otpModal.show();
@@ -207,14 +207,14 @@ function forgotPassword() {
 
 function sendCode() {
 
-    var email = document.getElementById("email3");
+    let email = document.getElementById("email3");
 
-    var r = new XMLHttpRequest();
+    let r = new XMLHttpRequest();
 
-    r.onreadystatechange = function() {
+    r.onreadystatechange = function () {
         if (r.readyState == 4 && r.status == 200) {
-            var response = r.responseText;
-            
+            let response = r.responseText;
+
             if (response == "Success") {
 
                 Swal.fire({
@@ -242,7 +242,7 @@ function sendCode() {
             }
 
             if (response == "Please enter your Email in the Email field") {
-                
+
                 Swal.fire({
                     title: "Error!",
                     text: response,
@@ -254,7 +254,7 @@ function sendCode() {
                 });
 
             }
-            
+
         }
     }
 
@@ -263,11 +263,11 @@ function sendCode() {
 
 }
 
-var resetPwModal;
+let resetPwModal;
 
 function resetPasswordBox() {
 
-    var modal = document.getElementById("resetPwBox");
+    let modal = document.getElementById("resetPwBox");
     resetPwModal = new bootstrap.Modal(modal);
     resetPwModal.show();
 
@@ -275,26 +275,26 @@ function resetPasswordBox() {
 
 function resetPassword() {
 
-    var email = document.getElementById("email3");
-    var otp = document.getElementById("otp");
-    var new_password = document.getElementById("password2");
-    var confirm_password = document.getElementById("password2");
+    let email = document.getElementById("email3");
+    let otp = document.getElementById("otp");
+    let new_password = document.getElementById("password2");
+    let confirm_password = document.getElementById("password2");
 
-    var f = new FormData();
+    let f = new FormData();
 
-    f.append("e",email.value);
-    f.append("o",otp.value);
-    f.append("np",new_password.value);
-    f.append("cp",confirm_password.value);
+    f.append("e", email.value);
+    f.append("o", otp.value);
+    f.append("np", new_password.value);
+    f.append("cp", confirm_password.value);
 
-    var r = new XMLHttpRequest();
+    let r = new XMLHttpRequest();
 
-    r.onreadystatechange = function() {
+    r.onreadystatechange = function () {
         if (r.readyState == 4 && r.status == 200) {
-            var response = r.responseText;
-            
+            let response = r.responseText;
+
             if (response == "Success") {
-                
+
                 Swal.fire({
                     title: "Done!",
                     text: "Your Password has been Successfully reset!",
@@ -307,7 +307,7 @@ function resetPassword() {
 
 
             } else {
-                
+
                 Swal.fire({
                     title: "Failed!",
                     text: response,
@@ -323,7 +323,7 @@ function resetPassword() {
         }
     }
 
-    r.open("POST","resetPasswordProcess.php", true);
+    r.open("POST", "resetPasswordProcess.php", true);
     r.send(f);
 
 }
@@ -334,8 +334,8 @@ function resetPassword() {
 
 function viewPassword() {
 
-    var textfield = document.getElementById("password");
-    var button = document.getElementById("pwBtn");
+    let textfield = document.getElementById("password");
+    let button = document.getElementById("pwBtn");
 
     if (textfield.type == "password") {
         textfield.type = "text";
@@ -353,8 +353,8 @@ function viewPassword() {
 
 function viewPassword2() {
 
-    var textfield = document.getElementById("password2");
-    var button = document.getElementById("pwBtn2");
+    let textfield = document.getElementById("password2");
+    let button = document.getElementById("pwBtn2");
 
     if (textfield.type == "password") {
         textfield.type = "text";
@@ -370,8 +370,8 @@ function viewPassword2() {
 
 function viewPassword3() {
 
-    var textfield = document.getElementById("password3");
-    var button = document.getElementById("pwBtn3");
+    let textfield = document.getElementById("password3");
+    let button = document.getElementById("pwBtn3");
 
     if (textfield.type == "password") {
         textfield.type = "text";
@@ -387,17 +387,61 @@ function viewPassword3() {
 
 // View password - For forgot password modal
 
+// admin login
+function adminlogin() {
+
+    let email = document.getElementById("email");
+    let password = document.getElementById("password");
+
+    let f = new FormData();
+
+    f.append("e", email.value);
+    f.append("p", password.value);
+
+    let r = new XMLHttpRequest();
+
+    r.onreadystatechange = function () {
+        if (r.readyState == 4 && r.status == 200) {
+            let response = r.responseText;
+            
+            if (response == "Success") {
+
+                Swal.fire({
+                    title: "Done!",
+                    icon: "success",
+                }).then((result)=>{
+                    if(result.isConfirmed){
+                        window.location.href = "admin-dashboard.php";
+                    }
+                });
+                
+            } else {
+                Swal.fire({
+                    title: response,
+                    icon: "error",
+                })
+            }
+
+        }
+    }
+
+    r.open("POST", "admin-loginProcess.php", true);
+    r.send(f);
+
+}
+// admin login
+
 // Login function
 
 // signout start
 
 function signOut() {
 
-    var r = new XMLHttpRequest();
+    let r = new XMLHttpRequest();
 
     r.onreadystatechange = function () {
         if (r.readyState == 4) {
-            var t = r.responseText;
+            let t = r.responseText;
             if (t == "success") {
                 window.location = "index.php";
             }
@@ -415,11 +459,11 @@ function signOut() {
 
 function addtoCart(id) {
 
-    var r = new XMLHttpRequest();
+    let r = new XMLHttpRequest();
 
     r.onreadystatechange = function () {
         if (r.readyState == 4 && r.status == 200) {
-            var response = r.responseText;
+            let response = r.responseText;
 
             if (response == "added") {
 
@@ -497,8 +541,8 @@ function addtoCart(id) {
 
 function viewPassword4() {
 
-    var textfield = document.getElementById("password");
-    var button = document.getElementById("pwBtn");
+    let textfield = document.getElementById("password");
+    let button = document.getElementById("pwBtn");
 
     if (textfield.type == "password") {
         textfield.type = "text";

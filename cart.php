@@ -156,12 +156,39 @@
 
                                             $ship = 0;
 
-                                            if ($address_data["c_id"] == 1) {
-                                                $ship = $product_data["delivery_fee_colombo"];
-                                                $shipping = $shipping + $ship;
+                                            $color_rs = Database::search("SELECT * FROM `product_has_color` INNER JOIN `product` ON product_has_color.product_id=product.id INNER JOIN
+                                             `color` ON product_has_color.color_clr_id=color.clr_id WHERE id = '".$cart_data["product_id"]."'");
+                                             $color_data = $color_rs->fetch_assoc();
+
+                                            if ($address_data == null) {
+
+                                                ?>
+
+                                                <hr />
+
+                                                <div class="row d-flex align-items-center">
+                                                    <div class="col-6 text-start text-danger">
+                                                        <?php
+
+                                                        echo "Can not make a Delivery because User Shipping Address not found.";
+                                                        ?>
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        <button class="btn btn-danger">Profile Details</button>
+                                                    </div>
+                                                </div>
+                                                <?php
+
                                             } else {
-                                                $ship = $product_data["delivery_fee_other"];
-                                                $shipping = $shipping + $ship;
+
+                                                if ($address_data["c_id"] == 1) {
+                                                    $ship = $product_data["delivery_fee_colombo"];
+                                                    $shipping = $shipping + $ship;
+                                                } else {
+                                                    $ship = $product_data["delivery_fee_other"];
+                                                    $shipping = $shipping + $ship;
+                                                }
+
                                             }
 
                                             $seller_rs = Database::search("SELECT * FROM `user` WHERE `email`='" . $product_data["user_email"] . "'");
@@ -169,15 +196,6 @@
                                             $seller = $seller_data["fname"] . " " . $seller_data["lname"];
 
                                             ?>
-
-                                            <hr />
-
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <h3>Seller: <?php echo $seller; ?></h3>
-                                                </div>
-                                            </div>
-
                                             <hr />
 
                                             <!-- single product div -->
@@ -190,7 +208,7 @@
 
                                                 <div class="col-12 col-md-5">
                                                     <h4 class="fw-bold"><?php echo $product_data["title"]; ?></h4>
-                                                    <p>Color: Black</p>
+                                                    <p>Color: <?php echo $color_data["clr_name"]; ?></p>
                                                     <h5>Price: <span class="fs-4 fw-bold">LKR
                                                             <?php echo $product_data["price"]; ?></span></h5>
                                                     <div class="row mt-4 mb-2">
