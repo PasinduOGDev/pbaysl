@@ -19,58 +19,77 @@
 
 <body data-bs-theme="light">
 
-    <div class="container-fluid">
+    <?php
 
-        <div class="row">
-            <?php include "admin-header.php"; ?>
-        </div>
+    session_start();
 
-        <!-- User Management -->
+    if (isset($_SESSION["a"])) {
 
-        <div class="container" id="usermanagement">
+        ?>
 
-            <div class="col-12 mt-5">
-                <h2 class="text-center">User Management</h2>
+        <div class="container-fluid">
 
-                <div class="row g-2 d-flex justify-content-end mt-4">
+            <div class="row">
+                <?php include "admin-header.php"; ?>
+            </div>
 
-                    <div class="d-none" id="msgDiv" onclick="reload();">
-                        <div class="alert alert-danger" id="msg"></div>
+            <!-- User Management -->
+
+            <div class="container mb-5" id="usermanagement">
+
+                <div class="col-12 mt-5">
+                    <h2 class="text-center">User Management</h2>
+
+                    <div class="row g-2 d-flex justify-content-end mt-4">
+
+                        <div class="d-none" id="msgDiv" onclick="reload();">
+                            <div class="alert alert-danger" id="msg"></div>
+                        </div>
+
+                        <div class="col-12 col-lg-3">
+                            <input type="text" class="form-control" placeholder="User Id" id="uid" />
+                        </div>
+
+                        <button class="btn btn-outline-secondary col-12 col-lg-2" onclick="updateUserStatus();">Change
+                            Status</button>
                     </div>
 
-                    <div class="col-12 col-lg-3">
-                        <input type="text" class="form-control" placeholder="User Id" id="uid" />
+                    <div class="mt-3">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">User ID</th>
+                                    <th scope="col">First Name</th>
+                                    <th scope="col">Last Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Mobile</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tb">
+                                <!-- Table Row -->
+                                <!-- Table Row -->
+                            </tbody>
+                        </table>
                     </div>
 
-                    <button class="btn btn-outline-secondary col-12 col-lg-2" onclick="updateUserStatus();">Change Status</button>
-                </div>
-
-                <div class="mt-3">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">User ID</th>
-                                <th scope="col">First Name</th>
-                                <th scope="col">Last Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Mobile</th>
-                                <th scope="col">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tb">
-                            <!-- Table Row -->
-                            <!-- Table Row -->
-                        </tbody>
-                    </table>
                 </div>
 
             </div>
 
+            <!-- User Management -->
+
         </div>
 
-        <!-- User Management -->
+        <?php
 
-    </div>
+    } else {
+
+        header("Location: login.php");
+
+    }
+
+    ?>
 
     <!-- js -->
     <script src="script.js"></script>

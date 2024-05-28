@@ -36,9 +36,9 @@ if (empty($email)) {
 
                 $rs1 = Database::search("SELECT * FROM `user` WHERE `email` = '".$email."'");
 
-                $d = $rs->fetch_assoc();
+                $ad = $rs1->fetch_assoc();
 
-                $_SESSION["a"] = $d;
+                $_SESSION["a"] = $ad;
 
             }
 

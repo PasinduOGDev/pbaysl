@@ -391,7 +391,7 @@
                 ?>
 
                 <script>
-                    window.location = "index.php";
+                    window.location = "login.php";
                 </script>
 
                 <?php

@@ -52,6 +52,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Reports</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link link-danger fw-bold" href="#" onclick="adminLogout();">Sign Out <i class="bi bi-box-arrow-right"></i></a>
+                                </li>
                             </ul>
                         </div>
                     </div>

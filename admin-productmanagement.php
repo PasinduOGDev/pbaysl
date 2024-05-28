@@ -27,7 +27,7 @@
 
         <!-- Product Registration -->
 
-        <div class="container" id="productmanagement">
+        <div class="container mb-5" id="productmanagement">
 
             <div class="col-12 mt-5">
                 <h2 class="text-center">Product Management</h2>
@@ -38,7 +38,7 @@
 
                         <div class="col-8">
                             <label class="form-label">Brand Name</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" placeholder="Enter Brand">
                             <button class="btn btn-secondary col-12 mt-2">Brand Register</button>
                         </div>
 
@@ -48,7 +48,7 @@
 
                         <div class="col-8">
                             <label class="form-label">Model Name</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" placeholder="Enter Model">
                             <button class="btn btn-secondary col-12 mt-2">Model Register</button>
                         </div>
 
@@ -62,8 +62,8 @@
 
                         <div class="col-8">
                             <label class="form-label">Color</label>
-                            <input type="text" class="form-control">
-                            <button class="btn btn-secondary col-12 mt-2">Color Register</button>
+                            <input type="text" class="form-control" placeholder="Enter Colour">
+                            <button class="btn btn-secondary col-12 mt-2">Colour Register</button>
                         </div>
 
                     </div>
@@ -72,7 +72,7 @@
 
                         <div class="col-8">
                             <label class="form-label">Category</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" placeholder="Enter Category">
                             <button class="btn btn-secondary col-12 mt-2">Category Register</button>
                         </div>
 

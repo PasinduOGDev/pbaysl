@@ -403,18 +403,18 @@ function adminlogin() {
     r.onreadystatechange = function () {
         if (r.readyState == 4 && r.status == 200) {
             let response = r.responseText;
-            
+
             if (response == "Success") {
 
                 Swal.fire({
                     title: "Done!",
                     icon: "success",
-                }).then((result)=>{
-                    if(result.isConfirmed){
+                }).then((result) => {
+                    if (result.isConfirmed) {
                         window.location.href = "admin-dashboard.php";
                     }
                 });
-                
+
             } else {
                 Swal.fire({
                     title: response,
@@ -435,6 +435,44 @@ function adminlogin() {
 
 // signout start
 
+// admin
+
+function adminLogout() {
+
+    let r = new XMLHttpRequest();
+
+    r.onreadystatechange = function () {
+        if (r.readyState == 4) {
+            let response = r.responseText;
+
+            if (response == "success") {
+                Swal.fire({
+                    title: "Logged Out!",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "login.php";
+                    }
+                });
+            } else {
+                Swal.fire({
+                    title: "Log Out Failed!",
+                    icon: "error",
+                });
+            }
+
+        }
+    }
+
+    r.open("GET", "admin-logoutProcess.php", true);
+    r.send();
+
+}
+
+// admin
+
+// user
+
 function signOut() {
 
     let r = new XMLHttpRequest();
@@ -443,15 +481,35 @@ function signOut() {
         if (r.readyState == 4) {
             let t = r.responseText;
             if (t == "success") {
-                window.location = "index.php";
+
+                Swal.fire({
+                    title: "Logged Out!",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                });
+
+            } else {
+
+                Swal.fire({
+                    title: "Log Out Failed!",
+                    icon: "error",
+                });
+
             }
+
         }
+
     };
 
     r.open("GET", "logoutProcess.php", true);
     r.send();
 
 }
+
+// user
 
 // signout end
 

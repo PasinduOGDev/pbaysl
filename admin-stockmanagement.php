@@ -27,7 +27,7 @@
 
         <!-- Stock management -->
 
-        <div class="container" id="stockmanagement">
+        <div class="container mb-5" id="stockmanagement">
 
             <div class="col-12">
 
