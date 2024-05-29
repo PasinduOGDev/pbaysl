@@ -25,6 +25,7 @@ if (empty($email)) {
     if ($row === null) {
         echo "User not found! Please register.";
     } else {
+
         $hashed_password = $row["password"];
 
         if (!password_verify($password, $hashed_password)) {
@@ -37,20 +38,28 @@ if (empty($email)) {
 
             if ($num == 1) {
 
-                echo ("Success");
-                $rs1 = Database::search("SELECT * FROM `user` WHERE `email`='" . $email . "'");
-                $d = $rs1->fetch_assoc();
-                $_SESSION["u"] = $d;
+                if ($row["status_status_id"] == 1) {
 
-                if ($rememberme == "true") {
+                    echo ("Success");
+                    $rs1 = Database::search("SELECT * FROM `user` WHERE `email`='" . $email . "'");
+                    $d = $rs1->fetch_assoc();
+                    $_SESSION["u"] = $d;
 
-                    setcookie("email", $email, time() + (60 * 60 * 24 * 365));
-                    setcookie("password", $password, time() + (60 * 60 * 24 * 365));
+                    if ($rememberme == "true") {
+
+                        setcookie("email", $email, time() + (60 * 60 * 24 * 365));
+                        setcookie("password", $password, time() + (60 * 60 * 24 * 365));
+
+                    } else {
+
+                        setcookie("email", "", -1);
+                        setcookie("password", "", -1);
+
+                    }
 
                 } else {
 
-                    setcookie("email", "", -1);
-                    setcookie("password", "", -1);
+                    echo "Your Membership is Temporary Banned!";
 
                 }
 
@@ -59,6 +68,7 @@ if (empty($email)) {
                 echo "User has not registered! Please Register!";
 
             }
+
         }
     }
 }

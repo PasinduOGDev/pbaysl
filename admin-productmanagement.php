@@ -17,63 +17,73 @@
     <!-- icons -->
 </head>
 
-<body data-bs-theme="light">
+<?php
 
-    <div class="container-fluid">
+session_start();
 
-        <div class="row">
-            <?php include "admin-header.php"; ?>
-        </div>
+if (isset($_SESSION["a"])) {
 
-        <!-- Product Registration -->
+    ?>
 
-        <div class="container mb-5" id="productmanagement">
+    <body class="bg-body-secondary" data-bs-theme="light">
 
-            <div class="col-12 mt-5">
-                <h2 class="text-center">Product Management</h2>
+        <div class="container-fluid">
 
-                <div class="row mt-4 d-flex justify-content-center g-3">
+            <div class="row">
+                <?php include "admin-header.php"; ?>
+            </div>
 
-                    <div class="col-12 col-md-6 d-flex justify-content-center">
+            <!-- Product Registration -->
 
-                        <div class="col-8">
-                            <label class="form-label">Brand Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Brand">
-                            <button class="btn btn-secondary col-12 mt-2">Brand Register</button>
+            <div class="container mb-5" id="productmanagement">
+
+                <div class="col-12 mt-5">
+                    <h2 class="text-center">Product Management</h2>
+
+                    <div class="row mt-4 d-flex justify-content-center g-3">
+
+                        <div class="col-12 col-md-6 d-flex justify-content-center">
+
+                            <div class="col-8">
+                                <label class="form-label">Brand Name</label>
+                                <input type="text" class="form-control" placeholder="Enter Brand">
+                                <button class="btn btn-secondary col-12 mt-2">Brand Register</button>
+                            </div>
+
+                        </div>
+
+                        <div class="col-12 col-md-6 d-flex justify-content-center">
+
+                            <div class="col-8">
+                                <label class="form-label">Model Name</label>
+                                <input type="text" class="form-control" placeholder="Enter Model">
+                                <button class="btn btn-secondary col-12 mt-2">Model Register</button>
+                            </div>
+
                         </div>
 
                     </div>
 
-                    <div class="col-12 col-md-6 d-flex justify-content-center">
+                    <div class="row mt-4 d-flex justify-content-center g-3">
 
-                        <div class="col-8">
-                            <label class="form-label">Model Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Model">
-                            <button class="btn btn-secondary col-12 mt-2">Model Register</button>
+                        <div class="col-12 col-md-6 d-flex justify-content-center">
+
+                            <div class="col-8">
+                                <label class="form-label">Color</label>
+                                <input type="text" class="form-control" placeholder="Enter Colour">
+                                <button class="btn btn-secondary col-12 mt-2">Colour Register</button>
+                            </div>
+
                         </div>
 
-                    </div>
+                        <div class="col-12 col-md-6 d-flex justify-content-center">
 
-                </div>
+                            <div class="col-8">
+                                <label class="form-label">Category</label>
+                                <input type="text" class="form-control" placeholder="Enter Category">
+                                <button class="btn btn-secondary col-12 mt-2">Category Register</button>
+                            </div>
 
-                <div class="row mt-4 d-flex justify-content-center g-3">
-
-                    <div class="col-12 col-md-6 d-flex justify-content-center">
-
-                        <div class="col-8">
-                            <label class="form-label">Color</label>
-                            <input type="text" class="form-control" placeholder="Enter Colour">
-                            <button class="btn btn-secondary col-12 mt-2">Colour Register</button>
-                        </div>
-
-                    </div>
-
-                    <div class="col-12 col-md-6 d-flex justify-content-center">
-
-                        <div class="col-8">
-                            <label class="form-label">Category</label>
-                            <input type="text" class="form-control" placeholder="Enter Category">
-                            <button class="btn btn-secondary col-12 mt-2">Category Register</button>
                         </div>
 
                     </div>
@@ -82,19 +92,27 @@
 
             </div>
 
+            <!-- Product Registration -->
+
         </div>
 
-        <!-- Product Registration -->
+        <!-- js -->
+        <script src="script.js"></script>
+        <!-- js -->
 
-    </div>
+        <!-- js sweetalert -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <!-- js sweetalert -->
+    </body>
 
-    <!-- js -->
-    <script src="script.js"></script>
-    <!-- js -->
+    <?php
 
-    <!-- js sweetalert -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- js sweetalert -->
-</body>
+} else {
+
+    header("Location: login.php");
+
+}
+
+?>
 
 </html>

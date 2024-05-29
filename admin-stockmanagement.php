@@ -17,98 +17,116 @@
     <!-- icons -->
 </head>
 
-<body data-bs-theme="light">
+<?php
 
-    <div class="container-fluid">
+session_start();
 
-        <div class="row">
-            <?php include "admin-header.php"; ?>
-        </div>
+if (isset($_SESSION["a"])) {
 
-        <!-- Stock management -->
+    ?>
 
-        <div class="container mb-5" id="stockmanagement">
+    <body class="bg-body-secondary" data-bs-theme="light">
 
-            <div class="col-12">
+        <div class="container-fluid">
 
-                <div class="row mt-4 mb-5">
+            <div class="row">
+                <?php include "admin-header.php"; ?>
+            </div>
 
-                    <div class="col-12 col-md-6 d-flex justify-content-center">
+            <!-- Stock management -->
 
-                        <div class="row g-4">
+            <div class="container mb-5" id="stockmanagement">
 
-                            <div class="col-12 text-center">
-                                <h2>Product Registration</h2>
-                            </div>
+                <div class="col-12">
 
-                            <div class="col-12 mt-3">
-                                <label class="form-label">Product Title</label>
-                                <input type="text" class="form-control" placeholder="Enter Product Title">
-                            </div>
+                    <div class="row mt-4 mb-5">
 
-                            <div class="col-6">
-                                <label class="form-label">Category</label>
-                                <input type="text" class="form-control" placeholder="Select Category">
-                            </div>
+                        <div class="col-12 col-md-6 d-flex justify-content-center">
 
-                            <div class="col-6">
-                                <label class="form-label">Brand</label>
-                                <input type="text" class="form-control" placeholder="Select Brand">
-                            </div>
+                            <div class="row g-4">
 
-                            <div class="col-6">
-                                <label class="form-label">Model</label>
-                                <input type="text" class="form-control" placeholder="Select Model">
-                            </div>
+                                <div class="col-12 text-center">
+                                    <h2>Product Registration</h2>
+                                </div>
 
-                            <div class="col-6">
-                                <label class="form-label">Colour</label>
-                                <input type="text" class="form-control" placeholder="Select Colour">
-                            </div>
+                                <div class="col-12 mt-3">
+                                    <label class="form-label">Product Title</label>
+                                    <input type="text" class="form-control" placeholder="Enter Product Title">
+                                </div>
 
-                            <div class="col-12">
-                                <label class="form-label">Description</label>
-                                <textarea id="" class="form-control" placeholder="Enter Description"></textarea>
-                            </div>
+                                <div class="col-6">
+                                    <label class="form-label">Category</label>
+                                    <select class="form-select">
+                                        <option value="0">Select Category</option>
+                                    </select>
+                                </div>
 
-                            <div class="col-12">
-                                <label class="form-label">Product image</label>
-                                <input type="file" class="form-control" placeholder="Select photo">
-                            </div>
+                                <div class="col-6">
+                                    <label class="form-label">Brand</label>
+                                    <select class="form-select">
+                                        <option value="0">Select Brand</option>
+                                    </select>
+                                </div>
 
-                            <div class="col-12">
-                                <button class="col-12 btn btn-secondary">Register Product</button>
+                                <div class="col-6">
+                                    <label class="form-label">Model</label>
+                                    <select class="form-select">
+                                        <option value="0">Select Model</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-6">
+                                    <label class="form-label">Colour</label>
+                                    <select class="form-select">
+                                        <option value="0">Select Colour</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label">Description</label>
+                                    <textarea id="" class="form-control" placeholder="Enter Description"></textarea>
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label">Product image</label>
+                                    <input type="file" class="form-control" placeholder="Select photo">
+                                </div>
+
+                                <div class="col-12">
+                                    <button class="col-12 btn btn-secondary">Register Product</button>
+                                </div>
+
                             </div>
 
                         </div>
 
-                    </div>
+                        <div class="col-12 col-md-6 mt-5 mt-md-0">
 
-                    <div class="col-12 col-md-6 mt-5 mt-md-0">
+                            <div class="row g-4 d-flex justify-content-center">
 
-                        <div class="row g-4 d-flex justify-content-center">
+                                <div class="col-12 text-center">
+                                    <h2>Stock Registration</h2>
+                                </div>
 
-                            <div class="col-12 text-center">
-                                <h2>Stock Registration</h2>
-                            </div>
+                                <div class="col-12 mt-3">
+                                    <label class="form-label">Product Title</label>
+                                    <input type="text" class="form-control" placeholder="Enter Product Title">
+                                </div>
 
-                            <div class="col-12 mt-3">
-                                <label class="form-label">Product Title</label>
-                                <input type="text" class="form-control" placeholder="Enter Product Title">
-                            </div>
+                                <div class="col-12">
+                                    <label class="form-label">Quantity</label>
+                                    <input type="number" class="form-control" placeholder="Enter Product Quantity">
+                                </div>
 
-                            <div class="col-12">
-                                <label class="form-label">Quantity</label>
-                                <input type="number" class="form-control" placeholder="Enter Product Quantity">
-                            </div>
+                                <div class="col-12">
+                                    <label class="form-label">Unit Price</label>
+                                    <input type="text" class="form-control" placeholder="Enter Unit Price">
+                                </div>
 
-                            <div class="col-12">
-                                <label class="form-label">Unit Price</label>
-                                <input type="text" class="form-control" placeholder="Enter Unit Price">
-                            </div>
+                                <div class="col-12">
+                                    <button class="col-12 btn btn-secondary">Update Stock</button>
+                                </div>
 
-                            <div class="col-12">
-                                <button class="col-12 btn btn-secondary">Update Stock</button>
                             </div>
 
                         </div>
@@ -119,19 +137,27 @@
 
             </div>
 
+            <!-- Stock management -->
+
         </div>
 
-        <!-- Stock management -->
+        <!-- js -->
+        <script src="script.js"></script>
+        <!-- js -->
 
-    </div>
+        <!-- js sweetalert -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <!-- js sweetalert -->
+    </body>
 
-    <!-- js -->
-    <script src="script.js"></script>
-    <!-- js -->
+    <?php
 
-    <!-- js sweetalert -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- js sweetalert -->
-</body>
+} else {
+
+    header("Location: login.php");
+
+}
+
+?>
 
 </html>

@@ -60,7 +60,7 @@ if (empty($fname)) {
         $mail->SMTPSecure = 'ssl';
         $mail->Port = 465;
         $mail->setFrom('Pbay Sri Lanka', 'Login Password');
-        $mail->addReplyTo('pasinduogdev@gmail.com', 'Login Password');
+        $mail->addReplyTo('Pbay Sri Lanka', 'Login Password');
         $mail->addAddress($email);
         $mail->isHTML(true);
         $mail->Subject = 'Pbay User Registration Verification';

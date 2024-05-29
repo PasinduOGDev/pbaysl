@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               8.0.36 - MySQL Community Server - GPL
+-- Server version:               8.0.37 - MySQL Community Server - GPL
 -- Server OS:                    Win64
--- HeidiSQL Version:             12.6.0.6765
+-- HeidiSQL Version:             12.7.0.6850
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `brand` (
   PRIMARY KEY (`brand_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table pbay_db.brand: ~2 rows (approximately)
+-- Dumping data for table pbay_db.brand: ~4 rows (approximately)
 INSERT INTO `brand` (`brand_id`, `brand_name`) VALUES
 	(1, 'Apple'),
 	(2, 'Huawei'),
@@ -44,11 +44,11 @@ CREATE TABLE IF NOT EXISTS `cart` (
   KEY `fk_cart_product1_idx` (`product_id`),
   CONSTRAINT `fk_cart_product1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
   CONSTRAINT `fk_cart_user1` FOREIGN KEY (`user_email`) REFERENCES `user` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table pbay_db.cart: ~0 rows (approximately)
 INSERT INTO `cart` (`cart_id`, `qty`, `user_email`, `product_id`) VALUES
-	(15, 1, 'pasinduogdev@gmail.com', 4);
+	(26, 1, 'ogpmadhuwantha678@gmail.com', 4);
 
 -- Dumping structure for table pbay_db.category
 CREATE TABLE IF NOT EXISTS `category` (
@@ -294,10 +294,12 @@ CREATE TABLE IF NOT EXISTS `product_has_color` (
   CONSTRAINT `fk_product_has_color_product1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table pbay_db.product_has_color: ~2 rows (approximately)
+-- Dumping data for table pbay_db.product_has_color: ~4 rows (approximately)
 INSERT INTO `product_has_color` (`product_id`, `color_clr_id`) VALUES
 	(1, 2),
-	(2, 1);
+	(2, 1),
+	(3, 1),
+	(4, 1);
 
 -- Dumping structure for table pbay_db.product_img
 CREATE TABLE IF NOT EXISTS `product_img` (
@@ -366,7 +368,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 -- Dumping data for table pbay_db.user: ~2 rows (approximately)
 INSERT INTO `user` (`fname`, `lname`, `email`, `password`, `mobile`, `joined_date`, `verification_code`, `status_status_id`, `user_type_id`) VALUES
-	('OG', 'Mobile', 'pasinduogdev@gmail.com', '$2y$10$Ypk6IvgDXT8XiPHds3bRmO9G45tIduzGOvgDeSa3ioRNRFB8b3wQG', '0766035744', '2024-05-27 17:19:07', NULL, 1, 1),
+	('Pasindu', 'Owa Gamage', 'ogpmadhuwantha678@gmail.com', '$2y$10$BgoyRblox1vY/SzpRNe1Se/m1qHX5sI7M/DvFN58TGm7uPR5vBuNe', '0715518744', '2024-05-29 15:57:46', NULL, 1, 2),
+	('OG', 'Mobile', 'pasinduogdev@gmail.com', '$2y$10$fxCbcN6foO3V51HE8UBC2.d5.aLK78mSu.i6PUTqfEgvhu4wbRwZu', '0766035744', '2024-05-27 17:19:07', '786717', 1, 1),
 	('Ashan', 'Mobile', 'rraskrocky@gmail.com', '$2y$10$a.KB2uvMH/ZmLwRv0BdPcOGppoOMd3lGQA5eAk3D4Ebjk3elSKg8G', '0764652465', '2024-05-26 21:44:40', NULL, 1, 3);
 
 -- Dumping structure for table pbay_db.user_has_address

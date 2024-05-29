@@ -186,6 +186,16 @@ function login() {
 
             }
 
+            if (response == "Your Membership is Temporary Banned!") {
+
+                Swal.fire({
+                    title: "You're Banned!",
+                    text: response,
+                    icon: "warning",
+                });
+
+            }
+
         }
     }
 
@@ -194,8 +204,7 @@ function login() {
 
 }
 
-// Forgot password
-let otpModal;
+var otpModal;
 function forgotPassword() {
 
     let otpbox = document.getElementById("otpBox");
@@ -263,7 +272,7 @@ function sendCode() {
 
 }
 
-let resetPwModal;
+var resetPwModal;
 
 function resetPasswordBox() {
 
@@ -615,3 +624,106 @@ function viewPassword4() {
 // View password
 
 // User profile update
+
+// Admin Panel
+
+function loadUser() {
+
+    let r = new XMLHttpRequest();
+
+    r.onreadystatechange = function () {
+        if (r.readyState == 4 && r.status == 200) {
+            let response = r.responseText;
+            document.getElementById("tb").innerHTML = response;
+        }
+    }
+
+    r.open("POST", "loaduserProcess.php", true);
+    r.send();
+
+}
+
+function updateUserStatus() {
+
+    let user_email = document.getElementById("u_email");
+
+    let f = new FormData();
+
+    f.append("u", user_email.value);
+
+    var r = new XMLHttpRequest();
+
+    r.onreadystatechange = function () {
+        if (r.readyState == 4 && r.status == 200) {
+            var response = r.responseText;
+            
+            if (response == "Deactivated") {
+                
+                Swal.fire({
+                    title: "Deactivated!",
+                    icon: "warning",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                });
+                
+            } else {
+
+                Swal.fire({
+                    title: response,
+                    icon: "error",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                }); 
+
+            }
+            
+            if (response == "Activated") {
+
+                Swal.fire({
+                    title: "Activated!",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                });
+                
+            } else {
+
+                Swal.fire({
+                    title: response,
+                    icon: "error",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                });
+
+            }
+
+            if (response == "Please enter User Email") {
+
+                Swal.fire({
+                    title: response,
+                    icon: "error",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                });
+                
+            }
+        }
+
+    }
+
+    r.open("POST","userStatusProcess.php",true);
+    r.send(f);
+
+}
+
+// Admin Panel
