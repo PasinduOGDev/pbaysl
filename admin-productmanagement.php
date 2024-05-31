@@ -45,9 +45,9 @@ if (isset($_SESSION["a"])) {
                         <div class="col-12 col-md-6 d-flex justify-content-center">
 
                             <div class="col-8">
-                                <label class="form-label">Brand Name</label>
-                                <input type="text" class="form-control" placeholder="Enter Brand">
-                                <button class="btn btn-secondary col-12 mt-2">Brand Register</button>
+                                <label class="form-label">Category</label>
+                                <input type="text" class="form-control" placeholder="Enter Category" id="category">
+                                <button class="btn btn-secondary col-12 mt-2" onclick="categoryRegister();">Category Register</button>
                             </div>
 
                         </div>
@@ -55,9 +55,9 @@ if (isset($_SESSION["a"])) {
                         <div class="col-12 col-md-6 d-flex justify-content-center">
 
                             <div class="col-8">
-                                <label class="form-label">Model Name</label>
-                                <input type="text" class="form-control" placeholder="Enter Model">
-                                <button class="btn btn-secondary col-12 mt-2">Model Register</button>
+                                <label class="form-label">Brand Name</label>
+                                <input type="text" class="form-control" placeholder="Enter Brand" id="brand">
+                                <button class="btn btn-secondary col-12 mt-2" onclick="brandRegister();">Brand Register</button>
                             </div>
 
                         </div>
@@ -69,9 +69,9 @@ if (isset($_SESSION["a"])) {
                         <div class="col-12 col-md-6 d-flex justify-content-center">
 
                             <div class="col-8">
-                                <label class="form-label">Color</label>
-                                <input type="text" class="form-control" placeholder="Enter Colour">
-                                <button class="btn btn-secondary col-12 mt-2">Colour Register</button>
+                                <label class="form-label">Model Name</label>
+                                <input type="text" class="form-control" placeholder="Enter Model" id="model">
+                                <button class="btn btn-secondary col-12 mt-2" onclick="modelRegister();">Model Register</button>
                             </div>
 
                         </div>
@@ -79,9 +79,9 @@ if (isset($_SESSION["a"])) {
                         <div class="col-12 col-md-6 d-flex justify-content-center">
 
                             <div class="col-8">
-                                <label class="form-label">Category</label>
-                                <input type="text" class="form-control" placeholder="Enter Category">
-                                <button class="btn btn-secondary col-12 mt-2">Category Register</button>
+                                <label class="form-label">Color</label>
+                                <input type="text" class="form-control" placeholder="Enter Colour" id="color">
+                                <button class="btn btn-secondary col-12 mt-2" onclick="colorRegister();">Colour Register</button>
                             </div>
 
                         </div>

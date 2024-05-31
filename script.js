@@ -522,6 +522,146 @@ function signOut() {
 
 // signout end
 
+// Admin functions
+
+function categoryRegister() {
+
+    let category = document.getElementById("category");
+
+    let f = new FormData();
+
+    f.append("c",category.value);
+
+    let r = new XMLHttpRequest();
+
+    r.onreadystatechange = function() {
+        if (r.readyState == 4 && r.status == 200) {
+            let response = r.responseText;
+            
+            if (response == "success") {
+                Swal.fire({
+                    title: "Successfully Added" + " " + category.value,
+                    icon: "success",
+                });
+            } else {
+                Swal.fire({
+                    title: response,
+                    icon: "error",
+                });
+            }
+
+        }
+    }
+
+    r.open("POST","categoryRegProcess.php",true);
+    r.send(f);
+
+}
+
+function brandRegister() {
+
+    let brand = document.getElementById("brand");
+
+    let f = new FormData();
+
+    f.append("b",brand.value);
+
+    let r = new XMLHttpRequest();
+
+    r.onreadystatechange = function() {
+        if (r.readyState == 4 && r.status == 200) {
+            let response = r.responseText;
+            
+            if (response == "success") {
+                Swal.fire({
+                    title: "Successfully Added" + " " + brand.value,
+                    icon: "success",
+                });
+            } else {
+                Swal.fire({
+                    title: response,
+                    icon: "error",
+                });
+            }
+
+        }
+    }
+
+    r.open("POST","brandRegProcess.php",true);
+    r.send(f);
+
+}
+
+function modelRegister() {
+
+    let model = document.getElementById("model");
+
+    let f = new FormData();
+
+    f.append("m",model.value);
+
+    let r = new XMLHttpRequest();
+
+    r.onreadystatechange = function() {
+        if (r.readyState == 4 && r.status == 200) {
+            let response = r.responseText;
+            
+            if (response == "success") {
+                Swal.fire({
+                    title: "Successfully Added" + " " + model.value,
+                    icon: "success",
+                });
+            } else {
+                Swal.fire({
+                    title: response,
+                    icon: "error",
+                });
+            }
+
+        }
+    }
+
+    r.open("POST","modelRegProcess.php",true);
+    r.send(f);
+
+}
+
+function colorRegister() {
+
+    let color = document.getElementById("color");
+
+    let f = new FormData();
+
+    f.append("col",color.value);
+
+    let r = new XMLHttpRequest();
+
+    r.onreadystatechange = function() {
+        if (r.readyState == 4 && r.status == 200) {
+            let response = r.responseText;
+            
+            if (response == "success") {
+                Swal.fire({
+                    title: "Successfully Added" + " " + color.value,
+                    icon: "success",
+                });
+            } else {
+                Swal.fire({
+                    title: response,
+                    icon: "error",
+                });
+            }
+
+        }
+    }
+
+    r.open("POST","colorRegProcess.php",true);
+    r.send(f);
+
+}
+
+// Admin functions
+
 // cart
 
 function addtoCart(id) {

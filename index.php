@@ -119,7 +119,7 @@
 
             <!-- brands -->
 
-            <div class="row py-2 bg-body-secondary text-center">
+            <div class="row mt-5 py-2 bg-body-secondary text-center">
                 <div class="col-12"><span class="fs-1"><?php echo $category1_data["category_name"]; ?></span></div>
             </div>
 

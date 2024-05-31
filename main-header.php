@@ -24,9 +24,9 @@
 
         <?php
 
-        include "connection.php";
-
         session_start();
+
+        include "connection.php";
 
         if (isset($_SESSION["u"])) {
 
@@ -45,7 +45,8 @@
                         </div>
                         <div class="col-6 d-flex justify-content-center">
                             <div class="col-11 mt-1 mb-1 d-flex justify-content-end">
-                                <a class="fw-bold link-danger text-decoration-none" onclick="signOut();" href="#">Log Out <i class="bi bi-box-arrow-right"></i></a>
+                                <a class="fw-bold link-danger text-decoration-none" onclick="signOut();" href="#">Log Out <i
+                                        class="bi bi-box-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
