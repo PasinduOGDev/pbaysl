@@ -866,4 +866,51 @@ function updateUserStatus() {
 
 }
 
+// Product registration
+
+function registerProduct() {
+
+    let title = document.getElementById("product_title");
+    let category = document.getElementById("category");
+    let brand = document.getElementById("brand");
+    let model = document.getElementById("model");
+    let color = document.getElementById("color");
+    let price = document.getElementById("price");
+    let qty = document.getElementById("qty");
+    let condition = document.getElementById("condition");
+    let desc = document.getElementById("desc");
+    let product_img = document.getElementById("product_img");
+
+    let f = new FormData();
+
+    f.append("t",title.value);
+    f.append("c",category.value);
+    f.append("b",brand.value);
+    f.append("m",model.value);
+    f.append("col",color.value);
+    f.append("p",price.value);
+    f.append("q",qty.value);
+    f.append("con",condition.value);
+    f.append("d", desc.value);
+    f.append("img",product_img.files[0]);
+
+    let r = new XMLHttpRequest();
+
+    r.onreadystatechange = function() {
+        if (r.readyState == 4 && r.status == 200) {
+            let response = r.responseText;
+            Swal.fire({
+                title: response,
+                icon: "warning",
+            })
+        }
+    }
+
+    r.open("POST","productRegProcess.php",true);
+    r.send(f);
+
+}
+
+// Product registration
+
 // Admin Panel

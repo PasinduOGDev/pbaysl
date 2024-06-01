@@ -91,7 +91,7 @@
 
                             <?php
 
-                            $cart_rs = Database::search("SELECT*FROM `cart` WHERE `user_email`='" . $user . "'");
+                            $cart_rs = Database::search("SELECT * FROM `cart` WHERE `user_email`='" . $user . "'");
                             $cart_num = $cart_rs->num_rows;
 
                             if ($cart_num == 0) {
@@ -174,7 +174,7 @@
                                                         ?>
                                                     </div>
                                                     <div class="col-6 text-end">
-                                                        <button class="btn btn-danger">Profile Details</button>
+                                                        <a href="profile.php" class="btn btn-danger">Profile Details</a>
                                                     </div>
                                                 </div>
                                                 <?php
