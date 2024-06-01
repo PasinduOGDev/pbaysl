@@ -51,11 +51,6 @@ if (isset($_SESSION["a"])) {
                                     <h2>Product Registration</h2>
                                 </div>
 
-                                <div class="col-12 mt-3">
-                                    <label class="form-label">Product Title</label>
-                                    <input type="text" class="form-control" id="product_title" placeholder="Enter Product Title">
-                                </div>
-
                                 <div class="col-6">
                                     <label class="form-label">Category</label>
                                     <select class="form-select" id="category">
@@ -156,14 +151,11 @@ if (isset($_SESSION["a"])) {
                                     </select>
                                 </div>
 
-                                <div class="col-6 mt-3">
-                                    <label class="form-label">Price</label>
-                                    <input type="text" class="form-control" id="price" placeholder="Enter Price">
-                                </div>
+                                <hr />
 
-                                <div class="col-6 mt-3">
-                                    <label class="form-label">Quantity</label>
-                                    <input type="number" class="form-control" id="qty" placeholder="Enter Quantity">
+                                <div class="col-12">
+                                    <label class="form-label">Product Title</label>
+                                    <input type="text" class="form-control" id="product_title" placeholder="Enter Product Title">
                                 </div>
 
                                 <div class="col-12 mt-3">
@@ -191,15 +183,70 @@ if (isset($_SESSION["a"])) {
                                     </select>
                                 </div>
 
+                                <hr />
+
+                                <div class="col-6 mt-3">
+                                    <label class="form-label">Price</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">Rs</span>
+                                        <input type="text" class="form-control" aria-label="Amount" placeholder="Enter Amount" id="price">
+                                        <span class="input-group-text">.00</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-6 mt-3">
+                                    <label class="form-label">Quantity</label>
+                                    <input type="number" class="form-control" id="qty" placeholder="Enter Quantity">
+                                </div>
+
+                                <hr />
+
+                                <div class="col-6">
+                                    <label class="form-label">Delivery cost within Colombo</label>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Rs</span>
+                                        <input type="text" class="form-control" aria-label="Amount" placeholder="Enter Amount" id="dwc">
+                                        <span class="input-group-text">.00</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <label class="form-label">Delivery cost out of Colombo</label>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Rs</span>
+                                        <input type="text" class="form-control" aria-label="Amount" placeholder="Enter Amount" id="doc">
+                                        <span class="input-group-text">.00</span>
+                                    </div>
+                                </div>
+
+                                <hr />
+
                                 <div class="col-12">
                                     <label class="form-label">Description</label>
                                     <textarea class="form-control" placeholder="Enter Description" id="desc"></textarea>
                                 </div>
 
-                                <div class="col-12">
+                                <!-- <div class="col-12">
                                     <label class="form-label">Product image</label>
                                     <input type="file" class="form-control" placeholder="Select photo" id="product_img">
+                                </div> -->
+
+                                <hr />
+
+                                <div class="col-12">
+                                    <label class="form-label">Product image :-</label>
+                                    <div class="row justify-content-center">
+                                        <div class="col-4 border border-primary rounded">
+                                            <img src="resources/addproductimg.svg" class="img-fluid" style="width: 250px;" id="i0">
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3 justify-content-center">
+                                        <input type="file" class="d-none" multiple id="imageuploader">
+                                        <label for="imageuploader" class="btn btn-primary col-8" onclick="addProductImage();">Upload</label>
+                                    </div>
                                 </div>
+
+                                <hr />
 
                                 <div class="col-12">
                                     <button class="col-12 btn btn-secondary" onclick="registerProduct();">Register Product</button>
