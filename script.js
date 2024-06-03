@@ -763,6 +763,98 @@ function viewPassword4() {
 
 // View password
 
+// Profile update
+
+function changeProfileimage() {
+    
+    let img = document.getElementById("profileimage");
+
+    img.onchange = function() {
+        let file = this.files[0];
+        let url = window.URL.createObjectURL(file);
+
+        document.getElementById("img").src = url;
+    }
+
+}
+
+function updateProfile() {
+
+    let fname = document.getElementById("fname");
+    let lname = document.getElementById("lname");
+    let line1 = document.getElementById("line1");
+    let line2 = document.getElementById("line2");
+    let pcode = document.getElementById("pcode");
+    let city = document.getElementById("city");
+    let district = document.getElementById("district");
+    let province = document.getElementById("province");
+    let image = document.getElementById("profileimage");
+
+    let f = new FormData();
+
+    f.append("f",fname.value);
+    f.append("l",lname.value);
+    f.append("l1",line1.value);
+    f.append("l2",line2.value);
+    f.append("pc",pcode.value);
+    f.append("c",city.value);
+    f.append("d",district.value);
+    f.append("p",province.value);
+    f.append("i",image.files[0]);
+
+    let r = new XMLHttpRequest();
+
+    r.onreadystatechange = function() {
+        if (r.readyState == 4 && r.status == 200) {
+            let response = r.responseText;
+            
+            if (response == "updated" || response == "saved") {
+                
+                Swal.fire({
+                    title: "Done!",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                });
+
+            } else if (response == "You have not selected any image!") {
+                
+                Swal.fire({
+                    title: "You have not selected any image!",
+                    icon: "warning",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                });
+
+            } else {
+                
+                Swal.fire({
+                    title: response,
+                    icon: "error",
+                })
+
+            }   
+
+        }
+    }
+
+    r.open("POST","updateProfileProcess.php",true);
+    r.send(f);
+
+}
+
+function changeProfileImg() {
+
+
+
+}
+
+// Profile update
+
 // User profile update
 
 // Admin Panel
@@ -959,6 +1051,50 @@ function addProductImage() {
 
         }
     }
+
+}
+
+function updateStock() {
+
+    let select_product = document.getElementById("sp");
+    let qty = document.getElementById("q");
+    let unit_price = document.getElementById("up");
+
+    let f = new FormData();
+
+    f.append("sp",select_product.value);
+    f.append("q",qty.value);
+    f.append("up",unit_price.value);
+
+    let r = new XMLHttpRequest();
+
+    r.onreadystatechange = function() {
+        if (r.readyState == 4 && r.status == 200) {
+            let response = r.responseText;
+            
+            if (response == "success") {
+                
+                Swal.fire({
+                    title: "Product Successfully Updated!",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                });
+
+            } else {
+                Swal.fire({
+                    title: response,
+                    icon: "error",
+                });  
+            }
+
+        }
+    }
+
+    r.open("POST","updateStockProcess.php",true);
+    r.send(f);
 
 }
 

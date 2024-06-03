@@ -265,22 +265,43 @@ if (isset($_SESSION["a"])) {
                                 </div>
 
                                 <div class="col-12 mt-3">
-                                    <label class="form-label">Product Title</label>
-                                    <input type="text" class="form-control" placeholder="Enter Product Title">
+                                    <label class="form-label">Select Product</label>
+                                    <select class="form-select" id="sp">
+                                        <option value="0">Select product</option>
+
+                                        <?php
+                                        
+                                        $stock_rs = Database::search("SELECT * FROM `product`");
+                                        $stock_num = $stock_rs->num_rows;
+
+                                        for ($i=0; $i < $stock_num; $i++) { 
+                                            $stock_data = $stock_rs->fetch_assoc();
+
+                                            ?>
+                                            
+                                        <option value="<?php echo $stock_data["id"]; ?>"><?php echo $stock_data["title"]; ?></option>
+
+                                            <?php
+
+                                        }
+                                        
+                                        ?>
+
+                                    </select>
                                 </div>
 
                                 <div class="col-12">
                                     <label class="form-label">Quantity</label>
-                                    <input type="number" class="form-control" placeholder="Enter Product Quantity">
+                                    <input type="number" class="form-control" id="q" placeholder="Enter Product Quantity">
                                 </div>
 
                                 <div class="col-12">
                                     <label class="form-label">Unit Price</label>
-                                    <input type="text" class="form-control" placeholder="Enter Unit Price">
+                                    <input type="text" class="form-control" id="up" placeholder="Enter Unit Price">
                                 </div>
 
                                 <div class="col-12">
-                                    <button class="col-12 btn btn-secondary">Update Stock</button>
+                                    <button class="col-12 btn btn-secondary" onclick="updateStock();">Update Stock</button>
                                 </div>
 
                             </div>

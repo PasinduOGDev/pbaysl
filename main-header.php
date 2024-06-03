@@ -123,22 +123,6 @@
                                     </ul>
                                 </li>
 
-                                <?php
-
-                                if (isset($_SESSION["u"])) {
-
-                                    ?>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link link-body-tertiary fw-bold" aria-current="page" href="#">Sell</a>
-                                    </li>
-
-                                    <?php
-
-                                }
-
-                                ?>
-
                             </ul>
                             <div class="d-flex">
                                 <div class="input-group">

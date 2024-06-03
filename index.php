@@ -27,12 +27,9 @@
 
         <div id="carouselExampleIndicators" class="carousel slide">
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -45,13 +42,11 @@
                     <img src="img/banner/banner3.jpg" class="d-block w-100" style="border-radius: 10px;">
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
@@ -115,7 +110,7 @@
         for ($y = 0; $y < $category1_num; $y++) {
             $category1_data = $category1_rs->fetch_assoc();
 
-            ?>
+        ?>
 
             <!-- brands -->
 
@@ -137,98 +132,105 @@
                     for ($z = 0; $z < $product_num; $z++) {
                         $product_data = $product_rs->fetch_assoc();
 
-                        ?>
+                    ?>
 
                         <div class="col">
-                            <div class="card bg-body-secondary h-100">
 
-                                <?php
+                            <?php
+
+                            if ($product_data["qty"] > 0) {
+
+                            ?>
+
+                                <a class="text-decoration-none" href="<?php echo "singleProductView.php?id=" . ($product_data["id"]); ?>">
+                                    <div class="card bg-body-secondary h-100">
+
+                                        <?php
+
+                                        $image_rs = Database::search("SELECT * FROM `product_img` WHERE `product_id`='" . $product_data["id"] . "'");
+                                        $image_data = $image_rs->fetch_assoc();
+
+                                        ?>
+
+                                        <img src="<?php echo $image_data["img_path"]; ?>" class="card-img-top">
+                                        <hr />
+                                        <div class="card-body text-center">
+                                            <p class="card-text"><?php echo $product_data["title"]; ?></p>
+                                            <span class="card-text text-primary fs-3 fw-bold">Rs.
+                                                <?php echo $product_data["price"]; ?></span><br />
+
+                                            <span class="card-text text-success fw-bold">In Stock</span><br />
+                                            <span class="card-text"><?php echo $product_data["qty"]; ?> Stocks</span><br />
+                                        </div>
+
+                                    </div>
+                                </a>
+                        </div>
+
+
+                    <?php
+
+                            } else {
+
+                    ?>
+
+                        <div class="card bg-body-tertiary h-100 disabled">
+
+                            <?php
 
                                 $image_rs = Database::search("SELECT * FROM `product_img` WHERE `product_id`='" . $product_data["id"] . "'");
                                 $image_data = $image_rs->fetch_assoc();
 
-                                ?>
+                            ?>
 
-                                <img src="<?php echo $image_data["img_path"]; ?>" class="card-img-top">
-                                <hr />
-                                <div class="card-body text-center">
-                                    <p class="card-text"><?php echo $product_data["title"]; ?></p>
-                                    <span class="card-text text-primary fs-4 fw-bold">Rs.
-                                        <?php echo $product_data["price"]; ?></span><br />
+                            <img src="<?php echo $image_data["img_path"]; ?>" class="card-img-top">
+                            <hr />
+                            <div class="card-body text-center">
+                                <p class="card-text"><?php echo $product_data["title"]; ?></p>
+                                <span class="card-text text-primary fs-3 fw-bold">Rs.
+                                    <?php echo $product_data["price"]; ?></span><br />
 
-                                    <?php
-
-                                    if ($product_data["qty"] > 0) {
-
-                                        ?>
-
-                                        <span class="card-text text-success fw-bold">In Stock</span><br />
-                                        <span class="card-text"><?php echo $product_data["qty"]; ?> Stock Available</span><br />
-                                    </div>
-                                    <div class="row g-2 p-2 d-flex align-items-end">
-                                        <div class="col-12 col-lg-6">
-                                            <button class="col-12 btn btn-warning">Buy</button>
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                            <button class="col-12 btn btn-success"
-                                                onclick="addtoCart(<?php echo $product_data['id']; ?>);"><i class="bi bi-cart3"></i></button>
-                                        </div>
-                                    </div>
-
-                                    <?php
-
-                                    } else {
-
-                                        ?>
-
-                                    <span class="card-text text-danger fw-bold">Out of Stock</span><br />
-                                </div>
-                                <div class="row g-2 p-2 d-flex align-items-end">
-                                    <div class="col-12 col-lg-6">
-                                        <button class="col-12 btn btn-warning disabled">Buy</button>
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <button class="col-12 btn btn-success disabled"><i class="bi bi-cart3"></i></button>
-                                    </div>
-                                </div>
-
-                                <?php
-
-                                    }
-
-                                    ?>
+                                <span class="card-text text-danger fw-bold">Out of Stock</span><br />
+                            </div>
 
                         </div>
-                    </div>
+                </div>
 
-                    <?php
 
-                    }
+            <?php
 
-                    ?>
+                            }
 
-            </div>
-
-        </div>
+            ?>
 
         <?php
 
-        }
+                    }
 
         ?>
 
+            </div>
+
     </div>
 
-    <?php include "footer.php"; ?>
+<?php
 
-    <!-- js -->
-    <script src="script.js"></script>
-    <script src="bootstrap.bundle.js"></script>
-    <!-- js -->
+        }
 
-    <!-- js sweetalert -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- js sweetalert -->
+?>
+
+</div>
+
+<?php include "footer.php"; ?>
+
+<!-- js -->
+<script src="script.js"></script>
+<script src="bootstrap.bundle.js"></script>
+<!-- js -->
+
+<!-- js sweetalert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- js sweetalert -->
 </body>
 
 </html>

@@ -69,7 +69,7 @@ if (empty($category)) {
 
     Database::iud("INSERT INTO `product`(`price`,`qty`,`description`,`title`,`datetime_added`,`delivery_fee_colombo`,
     `delivery_fee_other`,`category_cat_id`,`model_has_brand_id`,`condition_condition_id`,`status_status_id`,`user_email`) 
-    VALUES ('" . $price . "','" . $qty . "','" . $description . "','" . $title . "','" . $date . "','" . $dwc . "','" . $doc . "','" . $category . "','" . $brand . "',
+    VALUES ('" . $price . "','" . $qty . "','" . $description . "','" . $title . "','" . $date . "','" . $dwc . "','" . $doc . "','" . $category . "','" . $model . "',
     '" . $condition . "','" . $status . "','" . $email . "')");
 
     $product_id = Database::$connection->insert_id;
