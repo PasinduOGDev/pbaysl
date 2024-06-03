@@ -1101,3 +1101,22 @@ function updateStock() {
 // Product registration
 
 // Admin Panel
+
+// User
+
+function advancedSearch(x) {
+
+    let txt = document.getElementById("t");
+    let category = document.getElementById("c1");
+    let brand = document.getElementById("b1");
+    let model = document.getElementById("m");
+    let condition = document.getElementById("c2");
+    let color = document.getElementById("c3");
+    let price_from = document.getElementById("pf");
+    let price_to = document.getElementById("pt");
+
+    let f = new FormData();
+    
+}
+
+// User
