@@ -740,7 +740,150 @@ function addtoCart(id) {
 
 }
 
+function deleteCart(id) {
+
+    let r = new XMLHttpRequest();
+
+    r.onreadystatechange = function () {
+        if (r.readyState == 4 && r.status == 200) {
+            let response = r.responseText;
+
+            if (response == "removed") {
+
+                Swal.fire({
+                    title: "Product is removed from Cart!",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                });
+
+            } else {
+
+                Swal.fire({
+                    title: response,
+                    icon: "error",
+                });
+
+            }
+
+        }
+    }
+
+    r.open("GET", "deleteCartProcess.php?id=" + id, true);
+    r.send();
+
+}
+
+function changeQty(id) {
+
+    let qty = document.getElementById("qty").value;
+
+    let r = new XMLHttpRequest();
+
+    r.onreadystatechange = function() {
+        if (r.readyState == 4 && r.status == 200) {
+            let response = r.responseText;
+            if (response == "updated") {
+                window.location.reload();
+            } else {
+                alert(response);
+            }
+        }
+    }
+
+    r.open("GET","cartQtyUpdateProcess.php?qty=" + qty + "&id=" + id, true);
+    r.send();
+
+
+}
+
 // cart
+
+// Buy now
+
+function buyNow(id) {
+
+    let qty = document.getElementById("qty").value;
+
+    let r = new XMLHttpRequest();
+    r.onreadystatechange = function () {
+        if (r.readyState == 4 && r.status == 200) {
+            let response = r.responseText;
+
+            var obj = JSON.parse(response);
+
+            let mail = obj["umail"];
+            let amount = obj["amount"];
+
+            if (response == 1) {
+                alert("Please Login");
+                window.location.href = "login.php";
+            } else if (response == 2) {
+                alert("Please update your profile");
+            } else {
+
+                // Payment completed. It can be a successful failure.
+                payhere.onCompleted = function onCompleted(orderId) {
+                    console.log("Payment completed. OrderID:" + orderId);
+                    // Note: validate the payment and show success or failure page to the customer
+                };
+
+                // Payment window closed
+                payhere.onDismissed = function onDismissed() {
+                    // Note: Prompt user to pay again or show an error page
+                    console.log("Payment dismissed");
+                };
+
+                // Error occurred
+                payhere.onError = function onError(error) {
+                    // Note: show an error page
+                    console.log("Error:" + error);
+                };
+
+                // Put the payment variables here
+                var payment = {
+                    "sandbox": true,
+                    "merchant_id": obj["mid"],    // Replace your Merchant ID
+                    "return_url": "http://localhost/pbaysl/singleProductView.php?id=" + id,     // Important
+                    "cancel_url": "http://localhost/pbaysl/singleProductView.php?id=" + id,     // Important
+                    "notify_url": "http://sample.com/notify",
+                    "order_id": obj["id"],
+                    "items": obj["item"],
+                    "amount": amount + ".00",
+                    "currency": "LKR",
+                    "hash": obj["hash"], // *Replace with generated hash retrieved from backend
+                    "first_name": obj["fname"],
+                    "last_name": obj["lname"],
+                    "email": mail,
+                    "phone": obj["mobile"],
+                    "address": obj["address"],
+                    "city": obj["city"],
+                    "country": "Sri Lanka",
+                    "delivery_address": obj["address"],
+                    "delivery_city": obj["city"],
+                    "delivery_country": "Sri Lanka",
+                    "custom_1": "",
+                    "custom_2": ""
+                };
+
+                // Show the payhere.js popup, when "PayHere Pay" is clicked
+                // document.getElementById('payhere-payment').onclick = function (e) {
+                    payhere.startPayment(payment);
+                // };
+
+            }
+
+        }
+    }
+
+    r.open("GET", "paymentProcess.php?id=" + id + "&qty=" + qty, true);
+    r.send();
+
+}
+
+// Buy now
 
 // User profile update
 
@@ -766,10 +909,10 @@ function viewPassword4() {
 // Profile update
 
 function changeProfileimage() {
-    
+
     let img = document.getElementById("profileimage");
 
-    img.onchange = function() {
+    img.onchange = function () {
         let file = this.files[0];
         let url = window.URL.createObjectURL(file);
 
@@ -792,24 +935,24 @@ function updateProfile() {
 
     let f = new FormData();
 
-    f.append("f",fname.value);
-    f.append("l",lname.value);
-    f.append("l1",line1.value);
-    f.append("l2",line2.value);
-    f.append("pc",pcode.value);
-    f.append("c",city.value);
-    f.append("d",district.value);
-    f.append("p",province.value);
-    f.append("i",image.files[0]);
+    f.append("f", fname.value);
+    f.append("l", lname.value);
+    f.append("l1", line1.value);
+    f.append("l2", line2.value);
+    f.append("pc", pcode.value);
+    f.append("c", city.value);
+    f.append("d", district.value);
+    f.append("p", province.value);
+    f.append("i", image.files[0]);
 
     let r = new XMLHttpRequest();
 
-    r.onreadystatechange = function() {
+    r.onreadystatechange = function () {
         if (r.readyState == 4 && r.status == 200) {
             let response = r.responseText;
-            
+
             if (response == "updated" || response == "saved") {
-                
+
                 Swal.fire({
                     title: "Done!",
                     icon: "success",
@@ -820,7 +963,7 @@ function updateProfile() {
                 });
 
             } else if (response == "You have not selected any image!") {
-                
+
                 Swal.fire({
                     title: "You have not selected any image!",
                     icon: "warning",
@@ -831,25 +974,19 @@ function updateProfile() {
                 });
 
             } else {
-                
+
                 Swal.fire({
                     title: response,
                     icon: "error",
                 })
 
-            }   
+            }
 
         }
     }
 
-    r.open("POST","updateProfileProcess.php",true);
+    r.open("POST", "updateProfileProcess.php", true);
     r.send(f);
-
-}
-
-function changeProfileImg() {
-
-
 
 }
 
@@ -1005,7 +1142,7 @@ function registerProduct() {
             if (response == "success") {
                 Swal.fire({
                     title: title.value + " has been Successfully Registered!",
-                    icon: "warning",
+                    icon: "success",
                 }).then((result) => {
                     if (result.isConfirmed) {
                         window.location.reload();
@@ -1015,7 +1152,7 @@ function registerProduct() {
                 Swal.fire({
                     title: response,
                     icon: "error",
-                });   
+                });
             }
         }
     }
@@ -1031,13 +1168,13 @@ function addProductImage() {
 
     let image = document.getElementById("imageuploader");
 
-    image.onchange = function() {
+    image.onchange = function () {
         let file_count = image.files.length;
 
         if (file_count <= 1) {
-            
+
             for (let x = 0; x < file_count; x++) {
-                
+
                 let file = this.files[x];
                 let url = window.URL.createObjectURL(file);
 
@@ -1062,18 +1199,18 @@ function updateStock() {
 
     let f = new FormData();
 
-    f.append("sp",select_product.value);
-    f.append("q",qty.value);
-    f.append("up",unit_price.value);
+    f.append("sp", select_product.value);
+    f.append("q", qty.value);
+    f.append("up", unit_price.value);
 
     let r = new XMLHttpRequest();
 
-    r.onreadystatechange = function() {
+    r.onreadystatechange = function () {
         if (r.readyState == 4 && r.status == 200) {
             let response = r.responseText;
-            
+
             if (response == "success") {
-                
+
                 Swal.fire({
                     title: "Product Successfully Updated!",
                     icon: "success",
@@ -1087,13 +1224,13 @@ function updateStock() {
                 Swal.fire({
                     title: response,
                     icon: "error",
-                });  
+                });
             }
 
         }
     }
 
-    r.open("POST","updateStockProcess.php",true);
+    r.open("POST", "updateStockProcess.php", true);
     r.send(f);
 
 }
@@ -1114,9 +1251,32 @@ function advancedSearch(x) {
     let color = document.getElementById("c3");
     let price_from = document.getElementById("pf");
     let price_to = document.getElementById("pt");
+    let sort = document.getElementById("s");
 
     let f = new FormData();
-    
+
+    f.append("t", txt.value);
+    f.append("cat", category.value);
+    f.append("b", brand.value);
+    f.append("m", model.value);
+    f.append("con", condition.value);
+    f.append("col", color.value);
+    f.append("pf", price_from.value);
+    f.append("pt", price_to.value);
+    f.append("s", sort.value);
+
+    let r = new XMLHttpRequest();
+
+    r.onreadystatechange = function () {
+        if (r.readyState == 4 && r.status == 200) {
+            let response = r.responseText;
+            document.getElementById("view_area").innerHTML = response;
+        }
+    }
+
+    r.open("POST", "advancedSearchProcess.php", true);
+    r.send(f);
+
 }
 
 // User

@@ -120,13 +120,13 @@
 
             <div class="row d-flex justify-content-center">
 
-                <div class="row row-cols-2 row-cols-md-4 row-cols-lg-5 g-4">
+                <div class="row row-cols-2 row-cols-md-4 row-cols-lg-5 g-4 justify-content-center">
 
                     <?php
 
                     $product_rs = Database::search("SELECT * FROM `product` WHERE 
                             `category_cat_id`='" . $category1_data["cat_id"] . "' AND 
-                            `status_status_id`='1' ORDER BY `datetime_added` DESC LIMIT 6 OFFSET 0");
+                            `status_status_id`='1' ORDER BY `datetime_added` DESC LIMIT 10 OFFSET 0");
                     $product_num = $product_rs->num_rows;
 
                     for ($z = 0; $z < $product_num; $z++) {
@@ -143,7 +143,7 @@
                             ?>
 
                                 <a class="text-decoration-none" href="<?php echo "singleProductView.php?id=" . ($product_data["id"]); ?>">
-                                    <div class="card bg-body-secondary h-100">
+                                    <div class="card product_card bg-body-secondary h-100">
 
                                         <?php
 

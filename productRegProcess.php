@@ -41,7 +41,7 @@ if (empty($category)) {
     echo "Please add description";
 } else {
 
-    $model_has_brand_rs = Database::search("SELECT * FROM `model_has_brand` WHERE `model_model_id`='" . $model . "' AND 
+    $model_has_brand_rs = Database::search("SELECT * FROM `model_has_brand` WHERE `model_model_id`=' ".$model."' AND 
 `brand_brand_id`='" . $brand . "'");
 
     $model_has_brand_id;
@@ -69,7 +69,7 @@ if (empty($category)) {
 
     Database::iud("INSERT INTO `product`(`price`,`qty`,`description`,`title`,`datetime_added`,`delivery_fee_colombo`,
     `delivery_fee_other`,`category_cat_id`,`model_has_brand_id`,`condition_condition_id`,`status_status_id`,`user_email`) 
-    VALUES ('" . $price . "','" . $qty . "','" . $description . "','" . $title . "','" . $date . "','" . $dwc . "','" . $doc . "','" . $category . "','" . $model . "',
+    VALUES ('" . $price . "','" . $qty . "','" . $description . "','" . $title . "','" . $date . "','" . $dwc . "','" . $doc . "','" . $category . "','" . $model_has_brand_id . "',
     '" . $condition . "','" . $status . "','" . $email . "')");
 
     $product_id = Database::$connection->insert_id;
@@ -93,9 +93,9 @@ if (empty($category)) {
                     if ($file_extension == "image/jpeg") {
                         $new_img_extension = ".jpeg";
                     } else if ($file_extension == "image/png") {
-                        $new_img_extension == "image/png";
+                        $new_img_extension = ".png";
                     } else if ($file_extension == "image/svg+xml") {
-                        $new_img_extension = "image/.svg";
+                        $new_img_extension = ".svg";
                     }
 
                     $file_name = "resources/product_img//" . $title . "_" . $x . "_" . uniqid() . $new_img_extension;

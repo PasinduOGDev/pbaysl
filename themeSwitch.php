@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-6 d-flex justify-content-start">
             <div class="row mx-4 mt-1 py-1">
-                <span><i class="bi bi-funnel"></i> Advanced</span>
+                <a href="advancedSearch.php" class="link-body-tertiary text-decoration-none"><i class="bi bi-funnel"></i> Advanced</a>
             </div>
         </div>
         <div class="col-6 d-flex justify-content-end">

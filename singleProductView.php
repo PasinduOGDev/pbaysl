@@ -114,6 +114,8 @@ if (isset($_GET["id"])) {
                                             </div>
                                         </div>
 
+                                        <hr />
+
                                         <?php
 
                                         $price = $product_data["price"];
@@ -138,7 +140,12 @@ if (isset($_GET["id"])) {
                                                 <div class="col-12">
                                                     <h5 class="fs-5">Warranty: 2 Years Warranty</h5>
                                                     <h5 class="fs-5">Return Policy: 6 Months Return Policy</h5>
-                                                    <h5 class="fs-5 text-success">In Stock: <?php echo $product_data["qty"]; ?></h5>
+                                                    <hr />
+                                                    <h5 class="fs-5 text-success">In Stock: <?php echo $product_data["qty"]; ?> Stocks Available</h5>
+                                                    <div class="col-12 col-md-2">
+                                                        <input type="number" class="form-control" value="1" min="1" max="<?php echo $product_data["qty"]; ?>" id="qty" />
+
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -152,7 +159,12 @@ if (isset($_GET["id"])) {
                                                 <div class="col-12">
                                                     <h5 class="fs-5">Warranty: 6 Months Warranty</h5>
                                                     <h5 class="fs-5">Return Policy: 3 Months Return Policy</h5>
-                                                    <h5 class="fs-5 text-success">In Stock: <?php echo $product_data["qty"]; ?></h5>
+                                                    <hr />
+                                                    <h5 class="fs-5 text-success">In Stock: <?php echo $product_data["qty"]; ?> Stocks Available</h5>
+                                                    <div class="col-12 col-md-2">
+                                                        <input type="number" class="form-control" value="1" min="1" max="<?php echo $product_data["qty"]; ?>" id="qty" />
+
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -174,7 +186,7 @@ if (isset($_GET["id"])) {
 
                                         <div class="row mt-3">
                                             <div class="col-6">
-                                                <button class="col-12 btn btn-warning">Buy</button>
+                                                <button class="col-12 btn btn-warning" type="submit" id="payhere-payment" onclick="buyNow(<?php echo $pid; ?>);">Buy</button>
                                             </div>
                                             <div class="col-6">
                                                 <button class="col-12 btn btn-success" onclick="addtoCart(<?php echo $product_data['id']; ?>);"><i class="bi bi-cart3"></i> Cart</button>
@@ -198,6 +210,10 @@ if (isset($_GET["id"])) {
             <script src="script.js"></script>
             <script src="bootstrap.bundle.js"></script>
             <!-- js -->
+
+            <!-- payhere js -->
+            <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
+            <!-- payhere js -->
 
             <!-- js sweetalert -->
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
