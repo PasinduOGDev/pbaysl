@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | Pbay</title>
+    <title>Advanced Search | Pbay</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="bootstrap.css">
@@ -20,7 +20,23 @@
 <body data-bs-theme="light" class="bg-body-tertiary">
 
     <div class="container-fluid mt-2">
-        <?php include "themeSwitch.php"; ?>
+
+        <div class="row">
+            <div class="col-6 d-flex justify-content-start">
+                <div class="row mx-4 mt-1 py-1">
+                    <a href="index.php" class="text-body text-decoration-none"><i class="bi bi-house"></i> Home</a>
+                </div>
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+                <div class="form-check form-switch mx-4 mt-1 py-1">
+
+                    <input type="checkbox" class="form-check-input p-2" role="switch" onclick="themeChange();">
+                    <label class="form-check-label" id="icon"><i class="bi bi-brightness-high text-dark"></i></label>
+
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <div class="container-fluid">
@@ -28,11 +44,11 @@
         <!-- Search panel -->
 
         <div class="row justify-content-center">
-            <div class="col-10 card mt-3">
+            <div class="col-10 card mt-3 bg-body-secondary">
                 <div class="card-body">
 
                     <div class="container">
-                        <div class="row bg-body-secondary p-2 mt-2 mb-5" style="border-radius: 10px;">
+                        <div class="row bg-body-tertiary p-2 mt-2 mb-5" style="border-radius: 10px;">
                             <div class="col-12 text-center">
                                 <h4 class="mt-2 fw-bold">
                                     <span><i class="bi bi-funnel"></i></span>
@@ -201,7 +217,7 @@
 
         <!-- Sort panel -->
 
-        <div class="row justify-content-center">
+        <!-- <div class="row justify-content-center">
             <div class="col-10 card mt-2">
                 <div class="card-body d-flex justify-content-end">
 
@@ -217,7 +233,7 @@
 
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- Sort panel -->
 

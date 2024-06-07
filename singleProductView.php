@@ -93,17 +93,7 @@ if (isset($_GET["id"])) {
                                     <div class="card-body">
 
                                         <div class="row">
-                                            <h2 class="col-12"><?php echo $product_data["title"]; ?></h2>
-                                        </div>
-
-                                        <div class="row">
-                                            <p class="col-12 text-warning">
-                                                <span><i class="bi bi-star-fill"></i></span>
-                                                <span><i class="bi bi-star-fill"></i></span>
-                                                <span><i class="bi bi-star-fill"></i></span>
-                                                <span><i class="bi bi-star-fill"></i></span>
-                                                <span><i class="bi bi-star"></i></span>
-                                            </p>
+                                            <h2 class="col-12 fs-4"><?php echo $product_data["title"]; ?></h2>
                                         </div>
 
                                         <div class="row">
@@ -113,8 +103,6 @@ if (isset($_GET["id"])) {
 
                                             </div>
                                         </div>
-
-                                        <hr />
 
                                         <?php
 
@@ -138,9 +126,8 @@ if (isset($_GET["id"])) {
 
                                             <div class="row mt-3">
                                                 <div class="col-12">
-                                                    <h5 class="fs-5">Warranty: 2 Years Warranty</h5>
-                                                    <h5 class="fs-5">Return Policy: 6 Months Return Policy</h5>
-                                                    <hr />
+                                                    <h5 class="fs-5">Warranty: 2 Years</h5>
+                                                    <h5 class="fs-5">Return Policy: 6 Months</h5>
                                                     <h5 class="fs-5 text-success">In Stock: <?php echo $product_data["qty"]; ?> Stocks Available</h5>
                                                     <div class="col-12 col-md-2">
                                                         <input type="number" class="form-control" value="1" min="1" max="<?php echo $product_data["qty"]; ?>" id="qty" />
@@ -157,9 +144,8 @@ if (isset($_GET["id"])) {
 
                                             <div class="row mt-3">
                                                 <div class="col-12">
-                                                    <h5 class="fs-5">Warranty: 6 Months Warranty</h5>
-                                                    <h5 class="fs-5">Return Policy: 3 Months Return Policy</h5>
-                                                    <hr />
+                                                    <h5 class="fs-5">Warranty: 6 Months</h5>
+                                                    <h5 class="fs-5">Return Policy: 3 Months</h5>
                                                     <h5 class="fs-5 text-success">In Stock: <?php echo $product_data["qty"]; ?> Stocks Available</h5>
                                                     <div class="col-12 col-md-2">
                                                         <input type="number" class="form-control" value="1" min="1" max="<?php echo $product_data["qty"]; ?>" id="qty" />
@@ -173,16 +159,6 @@ if (isset($_GET["id"])) {
                                         }
 
                                         ?>
-
-                                        <div class="row mt-3 align-items-center">
-                                            <div class="col-2"><img src="img/payment/visa.svg" class="col-12"></div>
-                                            <div class="col-2"><img src="img/payment/mastercard.svg" class="col-12"></div>
-                                            <div class="col-2"><img src="img/payment/stripe.svg" class="col-12"></div>
-                                        </div>
-
-                                        <div class="row">
-                                            <h5 class="col-12">Cash on Delivery Available</h5>
-                                        </div>
 
                                         <div class="row mt-3">
                                             <div class="col-6">

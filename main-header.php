@@ -107,11 +107,8 @@
 
                                             <li><a class="dropdown-item" href="profile.php">My Profile</a>
                                             </li>
-                                            <li><a class="dropdown-item" href="#">My Sellings</a></li>
-                                            <li><a class="dropdown-item" href="#">My Products</a></li>
                                             <li><a class="dropdown-item" href="#">Watchlist</a></li>
-                                            <li><a class="dropdown-item" href="#">Purchased History</a></li>
-                                            <li><a class="dropdown-item" href="#">Messages</a></li>
+                                            <li><a class="dropdown-item" href="purchasedHistory.php">Purchased History</a></li>
 
                                             <?php
 

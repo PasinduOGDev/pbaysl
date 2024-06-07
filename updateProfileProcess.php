@@ -79,32 +79,30 @@ if (empty($fname)) {
 
                 $profile_img_num = $profile_img_rs->num_rows;
 
-                if ($profile_img_num == 1) {
-                    
-                    Database::iud("UPDATE `user_img` SET `path`='".$file_name."' WHERE `user_email`='".$email."'");
-                    echo "updated";
+                $profile_img_data = $profile_img_rs->fetch_assoc();
 
+                if ($profile_img_num == 1) {
+
+                    Database::iud("UPDATE `user_img` SET `path`='" . $file_name . "' WHERE `user_email`='" . $email . "'");
+                    echo "updated";
                 } else {
 
-                    Database::iud("INSERT INTO `user_img`(`path`,`user_email`) VALUES ('".$file_name."','".$email."')");
+                    Database::iud("INSERT INTO `user_img`(`path`,`user_email`) VALUES ('" . $file_name . "','" . $email . "')");
                     echo "saved";
-
                 }
-
             }
-
         } elseif (sizeof($_FILES) == 0) {
-            
-            echo "You have not selected any image!";
 
+            if (empty($profile_img_data)) {
+                echo "You have not selected any image!";
+            }
+            
         } else {
             echo "You must select only one photo!";
         }
-
     } else {
         echo "Invalid user!";
     }
-
 }
 
 ?>

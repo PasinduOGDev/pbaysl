@@ -23,7 +23,7 @@
         <?php include "main-header.php"; ?>
     </div>
 
-    <div class="container-fluid mt-5 mb-3" style="padding-top: 120px;" id="anim-carousal">
+    <div class="container-fluid col-12 col-md-8 mt-5 mb-3" style="padding-top: 120px;" id="anim-carousal">
 
         <div id="carouselExampleIndicators" class="carousel slide">
             <div class="carousel-indicators">
@@ -33,13 +33,13 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="img/banner/banner1.jpg" class="d-block w-100" style="border-radius: 10px;">
+                    <img src="img/banner/banner1.jpg" class="d-block w-100">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/banner/banner2.jpg" class="d-block w-100" style="border-radius: 10px;">
+                    <img src="img/banner/banner2.jpg" class="d-block w-100">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/banner/banner3.jpg" class="d-block w-100" style="border-radius: 10px;">
+                    <img src="img/banner/banner3.jpg" class="d-block w-100">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -60,7 +60,7 @@
 
         <div class="row mb-5 d-flex justify-content-center">
 
-            <div class="col-12 mt-4">
+            <div class="col-12 mt-5">
                 <h2 class="text-center">Our Authorized Partners</h2>
             </div>
 

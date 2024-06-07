@@ -782,7 +782,7 @@ function changeQty(id) {
 
     let r = new XMLHttpRequest();
 
-    r.onreadystatechange = function() {
+    r.onreadystatechange = function () {
         if (r.readyState == 4 && r.status == 200) {
             let response = r.responseText;
             if (response == "updated") {
@@ -793,9 +793,8 @@ function changeQty(id) {
         }
     }
 
-    r.open("GET","cartQtyUpdateProcess.php?qty=" + qty + "&id=" + id, true);
+    r.open("GET", "cartQtyUpdateProcess.php?qty=" + qty + "&id=" + id, true);
     r.send();
-
 
 }
 
@@ -818,16 +817,43 @@ function buyNow(id) {
             let amount = obj["amount"];
 
             if (response == 1) {
-                alert("Please Login");
-                window.location.href = "login.php";
+
+                Swal.fire({
+                    title: "Please Login!",
+                    icon: "warning",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "login.php";
+                    }
+                });
+
             } else if (response == 2) {
-                alert("Please update your profile");
+
+                Swal.fire({
+                    title: "Please update your profile!",
+                    icon: "warning",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "profile.php";
+                    }
+                });
+
             } else {
 
                 // Payment completed. It can be a successful failure.
                 payhere.onCompleted = function onCompleted(orderId) {
                     console.log("Payment completed. OrderID:" + orderId);
                     // Note: validate the payment and show success or failure page to the customer
+
+                    Swal.fire({
+                        title: "Payment completed. OrderID:" + orderId,
+                        icon: "success",
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            saveInvoice(orderId, id, mail, amount, qty);
+                        }
+                    });
+
                 };
 
                 // Payment window closed
@@ -870,7 +896,7 @@ function buyNow(id) {
 
                 // Show the payhere.js popup, when "PayHere Pay" is clicked
                 // document.getElementById('payhere-payment').onclick = function (e) {
-                    payhere.startPayment(payment);
+                payhere.startPayment(payment);
                 // };
 
             }
@@ -880,6 +906,41 @@ function buyNow(id) {
 
     r.open("GET", "paymentProcess.php?id=" + id + "&qty=" + qty, true);
     r.send();
+
+}
+
+function saveInvoice(orderId, id, mail, amount, qty) {
+
+    let f = new FormData();
+    f.append("o", orderId);
+    f.append("i", id);
+    f.append("m", mail);
+    f.append("a", amount);
+    f.append("q", qty);
+
+    let r = new XMLHttpRequest();
+
+    r.onreadystatechange = function () {
+        if (r.readyState == 4 && r.status == 200) {
+            let response = r.responseText;
+
+            if (response == "success") {
+                window.location = "invoice.php?id=" + orderId;
+            } else {
+                Swal.fire({
+                    title: response,
+                    icon: "error",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                });
+            }
+        }
+    }
+
+    r.open("POST", "saveInvoiceProcess.php", true);
+    r.send(f);
 
 }
 
@@ -1251,7 +1312,6 @@ function advancedSearch(x) {
     let color = document.getElementById("c3");
     let price_from = document.getElementById("pf");
     let price_to = document.getElementById("pt");
-    let sort = document.getElementById("s");
 
     let f = new FormData();
 
@@ -1263,7 +1323,7 @@ function advancedSearch(x) {
     f.append("col", color.value);
     f.append("pf", price_from.value);
     f.append("pt", price_to.value);
-    f.append("s", sort.value);
+    f.append("page", x);
 
     let r = new XMLHttpRequest();
 
