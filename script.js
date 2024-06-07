@@ -1393,3 +1393,134 @@ function advancedSearch(x) {
 }
 
 // User
+
+function loadChart() {
+
+    var ctx = document.getElementById("myChart");
+
+    var f = new FormData();
+
+    f.append("ctx", ctx.value)
+
+    var r = new XMLHttpRequest();
+
+    r.onreadystatechange = function () {
+        if (r.readyState == 4 && r.status == 200) {
+            var t = r.responseText;
+            var data = JSON.parse(t);
+
+
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: data.labels,
+                    datasets: [{
+                        label: '# Sales',
+                        data: data.data,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // alert(t);
+
+        }
+    }
+
+    r.open("POST", "loadChartProcess.php", true);
+    r.send(f);
+
+    // alert("hello");
+}
+
+function loadChart2() {
+    var ctx = document.getElementById("myChart2");
+    var f = new FormData();
+    f.append("ctx", ctx.value)
+
+    var r = new XMLHttpRequest();
+
+    r.onreadystatechange = function () {
+        if (r.readyState == 4 && r.status == 200) {
+            var t = r.responseText;
+            var data = JSON.parse(t);
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: data.dates,
+                    datasets: [{
+                        label: 'Daily Income',
+                        data: data.incomes,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            document.getElementById("total-amount").innerHTML = "Total Amount: " + data.total_amount;
+        }
+    }
+
+    r.open("POST", "loadChartProcess2.php", true);
+    r.send(f);
+}
+
+function loadChart3() {
+
+    var ctx = document.getElementById("myChart3");
+
+    var f = new FormData();
+
+    f.append("ctx", ctx.value)
+
+    var r = new XMLHttpRequest();
+
+    r.onreadystatechange = function () {
+        if (r.readyState == 4 && r.status == 200) {
+            var t = r.responseText;
+            var data = JSON.parse(t);
+
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: data.labels,
+                    datasets: [{
+                        label: '# Sales',
+                        data: data.data,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // alert(t);
+
+        }
+    }
+
+    r.open("POST", "loadChartProcess3.php", true);
+    r.send(f);
+
+    // alert("hello");
+}

@@ -62,10 +62,6 @@
 
         </div>
 
-        <div class="row bg-body-secondary">
-            <?php include "themeSwitch.php"; ?>
-        </div>
-
     </div>
 
     <!-- js -->
