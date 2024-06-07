@@ -70,23 +70,6 @@
 
                             </div>
 
-                            <!-- search -->
-
-                            <div class="col-12 mb-5">
-                                <div class="row bg-body-secondary p-4">
-                                    <div class="col-12 d-flex justify-content-center">
-
-                                        <form class="col-12 col-md-6 col-lg-5 d-flex" role="search">
-                                            <input class="cartSearch form-control me-2" type="search" placeholder="Search Product" aria-label="Search">
-                                            <button class="btn btn-warning" type="submit">Search</button>
-                                        </form>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- search -->
-
                             <?php
 
                             $cart_rs = Database::search("SELECT * FROM `cart` WHERE `user_email`='" . $user . "'");

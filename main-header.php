@@ -115,8 +115,7 @@
                                         }
 
                                         ?>
-
-                                        <li><a class="dropdown-item fw-bold" href="#">Help and Contact</a></li>
+                                        
                                     </ul>
                                 </li>
 

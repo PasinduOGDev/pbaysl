@@ -141,7 +141,7 @@
 
                                         <div class="col-12">
                                             <label class="form-label">Email Address</label>
-                                            <input type="email" class="form-control bg-body-secondary" value="<?php echo $user_data["email"]; ?>" readonly>
+                                            <input type="email" class="form-control bg-body-secondary" value="<?php echo $user_data["email"]; ?>" id="email" readonly>
                                         </div>
 
                                         <div class="col-6">
@@ -153,7 +153,7 @@
                                                 </div>
 
                                                 <div class="col-12">
-                                                    <div class="btn col-12 btn btn-danger">Change Password</div>
+                                                    <div class="btn col-12 btn btn-danger" onclick="changePassword();">Change Password</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -378,6 +378,53 @@
                     </div>
 
                     <!-- content -->
+
+                    <!-- modal start -->
+
+                    <div class="modal fade" tabindex="-1" id="changePwBox">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-body text-center">
+                                    <h4 class="form-label text-danger"><img src="img/logo/logo.png" width="80px" height="80px"></h4>
+                                    <h4 class="form-label text-body-tertiary"><i class="bi bi-person-check"></i></h4>
+                                    <p>Change Password</p>
+                                    <div class="col-12">
+                                        <label class="form-label"><i class="bi bi-key"></i></label>
+                                        <label class="form-label">Enter New Password</label>
+                                        <div class="col-12 input-group">
+                                            <input type="password" class="form-control" placeholder="Enter New Password" id="password4">
+                                            <span class="btn btn-warning" id="pwBtn4" onclick="viewPassword5();"><i class="bi bi-eye-slash"></i></span>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="row mt-3 g-4">
+                                        <div class="col-6">
+                                            <label class="form-label"><i class="bi bi-key"></i></label>
+                                            <label class="form-label">Enter New Password</label>
+                                            <div class="col-12 input-group">
+                                                <input type="password" class="form-control" placeholder="Enter New Password" id="password2">
+                                                <span class="btn btn-warning" id="pwBtn2" onclick="viewPassword2();"><i class="bi bi-eye-slash"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label"><i class="bi bi-key"></i></label>
+                                            <label class="form-label">Confirm New Password</label>
+                                            <div class="col-12 input-group">
+                                                <input type="password" class="form-control" placeholder="Confirm New Password" id="password3">
+                                                <span class="btn btn-warning" id="pwBtn3" onclick="viewPassword3();"><i class="bi bi-eye-slash"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 d-flex justify-content-center modal-footer">
+                                    <button type="button" class="col-8 btn btn-danger" data-bs-dismiss="modal" onclick="changePassword2();">Change</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- modal end -->
+
 
                 </div>
             </div>

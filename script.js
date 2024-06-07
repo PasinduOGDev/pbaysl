@@ -965,6 +965,21 @@ function viewPassword4() {
 
 }
 
+function viewPassword5() {
+
+    let textfield = document.getElementById("password4");
+    let button = document.getElementById("pwBtn4");
+
+    if (textfield.type == "password") {
+        textfield.type = "text";
+        button.innerHTML = '<i class="bi bi-eye"></i>';
+    } else {
+        textfield.type = "password";
+        button.innerHTML = '<i class="bi bi-eye-slash"></i>';
+    }
+
+}
+
 // View password
 
 // Profile update
@@ -1047,6 +1062,44 @@ function updateProfile() {
     }
 
     r.open("POST", "updateProfileProcess.php", true);
+    r.send(f);
+
+}
+
+let changePasswordBox;
+
+function changePassword() {
+
+    let modal = document.getElementById("changePwBox");
+    changePasswordBox = new bootstrap.Modal(modal);
+    changePasswordBox.show();
+
+}
+
+function changePassword2() {
+
+    // let email = document.getElementById("email");
+    let new_password = document.getElementById("password2");
+    let confirm_password = document.getElementById("password3");
+    let old_password = document.getElementById("password4");
+
+    let f = new FormData();
+
+    // f.append("e",email.value);
+    f.append("np", new_password.value);
+    f.append("cp", confirm_password.value);
+    f.append("op", old_password.value);
+
+    let r = new XMLHttpRequest();
+
+    r.onreadystatechange = function () {
+        if (r.readyState == 4 && r.status == 200) {
+            let response = r.responseText;
+            alert(response);
+        }
+    }
+
+    r.open("POST", "changePasswordProcess.php", true);
     r.send(f);
 
 }

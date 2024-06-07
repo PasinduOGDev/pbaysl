@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Purchasing History | Pbay</title>
+    <title>Purchased History | Pbay</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="bootstrap.css">
@@ -128,8 +128,8 @@
                                                                     </div>
                                                                     <div class="col-md-8">
                                                                         <div class="card-body">
-                                                                            <h5 class="card-title"><?php  ?></h5>
-                                                                            <p class="card-text">LKR 520,000</p>
+                                                                            <h5 class="card-title"><?php echo $product_data["title"] ?></h5>
+                                                                            <p class="card-text">LKR <?php echo $product_data["price"] ?></p>
                                                                             <span class="badge rounded-pill text-bg-warning">Waiting to accept</span>
                                                                         </div>
                                                                     </div>
@@ -138,16 +138,17 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td class="col-1 text-center">1</td>
-                                                <td class="col-2">LKR 520,000</td>
-                                                <td class="col-2">2024-06-06 07:09:09</td>
+                                                <td class="col-1 text-center"><?php echo $invoice_data["qty"]; ?></td>
+                                                <td class="col-2">LKR <?php echo $invoice_data["total"]; ?></td>
+
+                                                <td class="col-2"><?php echo $invoice_data["date"]; ?></td>
                                                 <td>
                                                     <div class="row col-12 g-2">
                                                         <div class="col-lg-6">
-                                                            <button class="col-12 btn btn-success">Invoice</button>
+                                                            <a href="<?php echo "invoice.php?id=" . $invoice_data["order_id"]; ?>" class="col-12 btn btn-success"><i class="bi bi-receipt"></i></a>
                                                         </div>
                                                         <div class="col-lg-6">
-                                                            <button class="col-12 btn btn-danger"><i class="bi bi-trash"></i></button>
+                                                            <a class="col-12 btn btn-danger"><i class="bi bi-trash"></i></a>
                                                         </div>
                                                     </div>
                                                 </td>
