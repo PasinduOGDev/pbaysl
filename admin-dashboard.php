@@ -25,9 +25,7 @@ if (isset($_SESSION["a"])) {
 
     ?>
 
-    <body class="bg-body-secondary" data-bs-theme="light" onload="loadUser();">
-
-            
+    <body class="bg-body-secondary" data-bs-theme="light" onload="loadUser();">   
 
         <!-- js -->
         <script src="script.js"></script>
