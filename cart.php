@@ -196,7 +196,7 @@
                                                             <span>Quantity:</span>
                                                         </div>
                                                         <div class="col-3 d-flex justify-content-start">
-                                                            <input type="number" class="form-control" value="<?php echo $cart_data["qty"]; ?>" onchange="changeQty(<?php echo $cart_data['cart_id'] ?>);" min="1" max="50" id="qty" />
+                                                            <input type="number" class="form-control" value="<?php echo $cart_data["qty"]; ?>" onchange="changeQty(<?php echo $cart_data['cart_id'] ?>);" min="1" max="<?php echo $product_data["qty"]; ?>" id="qty" />
                                                         </div>
                                                     </div>
                                                     <hr />
@@ -223,49 +223,6 @@
                                         ?>
 
                                         <hr />
-
-                                        <!-- single product div -->
-
-                                        <!-- <div class="row">
-
-                                        <div class="col-12 col-md-3">
-                                            <img src="img/mobile/apple1.png" width="100%">
-                                        </div>
-
-                                        <div class="col-12 col-md-5">
-                                            <h4 class="fw-bold">Apple iPhone 14 Pro Max</h4>
-                                            <p>Color: Black</p>
-                                            <h5>Price: <span class="fs-4 fw-bold">LKR 520000</span></h5>
-                                            <div class="row mt-4 mb-2">
-                                                <div
-                                                    class="col-12 col-lg-3 mt-2 mb-2 d-flex justify-content-start align-items-center">
-                                                    <span>Quantity:</span>
-                                                </div>
-                                                <div class="col-3 d-flex justify-content-start">
-                                                    <input type="number" class="form-control" value="6" min="1" max="50" />
-                                                </div>
-                                            </div>
-                                            <hr />
-                                            <p>Delivery Fee: LKR 450</p>
-                                            <hr />
-                                        </div>
-
-                                        <div class="col-12 col-md-4 text-end">
-
-                                            <div class="col-12 mt-2 mb-2">
-                                                <button class="col-12 col-lg-9 btn btn-success">Buy Now</button>
-                                            </div>
-
-                                            <div class="col-12 mt-2 mb-2">
-                                                <button class="col-12 col-lg-9 btn btn-dark"><i
-                                                        class="bi bi-cart-dash"></i></button>
-                                            </div>
-
-                                        </div>
-
-                                    </div> -->
-
-                                        <!-- single product div -->
 
                                     </div>
 

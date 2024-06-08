@@ -23,7 +23,7 @@ session_start();
 
 if (isset($_SESSION["a"])) {
 
-    ?>
+?>
 
     <body class="bg-body-secondary" data-bs-theme="light">
 
@@ -40,14 +40,21 @@ if (isset($_SESSION["a"])) {
                 <div class="col-12 mt-5">
                     <h2 class="text-center">Product Management</h2>
 
-                    <div class="row mt-4 d-flex justify-content-center g-3">
+                    <div class="row mt-4 d-flex justify-content-center g-4">
 
                         <div class="col-12 col-md-6 d-flex justify-content-center">
 
                             <div class="col-8">
                                 <label class="form-label">Category</label>
                                 <input type="text" class="form-control" placeholder="Enter Category" id="category">
-                                <button class="btn btn-secondary col-12 mt-2" onclick="categoryRegister();">Category Register</button>
+                                <div class="row g-2 mt-1">
+                                    <div class="col-md-6">
+                                        <button class="btn btn-success col-12" onclick="categoryRegister();">Register</button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button class="btn btn-danger col-12" onclick="categoryDelete();">Delete</button>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
@@ -57,7 +64,14 @@ if (isset($_SESSION["a"])) {
                             <div class="col-8">
                                 <label class="form-label">Brand Name</label>
                                 <input type="text" class="form-control" placeholder="Enter Brand" id="brand">
-                                <button class="btn btn-secondary col-12 mt-2" onclick="brandRegister();">Brand Register</button>
+                                <div class="row g-2 mt-1">
+                                    <div class="col-md-6">
+                                        <button class="btn btn-success col-12" onclick="brandRegister();">Register</button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button class="btn btn-danger col-12" onclick="brandDelete();">Delete</button>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
@@ -71,7 +85,14 @@ if (isset($_SESSION["a"])) {
                             <div class="col-8">
                                 <label class="form-label">Model Name</label>
                                 <input type="text" class="form-control" placeholder="Enter Model" id="model">
-                                <button class="btn btn-secondary col-12 mt-2" onclick="modelRegister();">Model Register</button>
+                                <div class="row g-2 mt-1">
+                                    <div class="col-md-6">
+                                        <button class="btn btn-success col-12" onclick="modelRegister();">Register</button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button class="btn btn-danger col-12" onclick="modelDelete();">Delete</button>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
@@ -79,9 +100,16 @@ if (isset($_SESSION["a"])) {
                         <div class="col-12 col-md-6 d-flex justify-content-center">
 
                             <div class="col-8">
-                                <label class="form-label">Color</label>
+                                <label class="form-label">Colour</label>
                                 <input type="text" class="form-control" placeholder="Enter Colour" id="color">
-                                <button class="btn btn-secondary col-12 mt-2" onclick="colorRegister();">Colour Register</button>
+                                <div class="row g-2 mt-1">
+                                    <div class="col-md-6">
+                                        <button class="btn btn-success col-12" onclick="colorRegister();">Register</button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button class="btn btn-danger col-12" onclick="colorDelete();">Delete</button>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
@@ -105,12 +133,11 @@ if (isset($_SESSION["a"])) {
         <!-- js sweetalert -->
     </body>
 
-    <?php
+<?php
 
 } else {
 
     header("Location: login.php");
-
 }
 
 ?>

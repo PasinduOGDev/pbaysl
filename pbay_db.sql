@@ -287,12 +287,12 @@ CREATE TABLE IF NOT EXISTS `product` (
 
 -- Dumping data for table pbay_db.product: ~6 rows (approximately)
 INSERT INTO `product` (`id`, `price`, `qty`, `description`, `title`, `datetime_added`, `delivery_fee_colombo`, `delivery_fee_other`, `category_cat_id`, `model_has_brand_id`, `condition_condition_id`, `status_status_id`, `user_email`) VALUES
-	(1, 620000, 100, NULL, 'Apple iPhone 14 Pro', '2024-05-24 09:47:57', 250, 500, 1, 1, 1, 1, 'pasinduogdev@gmail.com'),
-	(2, 780000, 100, NULL, 'Asus ROG 7', '2024-05-24 12:47:33', 250, 500, 1, 2, 1, 1, 'pasinduogdev@gmail.com'),
-	(3, 544000, 50, NULL, 'Samsung Galaxy S21 Ultra', '2024-05-25 11:02:31', 250, 500, 1, 3, 1, 1, 'pasinduogdev@gmail.com'),
-	(4, 620000, 5, NULL, 'Samsung Galaxy S22', '2024-05-25 11:04:05', 250, 500, 1, 4, 1, 1, 'pasinduogdev@gmail.com'),
-	(19, 52000, 40, 'Best!!!', 'Apple iPhone 8', '2024-06-02 00:33:44', 250, 500, 1, 5, 2, 1, 'pasinduogdev@gmail.com'),
-	(30, 75000, 20, 'Best huawei phone', 'Huawei Y20', '2024-06-02 00:54:17', 200, 500, 1, 2, 1, 1, 'pasinduogdev@gmail.com');
+	(1, 620000, 100, NULL, 'Apple iPhone 14 Pro', '2024-05-24 09:47:57', 250, 500, 1, 1, 1, 1, 'wickramasinghekawindya@gmail.com'),
+	(2, 780000, 100, NULL, 'Asus ROG 7', '2024-05-24 12:47:33', 250, 500, 1, 2, 1, 1, 'wickramasinghekawindya@gmail.com'),
+	(3, 544000, 50, NULL, 'Samsung Galaxy S21 Ultra', '2024-05-25 11:02:31', 250, 500, 1, 3, 1, 1, 'wickramasinghekawindya@gmail.com'),
+	(4, 620000, 5, NULL, 'Samsung Galaxy S22', '2024-05-25 11:04:05', 250, 500, 1, 4, 1, 1, 'wickramasinghekawindya@gmail.com'),
+	(19, 52000, 40, 'Best!!!', 'Apple iPhone 8', '2024-06-02 00:33:44', 250, 500, 1, 5, 2, 1, 'wickramasinghekawindya@gmail.com'),
+	(30, 75000, 20, 'Best huawei phone', 'Huawei Y20', '2024-06-02 00:54:17', 200, 500, 1, 2, 1, 1, 'wickramasinghekawindya@gmail.com');
 
 -- Dumping structure for table pbay_db.product_has_color
 CREATE TABLE IF NOT EXISTS `product_has_color` (

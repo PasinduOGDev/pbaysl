@@ -32,7 +32,7 @@ if (isset($_SESSION["u"])) {
         $district_id = $district_data["district_district_id"];
         $delivery = "0";
 
-        if ($district_id == "2") {
+        if ($district_id == "1") {
             $delivery = $product_data["delivery_fee_colombo"];
         }else{
             $delivery = $product_data["delivery_fee_other"];

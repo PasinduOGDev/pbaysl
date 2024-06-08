@@ -42,15 +42,15 @@ if (isset($_SESSION["a"])) {
 
                     <div class="row mt-5">
                         <div class="col-4">
-                            <a href="adminReportStock.php"><button class="btn btn-outline-secondary col-12">Stock
+                            <a href="adminStockReport.php"><button class="btn btn-outline-secondary col-12">Stock
                                     Report</button></a>
                         </div>
                         <div class="col-4">
-                            <a href="adminReportProduct.php"><button class="btn btn-outline-secondary col-12">Product
+                            <a href="adminProductReport.php"><button class="btn btn-outline-secondary col-12">Product
                                     Report</button></a>
                         </div>
                         <div class="col-4">
-                            <a href="adminReportUser.php"><button class="btn btn-outline-secondary col-12">User
+                            <a href="adminUserReport.php"><button class="btn btn-outline-secondary col-12">User
                                     Report</button></a>
                         </div>
                     </div>

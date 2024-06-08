@@ -539,21 +539,79 @@ function categoryRegister() {
             let response = r.responseText;
 
             if (response == "success") {
+
                 Swal.fire({
                     title: "Successfully Added" + " " + category.value,
                     icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
                 });
+
             } else {
+
                 Swal.fire({
                     title: response,
                     icon: "error",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
                 });
+
             }
 
         }
     }
 
     r.open("POST", "categoryRegProcess.php", true);
+    r.send(f);
+
+}
+
+function categoryDelete() {
+
+    let category = document.getElementById("category");
+
+    let f = new FormData();
+
+    f.append("c", category.value);
+
+    let r = new XMLHttpRequest();
+
+    r.onreadystatechange = function () {
+        if (r.readyState == 4 && r.status == 200) {
+            let response = r.responseText;
+
+            if (response == "deleted") {
+
+                Swal.fire({
+                    title: "Successfully Deleted" + " " + category.value,
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                });
+
+            } else {
+
+                Swal.fire({
+                    title: response,
+                    icon: "error",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                });
+
+            }
+
+        }
+    }
+
+    r.open("POST", "categoryDelProcess.php", true);
     r.send(f);
 
 }
@@ -576,11 +634,19 @@ function brandRegister() {
                 Swal.fire({
                     title: "Successfully Added" + " " + brand.value,
                     icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
                 });
             } else {
                 Swal.fire({
                     title: response,
                     icon: "error",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
                 });
             }
 
@@ -588,6 +654,48 @@ function brandRegister() {
     }
 
     r.open("POST", "brandRegProcess.php", true);
+    r.send(f);
+
+}
+
+function brandDelete() {
+
+    let brand = document.getElementById("brand");
+
+    let f = new FormData();
+
+    f.append("b", brand.value);
+
+    let r = new XMLHttpRequest();
+
+    r.onreadystatechange = function () {
+        if (r.readyState == 4 && r.status == 200) {
+            let response = r.responseText;
+
+            if (response == "deleted") {
+                Swal.fire({
+                    title: "Successfully Deleted" + " " + brand.value,
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                });
+            } else {
+                Swal.fire({
+                    title: response,
+                    icon: "error",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                });
+            }
+
+        }
+    }
+
+    r.open("POST", "brandDelProcess.php", true);
     r.send(f);
 
 }
@@ -610,11 +718,19 @@ function modelRegister() {
                 Swal.fire({
                     title: "Successfully Added" + " " + model.value,
                     icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
                 });
             } else {
                 Swal.fire({
                     title: response,
                     icon: "error",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
                 });
             }
 
@@ -622,6 +738,48 @@ function modelRegister() {
     }
 
     r.open("POST", "modelRegProcess.php", true);
+    r.send(f);
+
+}
+
+function modelDelete() {
+
+    let model = document.getElementById("model");
+
+    let f = new FormData();
+
+    f.append("m", model.value);
+
+    let r = new XMLHttpRequest();
+
+    r.onreadystatechange = function () {
+        if (r.readyState == 4 && r.status == 200) {
+            let response = r.responseText;
+
+            if (response == "deleted") {
+                Swal.fire({
+                    title: "Successfully Deleted" + " " + model.value,
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                });
+            } else {
+                Swal.fire({
+                    title: response,
+                    icon: "error",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                });
+            }
+
+        }
+    }
+
+    r.open("POST", "modelDelProcess.php", true);
     r.send(f);
 
 }
@@ -644,11 +802,19 @@ function colorRegister() {
                 Swal.fire({
                     title: "Successfully Added" + " " + color.value,
                     icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
                 });
             } else {
                 Swal.fire({
                     title: response,
                     icon: "error",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
                 });
             }
 
@@ -656,6 +822,48 @@ function colorRegister() {
     }
 
     r.open("POST", "colorRegProcess.php", true);
+    r.send(f);
+
+}
+
+function colorDelete() {
+
+    let color = document.getElementById("color");
+
+    let f = new FormData();
+
+    f.append("col", color.value);
+
+    let r = new XMLHttpRequest();
+
+    r.onreadystatechange = function () {
+        if (r.readyState == 4 && r.status == 200) {
+            let response = r.responseText;
+
+            if (response == "deleted") {
+                Swal.fire({
+                    title: "Successfully Deleted" + " " + color.value,
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                });
+            } else {
+                Swal.fire({
+                    title: response,
+                    icon: "error",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                });
+            }
+
+        }
+    }
+
+    r.open("POST", "colorDelProcess.php", true);
     r.send(f);
 
 }
@@ -1095,7 +1303,25 @@ function changePassword2() {
     r.onreadystatechange = function () {
         if (r.readyState == 4 && r.status == 200) {
             let response = r.responseText;
-            alert(response);
+            if (response == "success") {
+                
+                Swal.fire({
+                    title: "Password Changed!",
+                    icon: "success",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                });
+
+            } else {
+
+                Swal.fire({
+                    title: response,
+                    icon: "error",
+                })
+
+            }
         }
     }
 

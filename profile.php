@@ -390,9 +390,9 @@
                                     <p>Change Password</p>
                                     <div class="col-12">
                                         <label class="form-label"><i class="bi bi-key"></i></label>
-                                        <label class="form-label">Enter New Password</label>
+                                        <label class="form-label">Enter Old Password</label>
                                         <div class="col-12 input-group">
-                                            <input type="password" class="form-control" placeholder="Enter New Password" id="password4">
+                                            <input type="password" class="form-control" placeholder="Enter Old Password" id="password4">
                                             <span class="btn btn-warning" id="pwBtn4" onclick="viewPassword5();"><i class="bi bi-eye-slash"></i></span>
                                         </div>
                                     </div>
