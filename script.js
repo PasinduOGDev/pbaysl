@@ -90,58 +90,6 @@ function changeView() {
 
 // Register function
 
-// function register() {
-
-//     let fname = document.getElementById("fname");
-//     let lname = document.getElementById("lname");
-//     let email = document.getElementById("email2");
-//     let mobile = document.getElementById("mobile");
-//     let agreebox = document.getElementById("agreeBox");
-
-//     let f = new FormData();
-
-//     f.append("f", fname.value);
-//     f.append("l", lname.value);
-//     f.append("e", email.value);
-//     f.append("m", mobile.value);
-//     f.append("a", agreebox.checked);
-
-//     let r = new XMLHttpRequest();
-
-//     r.onreadystatechange = function () {
-//         if (r.readyState == 4 && r.status == 200) {
-//             let response = r.responseText;
-
-//             if (response == "Success") {
-
-//                 Swal.fire({
-//                     title: "Registration Successfully!",
-//                     text: "Please check your Email before Login!",
-//                     icon: "success",
-//                 }).then((result) => {
-//                     if (result.isConfirmed) {
-//                         changeView();
-//                     }
-//                 });
-
-//             } else {
-
-//                 Swal.fire({
-//                     title: "Failed!",
-//                     text: response,
-//                     icon: "error",
-//                 });
-
-//             }
-//         }
-
-//     }
-
-//     r.open("POST", "registerProcess.php", true);
-//     r.send(f);
-
-// }
-
 function register() {
 
     let fname = document.getElementById("fname");
@@ -149,6 +97,9 @@ function register() {
     let email = document.getElementById("email2");
     let mobile = document.getElementById("mobile");
     let agreebox = document.getElementById("agreeBox");
+    let changebtn = document.getElementById("change");
+    let registerbtn = document.getElementById("register");
+    let spinner = document.getElementById("loading-spinner");
 
     let f = new FormData();
 
@@ -158,19 +109,23 @@ function register() {
     f.append("m", mobile.value);
     f.append("a", agreebox.checked);
 
+    changebtn.classList.add("disabled");
+    registerbtn.classList.add("disabled");
+    spinner.classList.remove("d-none");
+
     let r = new XMLHttpRequest();
 
-    let timeoutAlert = setTimeout(function() {
+    let timeoutAlert = setTimeout(function () {
         Swal.fire({
             title: "Taking longer than expected",
             text: "Please wait while we process your registration.",
             icon: "info",
         });
-    }, 5000); // 5000 ms = 5 seconds
+    }, 10000);
 
     r.onreadystatechange = function () {
         if (r.readyState == 4) {
-            clearTimeout(timeoutAlert); // Clear the timeout if the response is received
+            clearTimeout(timeoutAlert);
             if (r.status == 200) {
                 let response = r.responseText;
 
@@ -182,6 +137,9 @@ function register() {
                         icon: "success",
                     }).then((result) => {
                         if (result.isConfirmed) {
+                            changebtn.classList.remove("disabled");
+                            registerbtn.classList.remove("disabled");
+                            spinner.classList.add("d-none");
                             changeView();
                         }
                     });
@@ -192,6 +150,12 @@ function register() {
                         title: "Failed!",
                         text: response,
                         icon: "error",
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            changebtn.classList.remove("disabled");
+                            registerbtn.classList.remove("disabled");
+                            spinner.classList.add("d-none");
+                        }
                     });
 
                 }
@@ -1373,7 +1337,7 @@ function changePassword2() {
         if (r.readyState == 4 && r.status == 200) {
             let response = r.responseText;
             if (response == "success") {
-                
+
                 Swal.fire({
                     title: "Password Changed!",
                     icon: "success",

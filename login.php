@@ -26,8 +26,7 @@
                 <div class="col-12 d-flex justify-content-end">
                     <div class="form-check form-switch mx-4 mt-4">
                         <input type="checkbox" class="form-check-input p-2" role="switch" onclick="setMode();">
-                        <label class="form-check-label" id="mode"><i
-                                class="bi bi-brightness-high text-white"></i></label>
+                        <label class="form-check-label" id="mode"><i class="bi bi-brightness-high text-white"></i></label>
                     </div>
                 </div>
             </div>
@@ -53,8 +52,7 @@
 
                         <div class="row g-3 p-1">
 
-                            <div
-                                class="col-12 d-none d-lg-block col-lg-5 p-1 d-flex justify-content-center align-items-center">
+                            <div class="col-12 d-none d-lg-block col-lg-5 p-1 d-flex justify-content-center align-items-center">
                                 <img src="img/logo/shadow-logo.png" class="col-12">
                             </div>
 
@@ -79,7 +77,6 @@
 
                                     if (isset($_COOKIE["password"])) {
                                         $password = $_COOKIE["password"];
-
                                     }
 
                                     ?>
@@ -87,15 +84,13 @@
                                     <div class="row g-3">
                                         <div class="col-12">
                                             <label for="email" class="form-label">Email</label>
-                                            <input type="email" class="form-control" placeholder="Enter Email"
-                                                id="email" value="<?php echo $email; ?>">
+                                            <input type="email" class="form-control" placeholder="Enter Email" id="email" value="<?php echo $email; ?>">
                                         </div>
 
                                         <div class="col-12">
                                             <label for="password" class="form-label">Password</label>
                                             <div class="input-group">
-                                                <input type="password" class="form-control" placeholder="Enter Password"
-                                                    id="password" value="<?php echo $password; ?>">
+                                                <input type="password" class="form-control" placeholder="Enter Password" id="password" value="<?php echo $password; ?>">
                                                 <span class="btn btn-warning" id="pwBtn" onclick="viewPassword();"><i class="bi bi-eye-slash"></i></span>
                                             </div>
                                         </div>
@@ -108,8 +103,7 @@
                                         </div>
 
                                         <div class="col-6 text-end">
-                                            <a href="#" class="link-primary text-decoration-none" id="forgotPassword"
-                                                onclick="forgotPassword();">Forgotten Password?</a>
+                                            <a href="#" class="link-primary text-decoration-none" id="forgotPassword" onclick="forgotPassword();">Forgotten Password?</a>
                                         </div>
                                     </div>
 
@@ -117,13 +111,11 @@
 
                                     <div class="row mt-3 g-2">
                                         <div class="col-12 col-md-4 d-flex justify-content-end">
-                                            <button class="col-12 btn btn-primary" id="login"
-                                                onclick="login();">Login</button>
+                                            <button class="col-12 btn btn-primary" id="login" onclick="login();">Login</button>
                                         </div>
 
                                         <div class="col-12 col-md-8 d-flex justify-content-start">
-                                            <button class="col-12 btn btn-success" onclick="changeView();"
-                                                id="change2">New to Pbay? Register</button>
+                                            <button class="col-12 btn btn-success" onclick="changeView();" id="change2">New to Pbay? Register</button>
                                         </div>
 
                                     </div>
@@ -148,8 +140,7 @@
 
                         <div class="row g-3">
 
-                            <div class="col-12 d-none d-lg-block col-lg-5 p-1 d-flex justify-content-center align-items-center"
-                                style="border-radius: 0;">
+                            <div class="col-12 d-none d-lg-block col-lg-5 p-1 d-flex justify-content-center align-items-center" style="border-radius: 0;">
                                 <img src="img/logo/shadow-logo.png" class="col-12">
                             </div>
 
@@ -177,14 +168,12 @@
 
                                         <div class="col-12 col-md-6">
                                             <label for="email" class="form-label">Email</label>
-                                            <input type="email" class="form-control" placeholder="Ex: johndoe@email.com"
-                                                id="email2">
+                                            <input type="email" class="form-control" placeholder="Ex: johndoe@email.com" id="email2">
                                         </div>
 
                                         <div class="col-12 col-md-6">
                                             <label class="form-label">Mobile</label>
-                                            <input type="text" class="form-control" placeholder="Ex: 0712345678"
-                                                id="mobile">
+                                            <input type="text" class="form-control" placeholder="Ex: 0712345678" id="mobile">
                                         </div>
 
                                     </div>
@@ -194,8 +183,7 @@
                                     <div class="row g-2 p-2">
                                         <div class="col-12 form-check">
                                             <input type="checkbox" class="form form-check-input" id="agreeBox">
-                                            <label class="form-check-label">I agree to all <a href="#"
-                                                    class="link-primary text-decoration-none">terms and
+                                            <label class="form-check-label">I agree to all <a href="#" class="link-primary text-decoration-none">terms and
                                                     conditions</a></label>
                                         </div>
                                     </div>
@@ -204,13 +192,14 @@
 
                                     <div class="row g-2">
                                         <div class="col-12 col-md-4 d-flex justify-content-end">
-                                            <button class="col-12 btn btn-success" id="register"
-                                                onclick="register();">Register</button>
+                                            <button class="col-12 btn btn-success" id="register" onclick="register();">
+                                                <span class="spinner-border spinner-border-sm d-none" id="loading-spinner" aria-hidden="true"></span>
+                                                <span role="status">Register</span>
+                                            </button>
                                         </div>
 
                                         <div class="col-12 col-md-8 d-flex justify-content-start">
-                                            <button class="col-12 btn btn-danger" onclick="changeView();"
-                                                id="change">Existing Pbay user? Login</button>
+                                            <button class="col-12 btn btn-danger" onclick="changeView();" id="change">Existing Pbay user? Login</button>
                                         </div>
                                     </div>
 
@@ -232,8 +221,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-body text-center">
-                                <h4 class="form-label text-danger"><img src="img/logo/logo.png" width="80px"
-                                        height="80px"></h4>
+                                <h4 class="form-label text-danger"><img src="img/logo/logo.png" width="80px" height="80px"></h4>
                                 <h4 class="form-label text-danger"><i class="bi bi-envelope"></i></h4>
                                 <p>Enter your Email</p>
                                 <div class="col-12 input-group">
@@ -241,8 +229,7 @@
                                 </div>
                             </div>
                             <div class="col-12 d-flex justify-content-center modal-footer">
-                                <button type="button" class="col-8 btn btn-warning" data-bs-dismiss="modal"
-                                    onclick="sendCode();">Send Code</button>
+                                <button type="button" class="col-8 btn btn-warning" data-bs-dismiss="modal" onclick="sendCode();">Send Code</button>
                             </div>
                         </div>
                     </div>
@@ -256,8 +243,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-body text-center">
-                                <h4 class="form-label text-danger"><img src="img/logo/logo.png" width="80px"
-                                        height="80px"></h4>
+                                <h4 class="form-label text-danger"><img src="img/logo/logo.png" width="80px" height="80px"></h4>
                                 <h4 class="form-label text-body-tertiary"><i class="bi bi-person-check"></i></h4>
                                 <p>Enter OTP Passcode</p>
                                 <div class="col-12 mb-3">
@@ -269,24 +255,22 @@
                                         <label class="form-label"><i class="bi bi-key"></i></label>
                                         <label class="form-label">Enter New Password</label>
                                         <div class="col-12 input-group">
-                                        <input type="password" class="form-control" placeholder="Enter New Password" id="password2">
-                                        <span class="btn btn-warning" id="pwBtn2" onclick="viewPassword2();"><i class="bi bi-eye-slash"></i></span>
+                                            <input type="password" class="form-control" placeholder="Enter New Password" id="password2">
+                                            <span class="btn btn-warning" id="pwBtn2" onclick="viewPassword2();"><i class="bi bi-eye-slash"></i></span>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <label class="form-label"><i class="bi bi-key"></i></label>
                                         <label class="form-label">Confirm New Password</label>
                                         <div class="col-12 input-group">
-                                            <input type="password" class="form-control"
-                                                placeholder="Confirm New Password" id="password3">
-                                                <span class="btn btn-warning" id="pwBtn3" onclick="viewPassword3();"><i class="bi bi-eye-slash"></i></span>
+                                            <input type="password" class="form-control" placeholder="Confirm New Password" id="password3">
+                                            <span class="btn btn-warning" id="pwBtn3" onclick="viewPassword3();"><i class="bi bi-eye-slash"></i></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12 d-flex justify-content-center modal-footer">
-                                <button type="button" class="col-8 btn btn-danger" data-bs-dismiss="modal"
-                                    onclick="resetPassword();">Reset</button>
+                                <button type="button" class="col-8 btn btn-danger" data-bs-dismiss="modal" onclick="resetPassword();">Reset</button>
                             </div>
                         </div>
                     </div>
@@ -301,9 +285,7 @@
 
     <!-- js -->
     <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <!-- js -->
 
     <!-- js sweetalert -->
