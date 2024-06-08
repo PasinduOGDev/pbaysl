@@ -175,7 +175,7 @@
                                 <div class="d-print-none mt-4">
                                     <div class="float-end">
                                         <a href="javascript:window.print()" class="btn btn-success me-1"><i class="bi bi-printer"></i></a>
-                                        <a href="#" class="btn btn-primary w-md">Send</a>
+                                        <a href="purchasedHistory.php" class="btn btn-danger w-md">View History</a>
                                     </div>
                                 </div>
                             </div>

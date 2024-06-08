@@ -75,7 +75,7 @@
 
                     <div class="row g-3">
 
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-4">
                             <select class="form-select" id="c1">
                                 <option value="0">Select Category</option>
 
@@ -99,7 +99,7 @@
                             </select>
                         </div>
 
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-4">
                             <select class="form-select" id="b1">
                                 <option value="0">Select Brand</option>
 
@@ -122,11 +122,7 @@
                             </select>
                         </div>
 
-                    </div>
-
-                    <div class="row mt-2 g-3">
-
-                    <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-4">
                             <select class="form-select" id="m">
                                 <option value="0">Select Model</option>
 
@@ -149,6 +145,10 @@
                             </select>
                         </div>
 
+                    </div>
+
+                    <div class="row mt-2 g-3">
+
                         <div class="col-12 col-md-6">
                             <select class="form-select" id="c2">
                                 <option value="0">Select Condition</option>
@@ -163,6 +163,29 @@
 
                                 ?>
                                     <option value="<?php echo $condition_data["condition_id"]; ?>"><?php echo $condition_data["condition_name"]; ?></option>
+                                <?php
+
+                                }
+
+                                ?>
+
+                            </select>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <select class="form-select" id="c3">
+                                <option value="0">Select Colour</option>
+
+                                <?php
+
+                                $color_rs = Database::search("SELECT * FROM `color`");
+                                $color_num = $color_rs->num_rows;
+
+                                for ($i = 0; $i < $color_num; $i++) {
+                                    $color_data = $color_rs->fetch_assoc();
+
+                                ?>
+                                    <option value="<?php echo $color_data["clr_id"]; ?>"><?php echo $color_data["clr_name"]; ?></option>
                                 <?php
 
                                 }

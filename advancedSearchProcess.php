@@ -84,6 +84,13 @@ if ($status == 0 && $condition != 0) {
     $query .= " AND `condition_condition_id`='" . $condition . "'";
 }
 
+if ($status == 0 && $color != 0) {
+    $query .= " INNER JOIN `product_has_color` ON product.id=product_has_color.product_id WHERE `color_clr_id`='" . $color . "'";
+    $status = 1;
+} else if ($status != 0 && $color != 0) {
+    $query .= " AND `color_clr_id`='" . $color . "'";
+}
+
 if (!empty($price_from) && empty($price_to)) {
     if ($status == 0) {
         $query .= " WHERE `price` >= '" . $price_from . "'";
