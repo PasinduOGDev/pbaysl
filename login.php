@@ -229,7 +229,10 @@
                                 </div>
                             </div>
                             <div class="col-12 d-flex justify-content-center modal-footer">
-                                <button type="button" class="col-8 btn btn-warning" data-bs-dismiss="modal" onclick="sendCode();">Send Code</button>
+                                <button class="col-8 btn btn-warning" type="button" id="sendcode" onclick="sendCode();">
+                                    <span class="spinner-border spinner-border-sm d-none" id="loading1" aria-hidden="true"></span>
+                                    <span role="status">Send OTP</span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -270,7 +273,7 @@
                                 </div>
                             </div>
                             <div class="col-12 d-flex justify-content-center modal-footer">
-                                <button type="button" class="col-8 btn btn-danger" data-bs-dismiss="modal" onclick="resetPassword();">Reset</button>
+                                <button type="button" class="col-8 btn btn-danger" onclick="resetPassword();">Reset</button>
                             </div>
                         </div>
                     </div>

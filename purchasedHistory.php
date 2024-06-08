@@ -130,7 +130,6 @@
                                                                         <div class="card-body">
                                                                             <h5 class="card-title"><?php echo $product_data["title"] ?></h5>
                                                                             <p class="card-text">LKR <?php echo $product_data["price"] ?></p>
-                                                                            <span class="badge rounded-pill text-bg-warning">Waiting to accept</span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -143,12 +142,9 @@
 
                                                 <td class="col-2"><?php echo $invoice_data["date"]; ?></td>
                                                 <td>
-                                                    <div class="row col-12 g-2">
-                                                        <div class="col-lg-6">
+                                                    <div class="row col-12">
+                                                        <div class="col-12">
                                                             <a href="<?php echo "invoice.php?id=" . $invoice_data["order_id"]; ?>" class="col-12 btn btn-success"><i class="bi bi-receipt"></i></a>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <a class="col-12 btn btn-danger"><i class="bi bi-trash"></i></a>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -162,10 +158,6 @@
 
                                     </tbody>
                                 </table>
-                            </div>
-
-                            <div class="row mt-1 mx-3 justify-content-end">
-                                <button class="btn btn-warning col-md-2">Remove all</button>
                             </div>
 
                         </div>

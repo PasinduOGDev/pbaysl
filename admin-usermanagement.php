@@ -23,7 +23,7 @@ session_start();
 
 if (isset($_SESSION["a"])) {
 
-    ?>
+?>
 
     <body class="bg-body-secondary" data-bs-theme="light" onload="loadUser();">
 
@@ -50,8 +50,10 @@ if (isset($_SESSION["a"])) {
                             <input type="email" class="form-control" placeholder="User Email" id="u_email" />
                         </div>
 
-                        <button class="btn btn-outline-secondary col-12 col-lg-2" onclick="updateUserStatus();">Change
-                            Status</button>
+                        <button class="btn btn-outline-secondary col-12 col-lg-2" id="statusbtn" type="button" onclick="updateUserStatus();">
+                            <span class="spinner-border spinner-border-sm d-none" id="loading1" aria-hidden="true"></span>
+                            <span role="status">Change Status</span>
+                        </button>
                     </div>
 
                 </div>
@@ -91,12 +93,11 @@ if (isset($_SESSION["a"])) {
         <!-- js sweetalert -->
     </body>
 
-    <?php
+<?php
 
 } else {
 
     header("Location: login.php");
-
 }
 
 ?>

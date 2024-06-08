@@ -19,7 +19,7 @@ for ($x = 0; $x < $num; $x++) {
         if ($data["status_status_id"] == 1) {
             echo ("Active");
         } else {
-            echo ("Deactive");
+            echo ("Deactivated");
         }
         ?></td>
     </tr>

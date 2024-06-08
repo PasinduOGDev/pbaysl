@@ -127,7 +127,11 @@ function register() {
         if (r.readyState == 4) {
             clearTimeout(timeoutAlert);
             if (r.status == 200) {
+
                 let response = r.responseText;
+                changebtn.classList.remove("disabled");
+                registerbtn.classList.remove("disabled");
+                spinner.classList.add("d-none");
 
                 if (response == "Success") {
 
@@ -137,9 +141,6 @@ function register() {
                         icon: "success",
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            changebtn.classList.remove("disabled");
-                            registerbtn.classList.remove("disabled");
-                            spinner.classList.add("d-none");
                             changeView();
                         }
                     });
@@ -150,12 +151,6 @@ function register() {
                         title: "Failed!",
                         text: response,
                         icon: "error",
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            changebtn.classList.remove("disabled");
-                            registerbtn.classList.remove("disabled");
-                            spinner.classList.add("d-none");
-                        }
                     });
 
                 }
@@ -250,12 +245,22 @@ function forgotPassword() {
 function sendCode() {
 
     let email = document.getElementById("email3");
+    let sendcode = document.getElementById("sendcode");
+    let loading = document.getElementById("loading1");
+
+    sendcode.classList.add("disabled");
+    loading.classList.remove("d-none");
+
 
     let r = new XMLHttpRequest();
 
     r.onreadystatechange = function () {
         if (r.readyState == 4 && r.status == 200) {
             let response = r.responseText;
+
+            otpModal.hide();
+            sendcode.classList.remove("disabled");
+            loading.classList.add("d-none");
 
             if (response == "Success") {
 
@@ -1388,6 +1393,11 @@ function loadUser() {
 function updateUserStatus() {
 
     let user_email = document.getElementById("u_email");
+    let statusbtn = document.getElementById("statusbtn");
+    let loading = document.getElementById("loading1");
+
+    statusbtn.classList.add("disabled");
+    loading.classList.remove("d-none");
 
     let f = new FormData();
 
@@ -1398,6 +1408,9 @@ function updateUserStatus() {
     r.onreadystatechange = function () {
         if (r.readyState == 4 && r.status == 200) {
             var response = r.responseText;
+
+            statusbtn.classList.remove("disabled");
+            loading.classList.add("d-none");
 
             if (response == "Deactivated") {
 
@@ -1648,6 +1661,46 @@ function advancedSearch(x) {
 
     r.open("POST", "advancedSearchProcess.php", true);
     r.send(f);
+
+}
+
+function deleteProductHistory(id) {
+
+    let r = new XMLHttpRequest();
+
+    r.onreadystatechange = function() {
+        if (r.readyState == 4 && r.status == 200) {
+            let response = r.responseText;
+            
+            if (response == "removed") {
+                
+                Swal.fire({
+                    title: "Product is removed!",
+                    icon: "success",
+                }).then((result => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                }));
+
+            } else {
+
+                Swal.fire({
+                    title: response,
+                    icon: "warning",
+                }).then((result => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                }));
+
+            }
+
+        }
+    }
+
+    r.open("GET", "deleteInvoiceProcess.php?id=" + id, true);
+    r.send();
 
 }
 

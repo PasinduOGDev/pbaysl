@@ -71,8 +71,8 @@ if (isset($_SESSION["a"])) {
                                 <tr>
                                     <td><?php echo $d["id"] ?></td>
                                     <td><?php echo $d["title"] ?></td>
-                                    <td><?php echo $d["qty"] ?></td>
-                                    <td><?php echo $d["price"] ?></td>
+                                    <td><?php echo $d["qty"] ?> items</td>
+                                    <td>LKR <?php echo $d["price"] ?></td>
                                 </tr>
 
                             <?php
