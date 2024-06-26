@@ -1,3 +1,11 @@
+<?php
+
+session_start();
+
+if (!isset($_SESSION["u"])) {
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -297,3 +305,19 @@
 </body>
 
 </html>
+
+<?php
+
+} else {
+
+?>
+
+<script>
+    window.location.href = "index.php";
+</script>
+
+<?php
+
+}
+
+?>
