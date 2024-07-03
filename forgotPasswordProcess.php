@@ -41,12 +41,12 @@ if (empty($email)) {
             $mail->IsSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'pasinduogdev@gmail.com';
-            $mail->Password = 'kfsjiraxzliobkao';
+            $mail->Username = '***********************';
+            $mail->Password = '***************';
             $mail->SMTPSecure = 'ssl';
             $mail->Port = 465;
-            $mail->setFrom('pasinduogdev@gmail.com', 'Reset Password');
-            $mail->addReplyTo('pasinduogdev@gmail.com', 'Reset Password');
+            $mail->setFrom('***********************', 'Reset Password');
+            $mail->addReplyTo('***********************', 'Reset Password');
             $mail->addAddress($email);
             $mail->isHTML(true);
             $mail->Subject = 'Pbay Forgot password Verification';
