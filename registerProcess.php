@@ -55,8 +55,8 @@ if (empty($fname)) {
         $mail->IsSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'pasinduogdev@gmail.com';
-        $mail->Password = 'kfsjiraxzliobkao';
+        $mail->Username = '***********************';
+        $mail->Password = '****************';
         $mail->SMTPSecure = 'ssl';
         $mail->Port = 465;
         $mail->setFrom('Pbay Sri Lanka', 'Login Password');
